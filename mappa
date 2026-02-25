@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mappa</title>
+</head>
+<body>
+    <h1>italianrecordingstudios</h1>
+    <iframe
+        src="https://www.google.com/maps/embed?pb=TUO_LINK"
+        width="600"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+</body>
+</html>
