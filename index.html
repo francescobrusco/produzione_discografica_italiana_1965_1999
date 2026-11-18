@@ -3,59 +3,69 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Produzione discografica italiana 1965–1999 · Francesco Brusco</title>
-<meta name="description" content="Reti di studi, musicisti, produttori, tecnici del suono ed etichette dietro i 700 album italiani più venduti tra il 1965 e il 1999. Dataset e strumenti di esplorazione.">
-<meta property="og:title" content="Produzione discografica italiana 1965–1999">
-<meta property="og:description" content="Chi ha suonato, registrato e prodotto gli album italiani più venduti: una rete di 2.700 professionisti e 700 dischi.">
+<title>La produzione discografica in Italia come pratica sociale (1965–1999) · Francesco Brusco</title>
+<meta name="description" content="Mappatura, etnografia, modelli sistemici di creatività: la rete sociale di 3410 nodi e 7926 collegamenti dietro 700 album italiani, 1965–1999. Grafi, mappe, dataset.">
+<meta property="og:title" content="La produzione discografica in Italia come pratica sociale (1965–1999)">
+<meta property="og:description" content="La rete di studi, musicisti, produttori, tecnici ed etichette dietro 700 album italiani: grafi, mappa animata degli studi di registrazione, dataset aperto.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="img/busta.jpg">
 <link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&family=Oswald:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{
-  --paper:#f5efe3; --paper-2:#ebe3d3; --ink:#1c1915; --ink-2:#4a443b; --ink-3:#7a7266;
-  --rule:#d6cbb6; --accent:#a8321f; --accent-2:#c98a2b; --groove:#2a2520;
+  --paper:#f4ece2; --paper-2:#ebe0d2; --paper-3:#e2d5c3; --ink:#1b1916; --ink-2:#4a443c; --ink-3:#7d7468;
+  --rule:#d8cab6; --accent:#e9532a; --accent-d:#c2401c; --vinyl:#161512;
   --serif:"Source Serif 4",Georgia,serif; --display:"Fraunces",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
-  --w:1120px;
+  --w:1160px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.6 var(--serif);-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-underline-offset:3px}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.62 var(--serif);-webkit-font-smoothing:antialiased}
+a{color:var(--accent-d);text-underline-offset:3px}
 a:hover{color:var(--ink)}
 .wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
 h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.1;letter-spacing:-.01em;margin:0}
-h2{font-size:clamp(30px,4vw,44px);margin-bottom:.4em}
-h3{font-size:22px}
-.kicker{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
-.lede{font-size:21px;color:var(--ink-2);max-width:62ch}
-p{max-width:68ch}
-.mono{font-family:var(--mono)}
+h2{font-size:clamp(30px,4vw,46px);margin-bottom:.45em}
+h3{font-size:24px;margin-bottom:.4em}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-d);margin-bottom:14px;display:block}
+.lede{font-size:21px;color:var(--ink-2);max-width:64ch}
+p{max-width:70ch}
+.note{font:13px/1.55 var(--mono);color:var(--ink-3)}
+blockquote{margin:28px 0;padding:4px 0 4px 22px;border-left:3px solid var(--accent);font-style:italic;color:var(--ink-2);max-width:64ch}
+blockquote cite{display:block;margin-top:8px;font:normal 13px var(--mono);color:var(--ink-3)}
 
 /* nav */
-nav.top{position:sticky;top:0;z-index:20;background:rgba(245,239,227,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
-nav.top .wrap{display:flex;align-items:center;gap:28px;height:56px}
-nav.top .brand{font:600 15px/1 var(--display);color:var(--ink);text-decoration:none;white-space:nowrap}
-nav.top ul{display:flex;gap:22px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto}
-nav.top ul a{font:500 13px/1 var(--mono);color:var(--ink-2);text-decoration:none;letter-spacing:.04em;white-space:nowrap}
-nav.top ul a:hover{color:var(--accent)}
-@media(max-width:760px){nav.top .brand{display:none} nav.top ul{margin:0;gap:18px}}
+nav.top{position:sticky;top:0;z-index:1000;background:rgba(244,236,226,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+nav.top .wrap{display:flex;align-items:center;gap:24px;height:56px}
+nav.top .brand{font:600 14px/1.15 var(--display);color:var(--ink);text-decoration:none;max-width:260px}
+nav.top ul{display:flex;gap:20px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+nav.top ul a{font:500 12.5px/1 var(--mono);color:var(--ink-2);text-decoration:none;letter-spacing:.04em;white-space:nowrap}
+nav.top ul a:hover{color:var(--accent-d)}
+@media(max-width:900px){nav.top .brand{display:none} nav.top ul{margin:0;gap:16px}}
 
-/* hero */
-header.hero{padding:88px 0 72px;border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(44px,7vw,92px);font-weight:800;letter-spacing:-.025em;line-height:.98}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero .lede{margin-top:28px}
-.byline{margin-top:28px;font:400 14px/1.6 var(--mono);color:var(--ink-3)}
+/* hero: busta + disco */
+header.hero{position:relative;overflow:hidden;background:#fbf8f3;border-bottom:1px solid var(--rule);min-height:min(88vh,760px);display:flex;align-items:center}
+.hero .disc{position:absolute;top:50%;right:-16vmin;transform:translateY(-50%);width:min(82vmin,740px);aspect-ratio:1;z-index:1;animation:spin 14s linear infinite;animation-play-state:paused}
+header.hero:hover .disc{animation-play-state:running}
+@keyframes spin{from{transform:translateY(-50%) rotate(0)}to{transform:translateY(-50%) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hero .disc{animation:none}}
+.sleeve{position:absolute;inset:0 auto 0 0;width:calc(100% - 38vmin);background:url(img/busta.jpg) left center/cover no-repeat;z-index:2;box-shadow:18px 0 30px -18px rgba(0,0,0,.35)}
+.sleeve::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(244,236,226,.0),rgba(244,236,226,0) 80%,rgba(0,0,0,.06))}
+.hero .copy{position:relative;z-index:3;padding:96px 0 88px;max-width:min(760px,calc(100% - 44vmin))}
+.hero h1{font-size:clamp(38px,5.6vw,76px);font-weight:800;letter-spacing:-.025em;line-height:1.0;color:var(--ink)}
+.hero h1 .yr{display:block;color:var(--accent-d);font-weight:600;margin-top:.12em}
+.hero .sub{margin-top:26px;font:italic 22px/1.45 var(--serif);color:var(--ink-2);max-width:40ch}
+.byline{margin-top:30px;font:400 13.5px/1.7 var(--mono);color:var(--ink-3)}
 .byline strong{color:var(--ink);font-weight:500}
-.disc{aspect-ratio:1;width:100%;max-width:400px;justify-self:end}
-@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.disc{max-width:200px;justify-self:start;order:-1}}
+.cat{position:absolute;left:24px;bottom:22px;z-index:3;font:11px var(--mono);letter-spacing:.12em;color:#9a8f80;writing-mode:vertical-rl;transform:rotate(180deg)}
+@media(max-width:760px){.sleeve{width:100%;box-shadow:none;z-index:1}.hero .disc{width:66vmin;right:-16vmin;top:auto;bottom:-20vmin;transform:none;animation:none;z-index:2}.hero .copy{max-width:100%;padding:56px 0 46vmin}.cat{display:none}}
 
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--rule)}
-.stat{padding:32px 24px;border-right:1px solid var(--rule)}
+.stat{padding:30px 24px;border-right:1px solid var(--rule)}
 .stat:last-child{border-right:0}
 .stat b{display:block;font:800 clamp(34px,4.5vw,54px)/1 var(--display);letter-spacing:-.02em}
 .stat span{display:block;margin-top:10px;font:400 13px/1.4 var(--mono);color:var(--ink-3)}
@@ -63,31 +73,100 @@ header.hero{padding:88px 0 72px;border-bottom:1px solid var(--rule);position:rel
 
 section{padding:96px 0;border-bottom:1px solid var(--rule)}
 section.alt{background:var(--paper-2)}
+section.dark{background:var(--vinyl);color:#efe6da}
+section.dark .lede,section.dark p{color:#cfc4b6}
+section.dark .kicker{color:var(--accent)}
+.sub-h{margin-top:72px}
 
-/* chart */
-.chart-wrap{margin-top:36px;background:var(--paper);border:1px solid var(--rule);padding:28px 28px 16px}
-.alt .chart-wrap{background:var(--paper)}
-#chart svg{width:100%;height:auto;display:block}
-#chart .bar{fill:var(--accent);opacity:.85}
-#chart .bar:hover{opacity:1;fill:var(--groove)}
-#chart text{font:11px var(--mono);fill:var(--ink-3)}
-#chart .grid{stroke:var(--rule);stroke-width:1}
-#chart .lbl{fill:var(--ink);font-weight:500}
-.chart-note{font:13px/1.5 var(--mono);color:var(--ink-3);margin-top:12px}
-.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);font:12px/1.4 var(--mono);padding:6px 9px;opacity:0;transition:opacity .1s;z-index:50}
+/* figures */
+figure{margin:36px 0 0}
+figure .frame{background:#fff;border:1px solid var(--rule);padding:12px;cursor:zoom-in;display:block;width:100%}
+figure img{display:block;width:100%;height:auto}
+figcaption{margin-top:10px;font:13px/1.55 var(--mono);color:var(--ink-3);max-width:80ch}
+figcaption b{color:var(--ink-2);font-weight:500}
+.fig-row{display:grid;gap:24px;grid-template-columns:repeat(var(--n,2),1fr)}
+.fig-row figure{margin-top:0}
+figure.narrow{max-width:720px;margin-left:auto;margin-right:auto}
+@media(max-width:820px){.fig-row{grid-template-columns:1fr}}
+@media(max-width:560px){.bar-row{grid-template-columns:120px 1fr 96px;font-size:13px}}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:24px}}
+.lb{position:fixed;inset:0;background:rgba(22,21,18,.92);z-index:3000;display:none;align-items:center;justify-content:center;padding:4vmin;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:100%;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)}
 
-/* who */
-.who{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border-top:2px solid var(--ink)}
-.who .col{padding:20px 20px 24px 0;border-bottom:1px solid var(--rule)}
-.who h3{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
-.who ol{list-style:none;margin:0;padding:0}
-.who li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px dotted var(--rule);font-size:16px}
-.who li:last-child{border-bottom:0}
-.who li button{all:unset;cursor:pointer;color:var(--ink)}
-.who li button:hover{color:var(--accent);text-decoration:underline}
-.who li span{font:12px var(--mono);color:var(--ink-3);white-space:nowrap;padding-top:3px}
-@media(max-width:960px){.who{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.who{grid-template-columns:1fr}}
+/* tables */
+.tbl{width:100%;border-collapse:collapse;margin-top:28px;font-size:16px}
+.tbl th{font:500 11.5px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:8px 10px;border-bottom:2px solid var(--ink)}
+.tbl td{padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.tbl td.n,.tbl th.n{text-align:right;font-family:var(--mono);font-size:14px;white-space:nowrap}
+.tbl tr.hl td{background:rgba(233,83,42,.08)}
+.tbl-wrap{overflow-x:auto}
+.tbl .link{border:0}
+
+/* bar charts */
+.bars{margin-top:24px}
+.bar-row{display:grid;grid-template-columns:170px 1fr 118px;gap:12px;align-items:center;padding:4px 0;font-size:15px}
+.bar-row .lab{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-row .track{height:14px;background:var(--paper-3);position:relative}
+.bar-row .fill{position:absolute;inset:0 auto 0 0;background:var(--accent)}
+.bar-row .val{font:13px var(--mono);color:var(--ink-3);text-align:right}
+.alt .bar-row .track{background:var(--paper)}
+svg.chart{width:100%;height:auto;display:block}
+svg.chart text{font:11px var(--mono);fill:var(--ink-3)}
+svg.chart .grid{stroke:var(--rule)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font:12px var(--mono);color:var(--ink-2);margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;margin-right:6px;vertical-align:-1px}
+
+/* people */
+.roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 36px;margin-top:40px;border-top:2px solid var(--ink)}
+.roles .col{padding:20px 0 24px;border-bottom:1px solid var(--rule)}
+.roles h3{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.roles ol{list-style:none;margin:0;padding:0;counter-reset:r}
+.roles li{display:flex;justify-content:space-between;gap:10px;padding:4px 0;border-bottom:1px dotted var(--rule);font-size:15.5px;counter-increment:r}
+.roles li::before{content:counter(r);font:11px var(--mono);color:var(--ink-3);width:20px;flex:none;padding-top:4px}
+.roles li:last-child{border-bottom:0}
+.roles li button{all:unset;cursor:pointer;flex:1}
+.roles li button:hover{color:var(--accent-d);text-decoration:underline}
+.roles li span{font:12px var(--mono);color:var(--ink-3);white-space:nowrap;padding-top:3px}
+.more{all:unset;cursor:pointer;margin-top:28px;display:inline-block;font:500 13px var(--mono);border:1.5px solid var(--ink);padding:10px 14px}
+.more:hover{background:var(--ink);color:var(--paper)}
+
+/* map */
+.map-shell{margin-top:36px;border:1px solid #2d2a25;background:#0f0e0c;display:grid;grid-template-columns:1fr 300px}
+@media(max-width:900px){.map-shell{grid-template-columns:1fr}}
+#map{height:620px;background:#e8e0d4}
+@media(max-width:900px){#map{height:480px}}
+.map-side{padding:22px;color:#e8dfd3;font-size:15px;display:flex;flex-direction:column;gap:18px;max-height:620px;overflow:auto}
+.map-year{font:800 64px/1 var(--display);color:var(--accent);letter-spacing:-.02em}
+.map-count{font:13px/1.6 var(--mono);color:#b7ab9b}
+.map-count b{color:#fff;font-weight:500}
+.map-side h4{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#8d8273;margin:0 0 8px}
+.map-side ul{list-style:none;margin:0;padding:0}
+.map-side li{padding:3px 0;border-bottom:1px solid #2b2823;font-size:14px}
+.map-side li small{color:#8d8273;font:11px var(--mono)}
+.timeline{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:16px 20px;border-top:1px solid #2d2a25;color:#e8dfd3}
+.timeline button.play{all:unset;cursor:pointer;width:42px;height:42px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none}
+.timeline button.play:hover{background:#ff6a3d}
+.timeline button.play svg{width:16px;height:16px;fill:#fff}
+.tl-track{flex:1;position:relative}
+.tl-track input{width:100%;accent-color:var(--accent);margin:0}
+.tl-ticks{display:flex;justify-content:space-between;font:11px var(--mono);color:#8d8273;margin-top:4px}
+.map-tools{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 16px;align-items:center}
+.map-tools button{all:unset;cursor:pointer;font:12px var(--mono);color:#cfc4b6;border:1px solid #3a362f;padding:6px 10px}
+.map-tools button.on,.map-tools button:hover{border-color:var(--accent);color:#fff}
+.map-tools .sp{flex:1}
+.map-tools label{font:12px var(--mono);color:#cfc4b6;display:flex;gap:6px;align-items:center;cursor:pointer}
+.leaflet-container{font:14px var(--serif)}
+.leaflet-tile-pane{filter:sepia(.28) saturate(.8) brightness(1.02)}
+.leaflet-popup-content{margin:14px 16px;font-size:15px;line-height:1.45}
+.leaflet-popup-content b{font-family:var(--display);font-size:18px}
+.leaflet-popup-content small{display:block;font:12px var(--mono);color:#7d7468;margin-top:4px}
+.leaflet-popup-content .spark{display:flex;gap:1px;align-items:flex-end;height:28px;margin-top:8px}
+.leaflet-popup-content .spark i{flex:1;background:var(--accent);min-height:1px}
+.leaflet-popup-content .spark i.z{background:#e2d5c3}
+.leaflet-popup-content a{font:12px var(--mono)}
+.trail{stroke-dasharray:4 5}
 
 /* explorer */
 .search{position:relative;margin-top:32px;max-width:640px}
@@ -98,10 +177,10 @@ section.alt{background:var(--paper-2)}
 .sugg button:hover,.sugg button.on{background:var(--paper-2)}
 .sugg small{font:12px var(--mono);color:var(--ink-3);padding-top:4px;white-space:nowrap}
 .try{margin-top:14px;font:13px var(--mono);color:var(--ink-3)}
-.try button{all:unset;cursor:pointer;color:var(--accent);margin:0 4px;text-decoration:underline;text-underline-offset:3px}
+.try button{all:unset;cursor:pointer;color:var(--accent-d);margin:0 4px;text-decoration:underline;text-underline-offset:3px}
 #card{margin-top:40px}
 .card{background:var(--paper);border:1px solid var(--rule);padding:32px}
-.card .role{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.card .role{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-d)}
 .card h3{font-size:clamp(28px,3.5vw,40px);margin:10px 0 6px}
 .card .meta{font:14px var(--mono);color:var(--ink-3)}
 .card-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;margin-top:28px}
@@ -111,283 +190,546 @@ section.alt{background:var(--paper-2)}
 .alist li{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:7px 0;border-bottom:1px dotted var(--rule);font-size:16px}
 .alist .y{font:13px var(--mono);color:var(--ink-3);padding-top:3px}
 .alist small{display:block;color:var(--ink-3);font-size:14px}
-.link{all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--rule)}
-.link:hover{color:var(--accent);border-color:var(--accent)}
+.link{all:unset;cursor:pointer;color:inherit;border-bottom:1px solid var(--rule)}
+.link:hover{color:var(--accent-d);border-color:var(--accent)}
 .credits{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px 32px}
 .credits div b{display:block;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
 .credits div .link{font-size:16px}
-.credits div span.sep{color:var(--ink-3)}
+.credits span.sep{color:var(--ink-3)}
 .collab li{grid-template-columns:1fr auto}
 .collab .n{font:12px var(--mono);color:var(--ink-3)}
 .empty{font:14px var(--mono);color:var(--ink-3);padding:24px 0}
 
-/* map */
-.map-frame{margin-top:36px;border:1px solid var(--rule);background:var(--paper-2);aspect-ratio:16/10;width:100%}
-.map-frame iframe{width:100%;height:100%;border:0;display:block}
-.studios{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 32px;margin-top:28px;list-style:none;padding:0}
-.studios li{padding:10px 0;border-bottom:1px dotted var(--rule);font-size:16px}
-.studios li small{display:block;font:12px var(--mono);color:var(--ink-3)}
-
 /* data */
 .files{margin-top:36px;border-top:2px solid var(--ink)}
-.file{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:20px 0;border-bottom:1px solid var(--rule)}
-.file h3{font-size:20px}
+.file{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:18px 0;border-bottom:1px solid var(--rule)}
+.file h3{font-size:20px;margin:0}
 .file p{margin:4px 0 0;font-size:16px;color:var(--ink-2)}
 .file a.dl{font:500 13px/1 var(--mono);text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);padding:10px 14px;white-space:nowrap}
 .file a.dl:hover{background:var(--ink);color:var(--paper)}
 code{font:15px var(--mono);background:var(--paper-2);padding:1px 5px}
-
 .two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
 @media(max-width:820px){.two{grid-template-columns:1fr;gap:32px}}
-.cite{font:14px/1.6 var(--mono);background:var(--paper);border-left:3px solid var(--accent);padding:18px 84px 18px 20px;word-break:break-word;margin-top:16px;position:relative}
+.cite{font:14px/1.6 var(--mono);background:var(--paper);border-left:3px solid var(--accent);padding:18px 84px 18px 20px;margin-top:16px;position:relative;word-break:break-word}
 .cite button{position:absolute;top:10px;right:10px;font:12px var(--mono);background:none;border:1px solid var(--rule);padding:4px 8px;cursor:pointer;color:var(--ink-2)}
 .cite button:hover{border-color:var(--ink)}
-
 footer{padding:48px 0 64px;font:13px/1.7 var(--mono);color:var(--ink-3)}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 footer a{color:var(--ink-2)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);font:12px/1.4 var(--mono);padding:6px 9px;opacity:0;transition:opacity .1s;z-index:2000}
 </style>
 </head>
 <body>
 
 <nav class="top"><div class="wrap">
-  <a class="brand" href="#">Produzione discografica italiana 1965–1999</a>
+  <a class="brand" href="#">La produzione discografica in Italia come pratica sociale</a>
   <ul>
-    <li><a href="#tendenza">Tendenze</a></li>
+    <li><a href="#rete">La rete</a></li>
     <li><a href="#protagonisti">Protagonisti</a></li>
-    <li><a href="#esplora">Esplora</a></li>
+    <li><a href="#genere">Genere</a></li>
+    <li><a href="#studi">Studi</a></li>
     <li><a href="#mappa">Mappa</a></li>
+    <li><a href="#citta">Tre città</a></li>
+    <li><a href="#esplora">Esplora</a></li>
     <li><a href="#dati">Dati</a></li>
-    <li><a href="#metodo">Metodo</a></li>
+    <li><a href="#citare">Citare</a></li>
   </ul>
 </div></nav>
 
-<header class="hero"><div class="wrap hero-grid">
-  <div>
-    <span class="kicker">Ricerca · Dataset · Social network analysis</span>
-    <h1>Chi ha fatto <em>i dischi</em> italiani, 1965–1999</h1>
-    <p class="lede">Dietro ogni album c’è una rete di persone e di luoghi: studi di registrazione, produttori, arrangiatori, tecnici del suono, turnisti, etichette. Questo progetto ricostruisce quella rete per i venti album più venduti di ogni anno, dal 1965 al 1999.</p>
-    <p class="byline"><strong>Francesco Brusco</strong> · Dottorato in Scienze del testo letterario e musicale, Università di Pavia · Università di Salerno</p>
-  </div>
+<header class="hero">
   <svg class="disc" viewBox="0 0 400 400" aria-hidden="true">
-    <defs><radialGradient id="sheen" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#5a5048"/><stop offset=".5" stop-color="#2a2520"/><stop offset="1" stop-color="#14110e"/></radialGradient></defs>
-    <circle cx="200" cy="200" r="196" fill="url(#sheen)"/>
-    <g fill="none" stroke="#000" stroke-opacity=".35" id="grooves"></g>
-    <circle cx="200" cy="200" r="70" fill="#a8321f"/>
-    <circle cx="200" cy="200" r="70" fill="none" stroke="#f5efe3" stroke-opacity=".25" stroke-width="1"/>
-    <text x="200" y="164" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#f5efe3" letter-spacing="2">LATO A</text>
-    <text x="200" y="187" text-anchor="middle" font-family="Fraunces" font-weight="600" font-size="22" fill="#f5efe3">1965–1999</text>
-    <text x="200" y="226" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#f5efe3" opacity=".8" letter-spacing="1">33⅓ GIRI</text>
-    <circle cx="200" cy="200" r="5" fill="#f5efe3"/>
+    <defs>
+      <radialGradient id="vin" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#3a352f"/><stop offset=".45" stop-color="#1c1a17"/><stop offset="1" stop-color="#0c0b0a"/></radialGradient>
+      <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".48" stop-color="#fff" stop-opacity=".09"/><stop offset=".52" stop-color="#fff" stop-opacity=".09"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <path id="arcTop" d="M 200,200 m -64,0 a 64,64 0 1,1 128,0"/>
+      <path id="arcBot" d="M 200,200 m -72,0 a 72,72 0 0,0 144,0"/>
+    </defs>
+    <circle cx="200" cy="200" r="198" fill="url(#vin)"/>
+    <g fill="none" stroke="#000" stroke-opacity=".45" id="grooves"></g>
+    <circle cx="200" cy="200" r="198" fill="url(#shine)"/>
+    <circle cx="200" cy="200" r="86" fill="#f2542b"/>
+    <circle cx="200" cy="200" r="86" fill="none" stroke="#000" stroke-opacity=".15" stroke-width="2"/>
+    <circle cx="200" cy="200" r="80" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width=".6"/>
+    <text font-family="IBM Plex Mono" font-size="6.2" letter-spacing="1.6" fill="#fff" fill-opacity=".9"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">LA PRODUZIONE DISCOGRAFICA IN ITALIA COME PRATICA SOCIALE</textPath></text>
+    <text font-family="IBM Plex Mono" font-size="5.6" letter-spacing="1.4" fill="#fff" fill-opacity=".85"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">MAPPATURA · ETNOGRAFIA · MODELLI SISTEMICI DI CREATIVITÀ</textPath></text>
+    <text x="200" y="166" text-anchor="middle" font-family="Oswald" font-weight="500" font-size="13" fill="#fff" letter-spacing="1">PRATICA</text><text x="200" y="182" text-anchor="middle" font-family="Oswald" font-weight="500" font-size="13" fill="#fff" letter-spacing="1">SOCIALE</text>
+    <text x="200" y="230" text-anchor="middle" font-family="Oswald" font-weight="500" font-size="15" fill="#fff" letter-spacing="1">1965–1999</text>
+    <text x="200" y="244" text-anchor="middle" font-family="IBM Plex Mono" font-size="5.6" fill="#fff" fill-opacity=".85" letter-spacing="1">FRANCESCO BRUSCO</text>
+    <text x="146" y="203" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" fill="#fff" fill-opacity=".85" letter-spacing="1">LATO A</text>
+    <text x="254" y="203" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" fill="#fff" fill-opacity=".85" letter-spacing="1">33⅓</text>
+    <circle cx="200" cy="200" r="6" fill="#fbf8f3"/>
   </svg>
-</div></header>
+  <div class="sleeve" aria-hidden="true"></div>
+  <div class="wrap" style="width:100%">
+    <div class="copy">
+      <span class="kicker">Tesi di dottorato · Università di Pavia</span>
+      <h1>La produzione discografica in Italia come pratica sociale <span class="yr">(1965–1999)</span></h1>
+      <p class="sub">Mappatura, etnografia, modelli sistemici di creatività</p>
+      <p class="byline"><strong>Francesco Brusco</strong><br>Dipartimento di Musicologia e Beni Culturali, Università di Pavia · a.a. 2024–2025</p>
+    </div>
+  </div>
+  <span class="cat" aria-hidden="true">UNIPV · 2024–2025 · LP 1965–1999</span>
+</header>
 
-<div class="wrap stats" id="stats">
-  <div class="stat"><b data-k="albums">697</b><span>album analizzati</span></div>
-  <div class="stat"><b data-k="people">2.709</b><span>persone, studi ed etichette</span></div>
-  <div class="stat"><b data-k="links">7.925</b><span>crediti (relazioni)</span></div>
+<div class="wrap stats">
+  <div class="stat"><b>700</b><span>album analizzati</span></div>
+  <div class="stat"><b>3410</b><span>elementi (nodi)</span></div>
+  <div class="stat"><b>7926</b><span>collegamenti (edges)</span></div>
   <div class="stat"><b>35</b><span>anni, dal 1965 al 1999</span></div>
 </div>
 
-<section id="tendenza"><div class="wrap">
-  <span class="kicker">Tendenze</span>
-  <h2>Un lavoro sempre più collettivo</h2>
-  <p class="lede">Nel 1965 un album di successo riporta in media quattro crediti: interprete, etichetta, studio, arrangiatore. Negli anni Novanta se ne contano quasi venti. Il disco diventa il risultato visibile di una divisione del lavoro sempre più articolata.</p>
-  <div class="chart-wrap">
-    <div id="chart" role="img" aria-label="Numero medio di crediti per album, per anno, 1965-1999"></div>
-    <p class="chart-note">Numero medio di crediti per album (persone, studi ed etichette), per anno. Una parte della crescita dipende anche da copertine e libretti che, col tempo, documentano i crediti in modo più completo.</p>
+<!-- ============ LA RETE (cap. 2.1) ============ -->
+<section id="rete"><div class="wrap">
+  <span class="kicker">Capitolo 2 · La rete sociale della discografia italiana</span>
+  <h2>Non “chi conosce chi”, ma come, dove e intorno a cosa si coopera</h2>
+  <div class="split">
+    <div>
+      <p class="lede">I venti album più venduti di ogni anno, dal 1965 al 1999, e i loro paratesti sono le fonti primarie per ricostruire la rete sociale della produzione in studio. Ogni credito di copertina diventa un collegamento.</p>
+      <p>La rete è multimodale: comprende soggetti individuali (interpreti, musicisti, produttori, arrangiatori, tecnici), soggetti collettivi (gruppi, orchestre, cori), nodi istituzionali (le case discografiche), gli album come progetti che catalizzano le relazioni e gli studi di registrazione, ciascuno dei quali agisce come un <i>focus</i>: un aggregatore di interazioni tra agenti umani e materiali.</p>
+      <p>Elaborate in Gephi, le matrici ricavate dal corpus producono un grafo di 3410 nodi e 7926 collegamenti: denso all’apparenza, ma con una densità bassissima, segno di un alto grado di omofilia. I nodi si condensano per affinità geografica, stilistica e professionale in cluster locali relativamente stretti.</p>
+    </div>
+    <div>
+      <div class="tbl-wrap"><table class="tbl" aria-label="Statistiche whole-network">
+        <thead><tr><th>Proprietà della rete (Gephi)</th><th class="n">Valore</th></tr></thead>
+        <tbody>
+          <tr><td>Ordine (nodi)</td><td class="n">3410</td></tr>
+          <tr><td>Edges</td><td class="n">7926</td></tr>
+          <tr><td>Densità</td><td class="n">0,001</td></tr>
+          <tr><td>Diametro</td><td class="n">12</td></tr>
+          <tr><td>Average path length</td><td class="n">5,294</td></tr>
+          <tr><td>Grado medio</td><td class="n">4,649</td></tr>
+          <tr><td>Componenti</td><td class="n">8</td></tr>
+          <tr><td>Modularità</td><td class="n">0,671</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Tabella 2.2. La componente principale raccoglie 3385 nodi (99,2%) e 7908 archi (99,7%).</p>
+    </div>
+  </div>
+
+  <figure><a class="frame" href="img/fig-2-1.jpg"><img src="img/fig-2-1.jpg" alt="Grafo della rete sociale della discografia italiana, 1965-1999" loading="lazy" width="1600" height="1200"></a>
+  <figcaption><b>Figura 2.1.</b> Grafo della rete sociale della discografia italiana dal 1965 al 1999. Nodi dimensionati per numero di connessioni, layout Yifan Hu.</figcaption></figure>
+
+  <h3 class="sub-h">Chi compone la rete</h3>
+  <p>La suddivisione per categorie mette in luce alcune peculiarità. I tecnici del suono sono di gran lunga la categoria più presente, quasi il doppio di studi e produttori, mentre gli addetti al mastering chiudono la lista. Le 93 case discografiche (2,69%) indicano la natura oligopolistica dell’industria; tra i turnisti, i coristi superano chitarristi e tastieristi.</p>
+  <div class="bars" id="bars-cat"></div>
+  <p class="note">Tabella 2.1. Numero di nodi per categoria e incidenza percentuale sul totale della rete.</p>
+
+  <h3 class="sub-h">Comunità e confini</h3>
+  <p>L’algoritmo di modularità individua cinque sottogruppi principali, ciascuno con il suo nucleo in una casa discografica e in uno studio di riferimento. Non sono compartimenti stagni: si permeano a vicenda grazie ai soggetti che agiscono all’intersezione. Il confine più netto separa i campi di RCA e CGD, le due principali etichette del periodo, attraversato da un ponte che porta il nome di Renato Zero.</p>
+  <div class="fig-row">
+    <figure><a class="frame" href="img/fig-2-2.jpg"><img src="img/fig-2-2.jpg" alt="Sottogruppi evidenziati dall'algoritmo di modularità" loading="lazy" width="1600" height="1315"></a>
+    <figcaption><b>Figura 2.2.</b> I principali sottogruppi evidenziati dall’algoritmo di modularità.</figcaption></figure>
+    <figure><a class="frame" href="img/fig-2-3.jpg"><img src="img/fig-2-3.jpg" alt="Strutture modulari di RCA e CGD" loading="lazy" width="1600" height="848"></a>
+    <figcaption><b>Figura 2.3.</b> Strutture modulari riferibili a RCA e CGD; nel riquadro, gli album di Renato Zero nel primo periodo con l’allora emergente Sony.</figcaption></figure>
+  </div>
+  <blockquote>C’erano tutti questi giri quindi si erano formate delle situazioni proprio ritmiche, ognuno aveva la sua ritmica […] questo qui è un suono della Numero Uno, questa è la Ricordi, questo è un suono della RCA.<cite>Ellade Bandini, intervista, 23 maggio 2023</cite></blockquote>
+
+  <h3 class="sub-h">Lo sviluppo nel tempo</h3>
+  <p>Divisa in quinquenni, la rete si espande dagli anni Settanta e si condensa nel decennio successivo. Il 1980–1984 è il momento di massima cooperazione: grado medio più alto (3,83), diametro (8), modularità e path length minimi. Il 1990–1994 è l’unico periodo in cui la rete forma una sola componente, alla vigilia della definitiva affermazione del digitale.</p>
+  <figure><a class="frame" href="img/fig-2-4.jpg"><img src="img/fig-2-4.jpg" alt="Sviluppo diacronico della rete per quinquenni" loading="lazy" width="1600" height="900"></a>
+  <figcaption><b>Figura 2.4.</b> Sviluppo diacronico della rete in forma di grafi, per intervalli di cinque anni.</figcaption></figure>
+  <div class="tbl-wrap"><table class="tbl" aria-label="Statistiche per quinquenni">
+    <thead><tr><th></th><th class="n">1965–69</th><th class="n">1970–74</th><th class="n">1975–79</th><th class="n">1980–84</th><th class="n">1985–89</th><th class="n">1990–94</th><th class="n">1995–99</th><th class="n">1965–99</th></tr></thead>
+    <tbody>
+      <tr><td>Ordine</td><td class="n">316</td><td class="n">426</td><td class="n">551</td><td class="n">659</td><td class="n">688</td><td class="n">1094</td><td class="n">1083</td><td class="n">3410</td></tr>
+      <tr><td>Edges</td><td class="n">436</td><td class="n">657</td><td class="n">907</td><td class="n">1262</td><td class="n">1166</td><td class="n">1789</td><td class="n">1709</td><td class="n">7926</td></tr>
+      <tr><td>Densità</td><td class="n">0,009</td><td class="n">0,007</td><td class="n">0,006</td><td class="n">0,006</td><td class="n">0,005</td><td class="n">0,003</td><td class="n">0,003</td><td class="n">0,001</td></tr>
+      <tr><td>Diametro</td><td class="n">18</td><td class="n">14</td><td class="n">11</td><td class="n">8</td><td class="n">12</td><td class="n">10</td><td class="n">10</td><td class="n">12</td></tr>
+      <tr><td>Avg. path length</td><td class="n">6,691</td><td class="n">5,991</td><td class="n">5,448</td><td class="n">4,767</td><td class="n">5,142</td><td class="n">5,178</td><td class="n">5,103</td><td class="n">5,294</td></tr>
+      <tr class="hl"><td>Grado medio</td><td class="n">2,759</td><td class="n">3,085</td><td class="n">3,292</td><td class="n">3,83</td><td class="n">3,39</td><td class="n">3,271</td><td class="n">3,156</td><td class="n">4,649</td></tr>
+      <tr><td>Componenti</td><td class="n">7</td><td class="n">8</td><td class="n">5</td><td class="n">3</td><td class="n">3</td><td class="n">1</td><td class="n">3</td><td class="n">8</td></tr>
+      <tr><td>Modularità</td><td class="n">0,786</td><td class="n">0,791</td><td class="n">0,735</td><td class="n">0,652</td><td class="n">0,729</td><td class="n">0,741</td><td class="n">0,752</td><td class="n">0,671</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Tabella 2.3. Statistiche whole-network per intervalli di cinque anni. Il dato 1965–1969 risente della scarsità di informazioni nelle note di copertina del periodo.</p>
+</div></section>
+
+<!-- ============ PROTAGONISTI (cap. 2.2) ============ -->
+<section id="protagonisti" class="alt"><div class="wrap">
+  <span class="kicker">Capitolo 2.2 · Diadi, triadi, centralità ed ego-net</span>
+  <h2>Protagonisti</h2>
+  <p class="lede">La centralità spiega come alcuni soggetti agiscano da intermediari per informazioni, esigenze e influenze, in una continua dialettica tra centro e periferia. Ecco i venti nodi principali per grado, con i relativi indici di centralità.</p>
+  <div class="tbl-wrap"><table class="tbl" id="tbl-centr" aria-label="Nodi principali per grado">
+    <thead><tr><th>#</th><th>Nome</th><th>Categoria</th><th class="n">Grado</th><th class="n">Eigenvector</th><th class="n">Closeness</th><th class="n">Betweenness</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="note">Tabella 2.4. Nodi principali in ordine di grado, con relativi parametri di centralità calcolati in Gephi. Clicca un nome per aprirne la scheda.</p>
+
+  <figure class="narrow"><a class="frame" href="img/fig-2-8.jpg"><img src="img/fig-2-8.jpg" alt="Posizionamento nella rete dei venti nodi principali" loading="lazy" width="1235" height="1600"></a>
+  <figcaption><b>Figura 2.8.</b> Posizionamento nella rete dei nodi della Tabella 2.4.</figcaption></figure>
+
+  <h3 class="sub-h">I più presenti, ruolo per ruolo</h3>
+  <p>Per ciascuna categoria, i nomi che compaiono nel maggior numero di album del corpus.</p>
+  <div class="roles" id="roles"></div>
+  <button class="more" id="more-roles">Mostra i primi 25 per ruolo</button>
+
+  <h3 class="sub-h">Etichette e studi, studi e tecnici</h3>
+  <p>Nella diade etichette–studi la maggior parte dei nodi intrattiene legami non esclusivi: ogni studio lavora con più etichette e viceversa. Fanno eccezione le quattro maggiori case discografiche. La RCA replica il modello della casa madre americana, con un grande studio di proprietà che attrae nella sua orbita gli altri studi romani; la CGD ingloba piccole realtà private e confina con il Clan Celentano; la Ricordi si sovrappone alla CBS vicino al Mulino di Lucio Battisti; la EMI fa da ponte tra il Mersey e il Po.</p>
+  <div class="fig-row">
+    <figure><a class="frame" href="img/fig-2-5.jpg"><img src="img/fig-2-5.jpg" alt="Diade etichette-studi di registrazione" loading="lazy" width="1024" height="768"></a>
+    <figcaption><b>Figura 2.5.</b> Analisi della diade etichette–studi di registrazione.</figcaption></figure>
+    <figure><a class="frame" href="img/fig-2-6.jpg"><img src="img/fig-2-6.jpg" alt="Dettaglio di RCA, CGD, Ricordi, EMI" loading="lazy" width="1506" height="1600"></a>
+    <figcaption><b>Figura 2.6.</b> Dettaglio delle quattro maggiori case discografiche: RCA, CGD, Ricordi, EMI.</figcaption></figure>
+  </div>
+  <div class="split" style="margin-top:36px">
+    <figure style="margin:0"><a class="frame" href="img/fig-2-7.jpg"><img src="img/fig-2-7.jpg" alt="Triade studi, tecnici del mix e del mastering" loading="lazy" width="1024" height="768"></a>
+    <figcaption><b>Figura 2.7.</b> Triade composta da studi, tecnici del mix e del mastering.</figcaption></figure>
+    <div>
+      <p>La triade studi–tecnici del suono–mastering rende visibile la divisione professionale tra i fonici residenti, il cui nodo è spesso tangente o sovrapposto a quello dello studio, e i freelance. Il mastering si emancipa dall’idea di semplice trasferimento tecnico solo alla fine degli anni Settanta, sul modello anglosassone.</p>
+      <blockquote>Ho deciso in quel momento preciso di diventare un freelance per trovare nuovi stimoli, nuove cose, nuove apparecchiature da usare.<cite>Piero Bravin, intervista, 25 settembre 2023</cite></blockquote>
+    </div>
+  </div>
+
+  <h3 class="sub-h">Tre ego-net</h3>
+  <p>Mina, Paolo Gianolio e Renato Cantele: tre ruoli professionali, tre forme di rete personale. Il chitarrista resta al centro di un ego-net omogeneo; quello di Mina, prima per grado tra gli interpreti, si chiude in un circuito di fiducia serrato di soli 200 nodi. Le visualizzazioni ego-net sono state anche il punto di partenza di gran parte delle interviste: gli interlocutori vi si sono “riconosciuti”.</p>
+  <div class="fig-row" style="--n:3">
+    <figure><a class="frame" href="img/fig-2-9.jpg"><img src="img/fig-2-9.jpg" alt="Ego-net di Mina" loading="lazy" width="1268" height="1600"></a>
+    <figcaption><b>Figura 2.9.</b> Ego-net di Mina: 200 nodi (5,77% del totale).</figcaption></figure>
+    <figure><a class="frame" href="img/fig-2-10.jpg"><img src="img/fig-2-10.jpg" alt="Ego-net di Paolo Gianolio" loading="lazy" width="1553" height="1600"></a>
+    <figcaption><b>Figura 2.10.</b> Ego-net di Paolo Gianolio: 448 nodi (12,92%).</figcaption></figure>
+    <figure><a class="frame" href="img/fig-2-11.jpg"><img src="img/fig-2-11.jpg" alt="Ego-net di Renato Cantele" loading="lazy" width="1600" height="1538"></a>
+    <figcaption><b>Figura 2.11.</b> Ego-net di Renato Cantele: 274 nodi (7,9%).</figcaption></figure>
+  </div>
+  <blockquote>Lei o ti ama oppure ti esclude, ma in maniera… educata.<cite>Massimo Moriconi, intervista, 23 ottobre 2023</cite></blockquote>
+</div></section>
+
+<!-- ============ GENERE (cap. 2.3) ============ -->
+<section id="genere"><div class="wrap split">
+  <div>
+    <span class="kicker">Capitolo 2.3</span>
+    <h2>Una storia al maschile?</h2>
+    <p>Con il 7,8% di presenze femminili, la discografia italiana del periodo conferma un forte squilibrio di genere, senza segni di evoluzione. Le professioniste si concentrano nel canto, il ruolo “frontale” per eccellenza, e la loro presenza crolla nei mestieri tecnico-produttivi: 2,3% tra i produttori, zero nel mastering.</p>
+    <blockquote>Era palese che il mio parere valesse meno di quello dei colleghi. Malgrado la mia esperienza.<cite>Marti Jane Robertson, intervista, 20 novembre 2023</cite></blockquote>
+  </div>
+  <div>
+    <div class="bars" id="bars-gender"></div>
+    <p class="note">Tabella 2.5. Professioniste per categoria, 1965–1999 (192 su 2460 nodi non-album, 7,8%).</p>
   </div>
 </div></section>
 
-<section id="protagonisti" class="alt"><div class="wrap">
-  <span class="kicker">Protagonisti</span>
-  <h2>I nodi più ricorrenti della rete</h2>
-  <p class="lede">I nomi che compaiono nel maggior numero di album del corpus, per ruolo. Clicca un nome per esplorarne le collaborazioni.</p>
-  <div class="who" id="who"></div>
+<!-- ============ STUDI (cap. 3.1-3.2) ============ -->
+<section id="studi" class="alt"><div class="wrap">
+  <span class="kicker">Capitolo 3 · «Three views of a city»</span>
+  <h2>Gli studi di registrazione</h2>
+  <div class="split">
+    <div>
+      <p class="lede">Lo studio di registrazione è il <i>focus</i> della rete: uno spazio fisico che aggrega persone, tecnologie, convenzioni e gusti. Il loro numero cresce lungo tutto il periodo, con i tassi più alti nei primi tre quinquenni.</p>
+      <p>Nel 1965–1969 solo il 31% dei dischi indica lo studio, e se ne contano nove: la RCA a Roma, il resto a Milano. Negli anni Settanta il sistema resta bipolare, ma si aprono piccoli poli a Genova e Venezia e i primi studi residenziali extraurbani, come lo Stone Castle di Carimate e il Mulino di Battisti. Nel 1980–1984 Carimate sottrae per la prima volta il primato alla RCA, mentre lungo la via Emilia nasce il terzo polo, quello di Bologna e Modena. Gli anni Novanta portano la frammentazione e il passaggio di testimone tra analogico e digitale.</p>
+    </div>
+    <div>
+      <div id="chart-studi"></div>
+      <p class="note">Tabella 3.1. Studi censiti per quinquennio, compresi quelli all’estero; tra parentesi l’incremento rispetto al periodo precedente.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-h">Gli studi più ricorrenti</h3>
+  <p>Gli studi italiani in cui è stato realizzato il maggior numero di album del corpus. I primi quattordici, con almeno dieci album, sono quelli della Tabella 3.2 della tesi: tre poli dominano, con la RCA in testa nel lungo periodo e il Fonoprint secondo nonostante l’ingresso tardivo.</p>
+  <div class="tbl-wrap"><table class="tbl" id="tbl-studi" aria-label="Studi di registrazione per numero di album">
+    <thead><tr><th>#</th><th>Studio</th><th>Località</th><th class="n">Album</th><th class="n">Attività nel corpus</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <button class="more" id="more-studi">Mostra tutti gli studi geolocalizzati</button>
+  <p class="note" id="esteri-note" style="margin-top:18px"></p>
 </div></section>
 
-<section id="esplora"><div class="wrap">
-  <span class="kicker">Esplora</span>
-  <h2>Cerca un nome o un album</h2>
-  <p class="lede">Ogni scheda mostra i dischi a cui una persona ha lavorato e con chi ha collaborato più spesso; per ogni album, la squadra completa accreditata.</p>
+<!-- ============ MAPPA con timeline ============ -->
+<section id="mappa" class="dark"><div class="wrap">
+  <span class="kicker">Capitolo 3.2 · Topografie geostoriche</span>
+  <h2>La mappa degli studi, anno per anno</h2>
+  <p class="lede">Fai scorrere la linea del tempo, o premi play: gli studi compaiono nell’anno del loro primo album nel corpus, crescono con il numero di dischi e si spostano quando cambiano sede.</p>
+  <div class="map-shell">
+    <div id="map" role="application" aria-label="Mappa animata degli studi di registrazione italiani, 1965-1999"></div>
+    <aside class="map-side" aria-live="polite">
+      <div><div class="map-year" id="m-year">1965</div><div class="map-count" id="m-count"></div></div>
+      <div><h4>Nuovi studi</h4><ul id="m-new"></ul></div>
+      <div id="m-moves-box"><h4>Trasferimenti</h4><ul id="m-moves"></ul></div>
+      <div><h4>I più attivi nell’anno</h4><ul id="m-top"></ul></div>
+    </aside>
+    <div class="timeline">
+      <button class="play" id="m-play" aria-label="Avvia la linea del tempo"><svg viewBox="0 0 16 16" id="m-ico"><path d="M3 1l12 7-12 7z"/></svg></button>
+      <div class="tl-track">
+        <input type="range" id="m-range" min="1965" max="1999" value="1965" step="1" aria-label="Anno">
+        <div class="tl-ticks"><span>1965</span><span>1970</span><span>1975</span><span>1980</span><span>1985</span><span>1990</span><span>1995</span><span>1999</span></div>
+      </div>
+    </div>
+    <div class="map-tools">
+      <button data-v="italia" class="on">Italia</button><button data-v="milano">Milano e Brianza</button><button data-v="roma">Roma</button><button data-v="emilia">Bologna e Modena</button>
+      <span class="sp"></span>
+      <label><input type="checkbox" id="m-cum" checked> mostra anche gli studi non più attivi</label>
+    </div>
+  </div>
+  <p class="note" style="color:#8d8273;margin-top:14px">119 studi geolocalizzati. Colore pieno: attivo nell’anno o nei quattro precedenti. Le sedi seguono le fasi della Figura 3.1; la linea tratteggiata indica un trasferimento. Gli studi esteri non sono in mappa. <a href="https://www.google.com/maps/d/viewer?mid=10I3crsMoiu8eftIXAM9So4QqacJVkMg" target="_blank" rel="noopener" style="color:#e9532a">Apri la mappa su Google My Maps</a></p>
+</div></section>
+
+<!-- ============ TRE CITTÀ (cap. 3.3) ============ -->
+<section id="citta"><div class="wrap">
+  <span class="kicker">Capitolo 3.3 · Spazi e luoghi di tre reti urbane</span>
+  <h2>Milano, Roma, Bologna</h2>
+  <div class="split">
+    <div>
+      <p class="lede">Le tre reti cittadine non sono separate: buona parte dei nodi è presente in tutti e tre i mondi musicali. Milano e Bologna incrociano di più i loro collegamenti, Roma resta in posizione eccentrica.</p>
+      <p>I tre network hanno lo stesso diametro (8), più basso di quello nazionale, a conferma delle loro radici locali. Bologna, per tutto il periodo, è una sola componente: i nodi più centrali fanno da ponte e tengono insieme l’intera rete.</p>
+    </div>
+    <figure style="margin:0"><a class="frame" href="img/fig-3-3.jpg"><img src="img/fig-3-3.jpg" alt="Grafo dei tre poli discografici Milano Roma Bologna" loading="lazy" width="1131" height="1600"></a>
+    <figcaption><b>Figura 3.3.</b> La rete nazionale dei tre poli principali, con gli studi di registrazione come sorgenti delle connessioni. Blu Milano, arancio Roma, rosso Bologna.</figcaption></figure>
+  </div>
+  <div class="split" style="margin-top:48px">
+    <div class="tbl-wrap"><table class="tbl" aria-label="Proprietà delle tre reti locali">
+      <thead><tr><th></th><th class="n">Milano</th><th class="n">Roma</th><th class="n">Bologna</th><th class="n">Italia</th></tr></thead>
+      <tbody>
+        <tr><td>Ordine</td><td class="n">1503</td><td class="n">918</td><td class="n">832</td><td class="n">3410</td></tr>
+        <tr><td>Edges</td><td class="n">2836</td><td class="n">1489</td><td class="n">1288</td><td class="n">7926</td></tr>
+        <tr><td>Densità</td><td class="n">0,003</td><td class="n">0,004</td><td class="n">0,004</td><td class="n">0,001</td></tr>
+        <tr><td>Diametro</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">12</td></tr>
+        <tr><td>Avg. path length</td><td class="n">3,807</td><td class="n">3,747</td><td class="n">3,353</td><td class="n">5,294</td></tr>
+        <tr><td>Grado medio</td><td class="n">3,774</td><td class="n">3,244</td><td class="n">3,096</td><td class="n">4,649</td></tr>
+        <tr class="hl"><td>Componenti</td><td class="n">4</td><td class="n">3</td><td class="n">1</td><td class="n">8</td></tr>
+        <tr><td>Modularità</td><td class="n">0,591</td><td class="n">0,63</td><td class="n">0,538</td><td class="n">0,671</td></tr>
+      </tbody>
+    </table><p class="note">Tabella 3.3. Proprietà dei tre music world locali e confronto con il dato nazionale.</p></div>
+    <div>
+      <div id="chart-citta"></div>
+      <p class="note">Tabella 3.4. Ordine (numero di nodi) delle tre reti per quinquennio. Bologna entra in campo solo negli anni Ottanta e nel 1995–1999 raggiunge quasi Milano.</p>
+    </div>
+  </div>
+  <figure class="narrow" style="max-width:620px"><a class="frame" href="img/fig-3-4.jpg"><img src="img/fig-3-4.jpg" alt="Grafi dei social network di Milano, Roma e Bologna" loading="lazy" width="1131" height="1600"></a>
+  <figcaption><b>Figura 3.4.</b> Grafi dei social network di Milano (a), Roma (b) e Bologna (c).</figcaption></figure>
+
+  <div class="fig-row" style="--n:3;margin-top:56px">
+    <div>
+      <h3>Milano</h3>
+      <p>La città della musica per eccellenza vede le sale d’incisione fiorire in ogni angolo: Fonorama e Ricordi a sud, la Basilica della EMI in piazza Sant’Eufemia, poi il polo di via Quintiliano vicino a Linate (CGD, Idea Recording, Morning, Logic) e gli studi residenziali in Brianza.</p>
+      <figure><a class="frame" href="img/fig-3-8.jpg"><img src="img/fig-3-8.jpg" alt="Mappatura degli studi milanesi da Gephi" loading="lazy" width="850" height="737"></a><figcaption><b>Figura 3.8.</b> Gli studi milanesi, da Gephi.</figcaption></figure>
+    </div>
+    <div>
+      <h3>Roma</h3>
+      <p>La Capitale è dominata dal grande centro della RCA, aperto alla fine del 1961 al km 12 della Tiburtina. Attorno nascono studi attratti dal suo indotto e da quello di RAI e Cinecittà: Ortophonic, Sonic, Studio 38, il Quattro Uno, il Forum Music Village.</p>
+      <figure><a class="frame" href="img/fig-3-11.jpg"><img src="img/fig-3-11.jpg" alt="Mappatura degli studi romani da Gephi" loading="lazy" width="827" height="746"></a><figcaption><b>Figura 3.11.</b> Gli studi romani, da Gephi.</figcaption></figure>
+    </div>
+    <div>
+      <h3>Bologna</h3>
+      <p>Dalla fine degli anni Settanta l’Emilia sviluppa una propria rete, grazie al calo dei costi della tecnologia, a un mercato immobiliare favorevole e al milieu di DAMS, radio libere e Movimento del ’77. Fonoprint ne è il centro, con Modena e Reggio Emilia lungo la via Emilia.</p>
+      <figure><a class="frame" href="img/fig-3-14.jpg"><img src="img/fig-3-14.jpg" alt="Mappatura degli studi bolognesi da Gephi" loading="lazy" width="916" height="747"></a><figcaption><b>Figura 3.14.</b> Gli studi emiliani, da Gephi.</figcaption></figure>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ ESPLORA ============ -->
+<section id="esplora" class="alt"><div class="wrap">
+  <span class="kicker">Esplora il dataset</span>
+  <h2>Cerca un nome, uno studio o un album</h2>
+  <p class="lede">Ogni scheda mostra i dischi a cui una persona o uno studio hanno lavorato e con chi hanno collaborato più spesso; per ogni album, la squadra completa accreditata.</p>
   <div class="search">
     <input id="q" type="search" placeholder="Es. Fonoprint, Celso Valli, Anime salve…" autocomplete="off" aria-label="Cerca nel dataset">
     <div class="sugg" id="sugg" role="listbox"></div>
   </div>
-  <p class="try">Prova:<button data-go="Lucio Battisti">Lucio Battisti</button><button data-go="Fonoprint Bologna">Fonoprint Bologna</button><button data-go="Stanze di vita quotidiana">Stanze di vita quotidiana</button><button data-go="Renato Cantele">Renato Cantele</button></p>
+  <p class="try">Prova:<button data-go="Lucio Battisti">Lucio Battisti</button><button data-go="Stone Castle Carimate (CO)">Stone Castle</button><button data-go="Stanze di vita quotidiana">Stanze di vita quotidiana</button><button data-go="Giorni infiniti">Giorni infiniti</button><button data-go="Renato Cantele">Renato Cantele</button></p>
   <div id="card"></div>
 </div></section>
 
-<section id="mappa" class="alt"><div class="wrap">
-  <span class="kicker">Geografia</span>
-  <h2>La mappa degli studi</h2>
-  <p class="lede">Gli studi di registrazione del corpus, geolocalizzati. La produzione si concentra lungo l’asse Milano–Roma, con poli importanti in Emilia e in Brianza.</p>
-  <div class="map-frame">
-    <iframe src="https://www.google.com/maps/d/embed?mid=10I3crsMoiu8eftIXAM9So4QqacJVkMg&ehbc=2E312F" loading="lazy" allowfullscreen title="Mappa degli studi di registrazione italiani 1965–1999"></iframe>
-  </div>
-  <h3 style="margin-top:40px">Studi geolocalizzati, 1965–1969</h3>
-  <ul class="studios" id="studios"></ul>
-</div></section>
-
+<!-- ============ DATI ============ -->
 <section id="dati"><div class="wrap">
   <span class="kicker">Dati aperti</span>
   <h2>Scarica il dataset</h2>
   <p class="lede">I file sono pronti per Gephi, Palladio, R o Python. Nodi e relazioni si collegano tramite l’identificativo numerico (<code>Id</code> → <code>Source</code>/<code>Target</code>).</p>
   <div class="files">
-    <div class="file"><div><h3>Nodi</h3><p>Persone, studi, etichette e album, con il ruolo principale. CSV, 3.463 righe.</p></div><a class="dl" href="dati/nodi_1965-1999.csv" download>CSV ↓</a></div>
-    <div class="file"><div><h3>Relazioni</h3><p>Un credito per riga: anno, chi (Source), su quale album (Target). CSV, 7.932 righe.</p></div><a class="dl" href="dati/relazioni_1965-1999.csv" download>CSV ↓</a></div>
+    <div class="file"><div><h3>Nodi</h3><p>Persone, studi, etichette e album, con il ruolo principale.</p></div><a class="dl" href="dati/nodi_1965-1999.csv" download>CSV ↓</a></div>
+    <div class="file"><div><h3>Relazioni</h3><p>Un credito per riga: anno, chi (Source), su quale album (Target).</p></div><a class="dl" href="dati/relazioni_1965-1999.csv" download>CSV ↓</a></div>
     <div class="file"><div><h3>Discografia</h3><p>Il corpus degli album con anno, interprete, etichetta, numero di catalogo e crediti.</p></div><a class="dl" href="dati/discografia_1965-1999.xlsx" download>XLSX ↓</a></div>
     <div class="file"><div><h3>Indice dei nomi</h3><p>I nomi ordinati per ruolo e per numero di presenze.</p></div><a class="dl" href="dati/indice_nomi.xlsx" download>XLSX ↓</a></div>
-    <div class="file"><div><h3>Studi geolocalizzati 1965–1969</h3><p>Indirizzo, coordinate e grado nella rete.</p></div><a class="dl" href="dati/studi_geolocalizzati_1965-1969.csv" download>CSV ↓</a></div>
+    <div class="file"><div><h3>Studi geolocalizzati 1965–1999</h3><p>119 studi con indirizzo, anni di attività, numero di album e coordinate per quinquennio.</p></div><a class="dl" href="dati/studi_geolocalizzati_1965-1999.csv" download>CSV ↓</a></div>
     <div class="file"><div><h3>Rete in JSON</h3><p>La versione compatta usata da questo sito: album, anno e crediti.</p></div><a class="dl" href="dati/rete.json" download>JSON ↓</a></div>
   </div>
 </div></section>
 
-<section id="metodo" class="alt"><div class="wrap two">
+<!-- ============ METODO / CITARE ============ -->
+<section id="citare" class="alt"><div class="wrap two">
   <div>
     <span class="kicker">Metodo e fonti</span>
     <h2>Come è costruito</h2>
-    <p>Il corpus raccoglie i venti album italiani più venduti di ogni anno tra il 1965 e il 1999, ricavati da FIMI, <i>Musica e dischi</i> e Hit Parade Italia. Per ciascun album sono stati trascritti i crediti dalle copertine e dai libretti, integrati con fonti d’archivio e interviste.</p>
-    <p>Ogni credito diventa una relazione tra una persona (o uno studio, o un’etichetta) e un album. La rete risultante è stata analizzata con gli strumenti della social network analysis (Gephi) e della mappatura geostorica.</p>
-    <p>Il dataset si fonda sulle classifiche ufficiali: la circolazione informale e il mercato non ufficiale restano, per scelta, fuori dal perimetro.</p>
+    <p>Il corpus raccoglie i venti album italiani più venduti di ogni anno tra il 1965 e il 1999, ricavati da FIMI, <i>Musica e dischi</i> e Hit Parade Italia. Per ciascun album sono stati trascritti i crediti di copertine e libretti, integrati con fonti d’archivio e con le interviste ai protagonisti.</p>
+    <p>Ogni credito diventa una relazione non orientata tra una persona (o uno studio, o un’etichetta) e un album. La rete è stata analizzata con la social network analysis in Gephi e con la mappatura geostorica. Il dataset si fonda sulle classifiche ufficiali: la circolazione informale resta, per scelta, fuori dal perimetro.</p>
   </div>
   <div>
     <span class="kicker">Citare</span>
     <h2>Come citare</h2>
-    <p>Se usi i dati o le visualizzazioni, cita il progetto così:</p>
-    <div class="cite" id="citetext">Brusco, Francesco. <i>Produzione discografica italiana 1965–1999: dataset delle reti di produzione</i>. 2026. https://francescobrusco.github.io/produzione_discografica_italiana_1965_1999/<button type="button" id="copycite">Copia</button></div>
+    <p>Se usi i dati o le visualizzazioni, cita la tesi:</p>
+    <div class="cite" id="citetext">Brusco, Francesco. <i>La produzione discografica in Italia come pratica sociale. Mappatura, etnografia, modelli sistemici di creatività (1965-1999)</i>, tesi di dottorato, Dipartimento di Musicologia e Beni Culturali, Università di Pavia, a.a. 2024-2025.<button type="button" id="copycite">Copia</button></div>
     <p style="margin-top:28px">Per correzioni, integrazioni o collaborazioni scrivi tramite <a href="https://github.com/francescobrusco/produzione_discografica_italiana_1965_1999/issues">GitHub</a>.</p>
   </div>
 </div></section>
 
 <footer><div class="wrap">
-  <span>© 2026 Francesco Brusco · Produzione discografica italiana 1965–1999</span>
+  <span>© 2026 Francesco Brusco · La produzione discografica in Italia come pratica sociale (1965–1999)</span>
   <span><a href="https://github.com/francescobrusco/produzione_discografica_italiana_1965_1999">Codice e dati su GitHub</a></span>
 </div></footer>
 
+<div class="lb" id="lb" role="dialog" aria-label="Immagine ingrandita"><img alt=""></div>
 <div class="tip" id="tip"></div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-(function(){
-  // grooves on the record
-  var g=document.getElementById('grooves');
-  for(var r=80;r<192;r+=3.2){var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',200);c.setAttribute('cy',200);c.setAttribute('r',r.toFixed(1));c.setAttribute('stroke-width',r%9<3?1.1:.5);g.appendChild(c);}
-})();
+(function(){var g=document.getElementById('grooves');for(var r=92;r<196;r+=2.6){var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',200);c.setAttribute('cy',200);c.setAttribute('r',r.toFixed(1));c.setAttribute('stroke-width',(Math.round(r)%7===0)?1.2:.45);g.appendChild(c)}})();
 
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function bars(el,data,max,fmt){el.innerHTML=data.map(function(d){return '<div class="bar-row"><span class="lab">'+esc(d[0])+'</span><span class="track"><span class="fill" style="width:'+(100*d[1]/max).toFixed(1)+'%"></span></span><span class="val">'+fmt(d)+'</span></div>'}).join('')}
+
+/* Tabella 2.1 */
+bars(document.getElementById('bars-cat'),[['album',700,'20,18'],['mixer',414,'11,95'],['cori',265,'7,65'],['chitarre',264,'7,62'],['tastiere',261,'7,54'],['produttore',217,'6,27'],['studio',210,'6,06'],['batteria-percussioni',203,'5,86'],['performer',201,'5,80'],['arrangiatore',183,'5,28'],['basso-contrabbasso',164,'4,74'],['fiati',143,'4,22'],['etichetta',93,'2,69'],['archi',87,'2,48'],['mastering',57,'1,65']],700,function(d){return d[1]+' · '+d[2]+'%'});
+/* Tabella 2.5 */
+bars(document.getElementById('bars-gender'),[['cori',44.52,'118/265'],['performer',19.90,'40/201'],['archi',9.19,'8/87'],['fiati',4.19,'6/143'],['produttore',2.30,'5/217'],['batteria-percussioni',1.47,'3/203'],['mixer',1.20,'5/414'],['tastiere',1.14,'3/261'],['chitarre',.75,'2/264'],['basso-contrabbasso',.60,'1/164'],['arrangiatore',.54,'1/183'],['mastering',0,'0/58']],50,function(d){return d[1].toFixed(1).replace('.',',')+'%'});
+
+/* Tabella 3.1 bar chart */
+(function(){var d=[['1965–69',9,''],['1970–74',20,'+122%'],['1975–79',36,'+80%'],['1980–84',48,'+33%'],['1985–89',65,'+35%'],['1990–94',70,'+8%'],['1995–99',82,'+17%']];
+var W=560,H=300,ml=30,mb=40,mt=24,ih=H-mt-mb,bw=(W-ml)/d.length,max=90,s='<svg class="chart" viewBox="0 0 '+W+' '+H+'">';
+for(var t=0;t<=90;t+=30){var y=mt+ih-ih*t/max;s+='<line class="grid" x1="'+ml+'" x2="'+W+'" y1="'+y+'" y2="'+y+'"/><text x="'+(ml-6)+'" y="'+(y+4)+'" text-anchor="end">'+t+'</text>'}
+d.forEach(function(r,i){var h=ih*r[1]/max,x=ml+i*bw+6;s+='<rect x="'+x+'" y="'+(mt+ih-h)+'" width="'+(bw-12)+'" height="'+h+'" fill="#e9532a"/><text x="'+(x+(bw-12)/2)+'" y="'+(mt+ih-h-14)+'" text-anchor="middle" style="fill:#1b1916;font-weight:500">'+r[1]+'</text><text x="'+(x+(bw-12)/2)+'" y="'+(mt+ih-h-3)+'" text-anchor="middle" style="font-size:9px">'+r[2]+'</text><text x="'+(x+(bw-12)/2)+'" y="'+(H-18)+'" text-anchor="middle">'+r[0]+'</text>'});
+document.getElementById('chart-studi').innerHTML=s+'</svg>'})();
+
+/* Tabella 3.4 line chart */
+(function(){var P=['1965–69','1970–74','1975–79','1980–84','1985–89','1990–94','1995–99'],S=[['Milano','#3c6fd8',[45,132,212,404,287,442,422]],['Roma','#f08a3c',[57,119,159,156,165,232,247]],['Bologna','#c0182c',[null,null,null,78,189,289,411]]];
+var W=560,H=300,ml=36,mr=14,mb=36,mt=16,iw=W-ml-mr,ih=H-mt-mb,max=500,s='<svg class="chart" viewBox="0 0 '+W+' '+H+'">';
+for(var t=0;t<=500;t+=100){var y=mt+ih-ih*t/max;s+='<line class="grid" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y+'" y2="'+y+'"/><text x="'+(ml-6)+'" y="'+(y+4)+'" text-anchor="end">'+t+'</text>'}
+P.forEach(function(p,i){s+='<text x="'+(ml+iw*i/6)+'" y="'+(H-12)+'" text-anchor="middle">'+p+'</text>'});
+S.forEach(function(se){var pts=[];se[2].forEach(function(v,i){if(v!=null)pts.push([ml+iw*i/6,mt+ih-ih*v/max,v])});
+s+='<polyline fill="none" stroke="'+se[1]+'" stroke-width="2.5" points="'+pts.map(function(p){return p[0]+','+p[1]}).join(' ')+'"/>';
+pts.forEach(function(p){s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3.5" fill="'+se[1]+'"><title>'+se[0]+': '+p[2]+'</title></circle>'})});
+document.getElementById('chart-citta').innerHTML=s+'</svg><div class="legend">'+S.map(function(x){return '<span><i style="background:'+x[1]+'"></i>'+x[0]+'</span>'}).join('')+'</div>'})();
+
+/* lightbox */
+var lb=document.getElementById('lb');
+document.addEventListener('click',function(e){var a=e.target.closest('a.frame');if(!a)return;e.preventDefault();lb.querySelector('img').src=a.getAttribute('href');lb.querySelector('img').alt=(a.querySelector('img')||{}).alt||'';lb.classList.add('on')});
+lb.addEventListener('click',function(){lb.classList.remove('on')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
+
+/* ===== dataset ===== */
 var ROLE={performer:'Interprete',etichetta:'Etichetta',studio:'Studio di registrazione',produttore:'Produttore',arrangiatore:'Arrangiatore',mixer:'Tecnico del suono',master:'Mastering','batteria-percussioni':'Batteria e percussioni','basso-contrabbasso':'Basso e contrabbasso',chitarre:'Chitarre',tastiere:'Tastiere',archi:'Archi',fiati:'Fiati',cori:'Cori',album:'Album'};
 var ORDER=['performer','etichetta','studio','produttore','arrangiatore','mixer','master','chitarre','tastiere','basso-contrabbasso','batteria-percussioni','fiati','archi','cori'];
-var D,N,A={},byNode={},index=[];
-var fmt=function(n){return n.toLocaleString('it-IT')};
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var D,N,A={},byNode={},index=[],nameToId={},ST=null;
 
 fetch('dati/rete.json').then(function(r){return r.json()}).then(function(d){
   D=d;N=d.nodes;
   d.albums.forEach(function(a){A[a[0]]={id:a[0],t:a[1],y:a[2],c:a[3]};a[3].forEach(function(c){(byNode[c]=byNode[c]||[]).push(a[0])})});
-  var links=d.albums.reduce(function(s,a){return s+a[3].length},0);
-  document.querySelector('[data-k=albums]').textContent=fmt(d.albums.length);
-  document.querySelector('[data-k=people]').textContent=fmt(Object.keys(N).length);
-  document.querySelector('[data-k=links]').textContent=fmt(links);
-  Object.keys(N).forEach(function(k){index.push({k:'n',id:+k,s:N[k][0],l:N[k][0].toLowerCase(),sub:ROLE[N[k][1]]+' · '+byNode[k].length+' album',w:byNode[k].length})});
+  Object.keys(N).forEach(function(k){nameToId[N[k][0].toLowerCase()]=+k;index.push({k:'n',id:+k,s:N[k][0],l:N[k][0].toLowerCase(),sub:ROLE[N[k][1]]+' · '+byNode[k].length+' album',w:byNode[k].length})});
   d.albums.forEach(function(a){index.push({k:'a',id:a[0],s:a[1],l:a[1].toLowerCase(),sub:'Album · '+a[2]+(perf(a[0])?' · '+perf(a[0]):''),w:5})});
-  chart();who();route();
+  centr();roles(10);studiTable();route();
 });
+function perf(aid){var a=A[aid];for(var i=0;i<a.c.length;i++){if(N[a.c[i]]&&N[a.c[i]][1]==='performer')return N[a.c[i]][0]}return ''}
+function nlName(name,label){var id=nameToId[name.toLowerCase()];return id?'<button class="link" data-n="'+id+'">'+esc(label||name)+'</button>':esc(label||name)}
 
-function perf(aid){var a=A[aid];for(var i=0;i<a.c.length;i++){if(N[a.c[i]][1]==='performer')return N[a.c[i]][0]}return ''}
+/* Tabella 2.4 */
+function centr(){var T=[['RCA','etichetta',81,'0,7421','0,244','46174,572'],['CGD','etichetta',77,'0,944','0,259','500222,472'],['Ricordi','etichetta',55,'0,506','0,259','387794,284'],['Studi RCA Roma','studio',55,'0,508','0,232','202066,757'],['EMI','etichetta',51,'0,535','0,249','270988,980'],['Lele Melotti','batterista',47,'0,889','0,270','295482,747'],['Paolo Gianolio','chitarrista',40,'1','0,260','183046,452'],['Mina','performer',39,'0,705','0,224','110864,869'],['Antonio Baglio','mastering',37,'0,489','0,257','300260,938'],['PDU','etichetta',35,'0,665','0,224','44324,554'],['Marco Inzadi','mastering',35,'0,426','0,252','118969,669'],['Fonoprint Bologna','studio',34,'0,577','0,266','211285,630'],['CBS','etichetta',32,'0,213','0,235','136590,242'],['Morning Studios Milano','studio',31,'0,582','0,240','63846,355'],['Ellade Bandini','batterista',31,'0,615','0,253','94694,02'],['Gigi Cappellotto','bassista',31,'0,462','0,257','140411,302'],['Aldo Banfi','tastierista',31,'0,594','0,256','99028,719'],['Emanuela Cortesi','corista',29,'0,647','0,245','122137,536'],['Stone Castle Carimate (CO)','studio',28,'0,359','0,242','86559,126'],['Silvio Pozzoli','corista',28,'0,724','0,256','129521,025']];
+document.querySelector('#tbl-centr tbody').innerHTML=T.map(function(r,i){return '<tr><td class="n" style="text-align:left">'+(i+1)+'</td><td>'+nlName(r[0])+'</td><td>'+r[1]+'</td><td class="n">'+r[2]+'</td><td class="n">'+r[3]+'</td><td class="n">'+r[4]+'</td><td class="n">'+r[5]+'</td></tr>'}).join('')}
 
-function chart(){
-  var y={};D.albums.forEach(function(a){(y[a[2]]=y[a[2]]||[]).push(a[3].length)});
-  var ys=Object.keys(y).map(Number).sort(),vals=ys.map(function(k){var v=y[k];return v.reduce(function(s,x){return s+x},0)/v.length});
-  var W=1000,H=360,ml=36,mb=34,mt=16,mr=8,iw=W-ml-mr,ih=H-mt-mb,max=24,bw=iw/ys.length;
-  var s='<svg viewBox="0 0 '+W+' '+H+'">';
-  for(var t=0;t<=max;t+=4){var yy=mt+ih-ih*t/max;s+='<line class="grid" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+yy+'" y2="'+yy+'"/><text x="'+(ml-8)+'" y="'+(yy+4)+'" text-anchor="end">'+t+'</text>'}
-  ys.forEach(function(yr,i){var v=vals[i],h=ih*v/max,x=ml+i*bw+2;
-    s+='<rect class="bar" x="'+x.toFixed(1)+'" y="'+(mt+ih-h).toFixed(1)+'" width="'+(bw-4).toFixed(1)+'" height="'+h.toFixed(1)+'" data-t="'+yr+': '+v.toFixed(1).replace('.',',')+' crediti per album"/>';
-    if(yr%5===0)s+='<text x="'+(x+(bw-4)/2)+'" y="'+(H-12)+'" text-anchor="middle" class="'+(yr===1965||yr===1995?'lbl':'')+'">'+yr+'</text>'});
-  s+='</svg>';
-  var el=document.getElementById('chart');el.innerHTML=s;
-  var tip=document.getElementById('tip');
-  el.addEventListener('mousemove',function(e){var t=e.target.getAttribute&&e.target.getAttribute('data-t');if(t){tip.textContent=t;tip.style.opacity=1;tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY-30)+'px'}else tip.style.opacity=0});
-  el.addEventListener('mouseleave',function(){tip.style.opacity=0});
+function roles(k){var html='';ORDER.forEach(function(r){var list=Object.keys(N).filter(function(x){return N[x][1]===r}).sort(function(a,b){return byNode[b].length-byNode[a].length||N[a][0].localeCompare(N[b][0])}).slice(0,k);
+html+='<div class="col"><h3>'+ROLE[r]+'</h3><ol>'+list.map(function(x){return '<li><button data-n="'+x+'">'+esc(N[x][0])+'</button><span>'+byNode[x].length+'</span></li>'}).join('')+'</ol></div>'});
+document.getElementById('roles').innerHTML=html}
+document.getElementById('more-roles').addEventListener('click',function(){var on=this.dataset.on==='1';roles(on?10:25);this.dataset.on=on?'0':'1';this.textContent=on?'Mostra i primi 25 per ruolo':'Mostra solo i primi 10'});
+
+/* studi */
+fetch('dati/studi.json').then(function(r){return r.json()}).then(function(s){ST=s;studiTable();initMap();
+  document.getElementById('esteri-note').textContent='Altri '+s.esteri.length+' studi del corpus non sono geolocalizzati, in gran parte esteri: da Abbey Road, Air e Trident a Londra fino al Record Plant di Los Angeles, a Musicland a Monaco e al Château d’Hérouville in Francia.'});
+var studiAll=false;
+function studiTable(){if(!ST||!D)return;var rows=ST.studi.map(function(s){var ys=Object.keys(s.y).map(Number),tot=ys.reduce(function(a,y){return a+s.y[y]},0);return {s:s,tot:tot,a:Math.min.apply(0,ys),b:Math.max.apply(0,ys)}}).sort(function(a,b){return b.tot-a.tot||a.s.n.localeCompare(b.s.n)});
+var lim=studiAll?rows.length:30;
+document.querySelector('#tbl-studi tbody').innerHTML=rows.slice(0,lim).map(function(r,i){var loc=r.s.cl||r.s.c||'';return '<tr'+(r.tot>=10?' class="hl"':'')+'><td class="n" style="text-align:left">'+(i+1)+'</td><td>'+(N[r.s.id]?'<button class="link" data-n="'+r.s.id+'">'+esc(r.s.n)+'</button>':esc(r.s.n))+(r.s.x?' <span class="note">('+esc(r.s.x)+')</span>':'')+'</td><td>'+esc(loc)+'</td><td class="n">'+r.tot+'</td><td class="n">'+(r.a===r.b?r.a:r.a+'–'+r.b)+'</td></tr>'}).join('')}
+document.getElementById('more-studi').addEventListener('click',function(){studiAll=!studiAll;studiTable();this.textContent=studiAll?'Mostra solo i primi 30':'Mostra tutti gli studi geolocalizzati'});
+
+/* ===== mappa con linea del tempo ===== */
+var map,mk={},trails={},year=1965,playing=null,anim={};
+var VIEWS={italia:[[42.3,12.4],6],milano:[[45.55,9.2],10],roma:[[41.9,12.5],11],emilia:[[44.6,11.1],10]};
+function initMap(){
+  if(!window.L){document.getElementById('map').innerHTML='<p style="padding:24px;color:#333">Mappa non disponibile.</p>';return}
+  map=L.map('map',{scrollWheelZoom:false,zoomSnap:.25,minZoom:5,maxZoom:16}).setView(VIEWS.italia[0],VIEWS.italia[1]);
+  if(window.innerWidth<700)map.setZoom(5.25);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',subdomains:'abcd',maxZoom:19}).addTo(map);
+  ST.studi.forEach(function(s){
+    var m=L.circleMarker(s.g[0].slice(1,3),{radius:4,weight:1.5,color:'#1b1916',fillColor:'#e9532a',fillOpacity:.9,opacity:.9});
+    m.bindPopup(function(){return popup(s)},{maxWidth:280});
+    mk[s.id]={m:m,s:s,pos:s.g[0].slice(1,3)};
+  });
+  var r=document.getElementById('m-range');
+  r.addEventListener('input',function(){stop();setYear(+r.value)});
+  document.getElementById('m-play').addEventListener('click',function(){playing?stop():play()});
+  document.getElementById('m-cum').addEventListener('change',function(){setYear(year,true)});
+  document.querySelectorAll('.map-tools button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.map-tools button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');var v=VIEWS[b.dataset.v];map.flyTo(v[0],v[1],{duration:.8})})});
+  setYear(1965,true);
 }
-
-function who(){
-  var groups=[['studio','Studi'],['etichetta','Etichette'],['produttore','Produttori'],['arrangiatore','Arrangiatori'],['mixer','Tecnici del suono'],['master','Mastering'],['performer','Interpreti'],['session','Turnisti']];
-  var session=['chitarre','tastiere','basso-contrabbasso','batteria-percussioni','fiati','archi','cori'];
-  var html='';
-  groups.forEach(function(g){
-    var list=Object.keys(N).filter(function(k){return g[0]==='session'?session.indexOf(N[k][1])>-1:N[k][1]===g[0]}).sort(function(a,b){return byNode[b].length-byNode[a].length}).slice(0,6);
-    html+='<div class="col"><h3>'+g[1]+'</h3><ol>'+list.map(function(k){return '<li><button data-n="'+k+'">'+esc(N[k][0])+'</button><span>'+byNode[k].length+'</span></li>'}).join('')+'</ol></div>'});
-  document.getElementById('who').innerHTML=html;
+function seg(s,y){var g=s.g[0];for(var i=0;i<s.g.length;i++)if(s.g[i][0]<=y)g=s.g[i];return g}
+function cumul(s,y){var t=0;for(var k in s.y)if(+k<=y)t+=s.y[k];return t}
+function activeIn(s,y){for(var k in s.y)if(+k<=y&&+k>y-5)return true;return false}
+function first(s){return Math.min.apply(0,Object.keys(s.y).map(Number))}
+function setYear(y,instant){
+  var prev=year;year=y;document.getElementById('m-range').value=y;document.getElementById('m-year').textContent=y;
+  var showAll=document.getElementById('m-cum').checked,nAct=0,nTot=0,news=[],moves=[],top=[];
+  Object.keys(mk).forEach(function(id){var o=mk[id],s=o.s,f=first(s);
+    if(f>y){if(map.hasLayer(o.m))map.removeLayer(o.m);if(trails[id]){map.removeLayer(trails[id]);delete trails[id]}return}
+    nTot++;var act=activeIn(s,y);if(act)nAct++;
+    if(f===y)news.push(s);
+    if(s.y[y])top.push([s,s.y[y]]);
+    var sg_=seg(s,y),target=sg_.slice(1,3);
+    // trasferimenti: segmenti di sede fino all'anno corrente
+    var path=s.g.filter(function(g,i){return i===0||g[0]<=y}).map(function(g){return g.slice(1,3)});
+    if(path.length>1){if(!trails[id])trails[id]=L.polyline(path,{color:'#1b1916',weight:1.5,dashArray:'3 5',opacity:.7}).addTo(map);else trails[id].setLatLngs(path);
+      for(var i=1;i<s.g.length;i++)if(s.g[i][0]===y)moves.push([s,s.g[i-1][3],s.g[i][3]])}
+    else if(trails[id]){map.removeLayer(trails[id]);delete trails[id]}
+    var c=cumul(s,y);o.m.setRadius(3+Math.sqrt(c)*2.2);
+    o.m.setStyle(act?{fillColor:'#e9532a',fillOpacity:.88,color:'#1b1916',opacity:.9,weight:1.5}:{fillColor:'#b9ab98',fillOpacity:.45,color:'#7d7468',opacity:.6,weight:1});
+    if(!act&&!showAll){if(map.hasLayer(o.m))map.removeLayer(o.m);return}
+    if(!map.hasLayer(o.m)){o.pos=target.slice();o.m.setLatLng(target).addTo(map)}
+    else if(o.pos[0]!==target[0]||o.pos[1]!==target[1]){move(id,target,instant)}
+    if(act)o.m.bringToFront();
+  });
+  document.getElementById('m-count').innerHTML='<b>'+nAct+'</b> studi attivi (ultimi 5 anni)<br><b>'+nTot+'</b> comparsi dal 1965';
+  document.getElementById('m-new').innerHTML=news.length?news.map(function(s){return '<li>'+esc(s.n)+' <small>'+esc(s.c)+'</small></li>'}).join(''):'<li><small>—</small></li>';
+  document.getElementById('m-moves-box').style.display=moves.length?'':'none';
+  document.getElementById('m-moves').innerHTML=moves.map(function(m){return '<li>'+esc(m[0].n)+'<br><small>'+esc(m[1])+' → '+esc(m[2])+'</small></li>'}).join('');
+  top.sort(function(a,b){return b[1]-a[1]});
+  document.getElementById('m-top').innerHTML=top.length?top.slice(0,6).map(function(t){return '<li>'+esc(t[0].n)+' <small>'+t[1]+' album</small></li>'}).join(''):'<li><small>nessuno studio indicato in copertina</small></li>';
 }
+function move(id,to,instant){var o=mk[id];if(anim[id])cancelAnimationFrame(anim[id]);
+  if(instant||window.matchMedia('(prefers-reduced-motion: reduce)').matches){o.pos=to.slice();o.m.setLatLng(to);return}
+  var from=o.pos.slice(),t0=performance.now(),dur=900;
+  (function step(t){var k=Math.min(1,(t-t0)/dur),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;o.pos=[from[0]+(to[0]-from[0])*e,from[1]+(to[1]-from[1])*e];o.m.setLatLng(o.pos);if(k<1)anim[id]=requestAnimationFrame(step);else o.pos=to.slice()})(t0)}
+function play(){if(year>=1999)setYear(1965,true);playing=setInterval(function(){if(year>=1999){stop();return}setYear(year+1)},900);
+  document.getElementById('m-ico').innerHTML='<path d="M3 1h3.5v14H3zM9.5 1H13v14H9.5z"/>';document.getElementById('m-play').setAttribute('aria-label','Metti in pausa')}
+function stop(){if(playing)clearInterval(playing);playing=null;document.getElementById('m-ico').innerHTML='<path d="M3 1l12 7-12 7z"/>';document.getElementById('m-play').setAttribute('aria-label','Avvia la linea del tempo')}
+function popup(s){var ys=[],mx=1;for(var y=1965;y<=1999;y++){var v=s.y[y]||0;ys.push(v);if(v>mx)mx=v}
+  var tot=ys.reduce(function(a,b){return a+b},0);
+  return '<b>'+esc(s.n)+'</b><small>'+esc(s.a)+'</small>'+(s.x?'<small>'+esc(s.x)+'</small>':'')+'<small>'+tot+' album nel corpus · sede nel '+year+': '+esc(seg(s,year)[3])+'</small><div class="spark" title="Album per anno, 1965–1999">'+ys.map(function(v,i){return '<i class="'+(v?'':'z')+'" style="height:'+(v?Math.max(12,100*v/mx):4)+'%" title="'+(1965+i)+': '+v+'"></i>'}).join('')+'</div>'+(N&&N[s.id]?'<a href="#n='+s.id+'">Apri la scheda →</a>':'')}
 
-// search
+/* ===== esplora ===== */
 var q=document.getElementById('q'),sg=document.getElementById('sugg'),cur=[],sel=-1;
 function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
-q.addEventListener('input',function(){
-  var v=norm(q.value.trim());if(v.length<2){sg.style.display='none';return}
-  cur=index.filter(function(x){return norm(x.l).indexOf(v)>-1}).sort(function(a,b){var ap=norm(a.l).indexOf(v)===0,bp=norm(b.l).indexOf(v)===0;return (bp-ap)||(b.w-a.w)}).slice(0,12);
-  sel=-1;
-  sg.innerHTML=cur.length?cur.map(function(x,i){return '<button data-i="'+i+'"><span>'+esc(x.s)+'</span><small>'+esc(x.sub)+'</small></button>'}).join(''):'<div class="empty" style="padding:12px 18px">Nessun risultato</div>';
-  sg.style.display='block';
-});
-q.addEventListener('keydown',function(e){
-  var b=sg.querySelectorAll('button');if(!b.length)return;
-  if(e.key==='ArrowDown'){sel=Math.min(sel+1,b.length-1);e.preventDefault()}
-  else if(e.key==='ArrowUp'){sel=Math.max(sel-1,0);e.preventDefault()}
-  else if(e.key==='Enter'){pick(cur[sel<0?0:sel]);return}
-  else if(e.key==='Escape'){sg.style.display='none';return}
-  b.forEach(function(x,i){x.classList.toggle('on',i===sel)});
-});
+q.addEventListener('input',function(){var v=norm(q.value.trim());if(v.length<2){sg.style.display='none';return}
+  cur=index.filter(function(x){return norm(x.l).indexOf(v)>-1}).sort(function(a,b){var ap=norm(a.l).indexOf(v)===0,bp=norm(b.l).indexOf(v)===0;return (bp-ap)||(b.w-a.w)}).slice(0,12);sel=-1;
+  sg.innerHTML=cur.length?cur.map(function(x,i){return '<button data-i="'+i+'"><span>'+esc(x.s)+'</span><small>'+esc(x.sub)+'</small></button>'}).join(''):'<div class="empty" style="padding:12px 18px">Nessun risultato</div>';sg.style.display='block'});
+q.addEventListener('keydown',function(e){var b=sg.querySelectorAll('button');if(!b.length)return;
+  if(e.key==='ArrowDown'){sel=Math.min(sel+1,b.length-1);e.preventDefault()}else if(e.key==='ArrowUp'){sel=Math.max(sel-1,0);e.preventDefault()}else if(e.key==='Enter'){pick(cur[sel<0?0:sel]);return}else if(e.key==='Escape'){sg.style.display='none';return}
+  b.forEach(function(x,i){x.classList.toggle('on',i===sel)})});
 sg.addEventListener('click',function(e){var b=e.target.closest('button');if(b)pick(cur[+b.dataset.i])});
 document.addEventListener('click',function(e){if(!e.target.closest('.search'))sg.style.display='none'});
 function pick(x){if(!x)return;sg.style.display='none';q.value='';location.hash=(x.k==='n'?'n=':'a=')+x.id}
-
-document.addEventListener('click',function(e){
-  var b=e.target.closest('[data-n],[data-a],[data-go]');if(!b||b.closest('#sugg'))return;
+document.addEventListener('click',function(e){var b=e.target.closest('[data-n],[data-a],[data-go]');if(!b||b.closest('#sugg'))return;
   if(b.dataset.go){var v=b.dataset.go.toLowerCase(),x=index.find(function(i){return i.l===v});if(x)pick(x);return}
-  location.hash=b.dataset.n?'n='+b.dataset.n:'a='+b.dataset.a;
-});
+  location.hash=b.dataset.n?'n='+b.dataset.n:'a='+b.dataset.a});
 window.addEventListener('hashchange',route);
-function route(){
-  if(!D)return;var m=location.hash.match(/^#([na])=(\d+)/);if(!m)return;
-  m[1]==='n'?showNode(+m[2]):showAlbum(+m[2]);
-  document.getElementById('card').scrollIntoView({block:'start'});
-}
+function route(){if(!D)return;var m=location.hash.match(/^#([na])=(\d+)/);if(!m)return;m[1]==='n'?showNode(+m[2]):showAlbum(+m[2]);document.getElementById('card').scrollIntoView({block:'start'})}
 function nl(id){return '<button class="link" data-n="'+id+'">'+esc(N[id][0])+'</button>'}
 function al(id){return '<button class="link" data-a="'+id+'">'+esc(A[id].t)+'</button>'}
-
-function showNode(id){
-  if(!N[id])return;var al_=(byNode[id]||[]).map(function(a){return A[a]}).sort(function(a,b){return a.y-b.y});
-  var ys=al_.map(function(a){return a.y}),co={};
+function showNode(id){if(!N[id])return;var al_=(byNode[id]||[]).map(function(a){return A[a]}).sort(function(a,b){return a.y-b.y});var ys=al_.map(function(a){return a.y}),co={};
   al_.forEach(function(a){a.c.forEach(function(c){if(c!==id)co[c]=(co[c]||0)+1})});
   var top=Object.keys(co).filter(function(k){return N[k][1]!=='etichetta'}).sort(function(a,b){return co[b]-co[a]}).slice(0,12);
   var h='<div class="card"><span class="role">'+ROLE[N[id][1]]+'</span><h3>'+esc(N[id][0])+'</h3><div class="meta">'+al_.length+' album nel corpus · '+(ys.length?(ys[0]===ys[ys.length-1]?ys[0]:ys[0]+'–'+ys[ys.length-1]):'')+'</div><div class="card-grid"><div><h4>Album</h4><ul class="alist">';
   al_.forEach(function(a){var p=perf(a.id);h+='<li><span class="y">'+a.y+'</span><span>'+al(a.id)+(p&&p!==N[id][0]?'<small>'+esc(p)+'</small>':'')+'</span></li>'});
-  h+='</ul></div><div><h4>Collaboratori più frequenti</h4><ul class="alist collab">';
-  h+=top.length?top.map(function(k){return '<li><span>'+nl(k)+' <small>'+ROLE[N[k][1]]+'</small></span><span class="n">'+co[k]+'</span></li>'}).join(''):'<li class="empty">—</li>';
-  h+='</ul></div></div></div>';
-  document.getElementById('card').innerHTML=h;
-}
-function showAlbum(id){
-  var a=A[id];if(!a)return;var g={};
-  a.c.forEach(function(c){(g[N[c][1]]=g[N[c][1]]||[]).push(c)});
-  var p=perf(id);
+  h+='</ul></div><div><h4>Collaboratori più frequenti</h4><ul class="alist collab">'+(top.length?top.map(function(k){return '<li><span>'+nl(k)+' <small>'+ROLE[N[k][1]]+'</small></span><span class="n">'+co[k]+'</span></li>'}).join(''):'<li class="empty">—</li>')+'</ul></div></div></div>';
+  document.getElementById('card').innerHTML=h}
+function showAlbum(id){var a=A[id];if(!a)return;var g={};a.c.forEach(function(c){(g[N[c][1]]=g[N[c][1]]||[]).push(c)});var p=perf(id);
   var h='<div class="card"><span class="role">Album · '+a.y+'</span><h3>'+esc(a.t)+'</h3><div class="meta">'+(p?esc(p)+' · ':'')+a.c.length+' crediti</div><div style="margin-top:28px"><div class="credits">';
   ORDER.forEach(function(r){if(g[r])h+='<div><b>'+ROLE[r]+'</b>'+g[r].map(nl).join('<span class="sep">, </span>')+'</div>'});
-  h+='</div></div></div>';
-  document.getElementById('card').innerHTML=h;
-}
+  document.getElementById('card').innerHTML=h+'</div></div></div>'}
 
-// studios list
-fetch('dati/studi_geolocalizzati_1965-1969.csv').then(function(r){return r.text()}).then(function(t){
-  var rows=t.trim().split(/\r?\n/).slice(1).map(function(l){var out=[],cur='',q=false;for(var i=0;i<l.length;i++){var c=l[i];if(c==='"')q=!q;else if(c===','&&!q){out.push(cur);cur=''}else cur+=c}out.push(cur);return out});
-  document.getElementById('studios').innerHTML=rows.map(function(r){return '<li>'+esc(r[1].trim())+'<small>'+esc(r[2])+'</small></li>'}).join('');
-});
-
-document.getElementById('copycite').addEventListener('click',function(){
-  var t=document.getElementById('citetext').innerText.replace(/Copia$/,'').trim();
-  navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){var b=document.getElementById('copycite');b.textContent='Copiato';setTimeout(function(){b.textContent='Copia'},1500)});
-});
+document.getElementById('copycite').addEventListener('click',function(){var t=document.getElementById('citetext').innerText.replace(/Copia$/,'').trim();navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){var b=document.getElementById('copycite');b.textContent='Copiato';setTimeout(function(){b.textContent='Copia'},1500)})});
 </script>
 </body>
 </html>
