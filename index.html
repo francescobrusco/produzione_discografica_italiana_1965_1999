@@ -48,10 +48,12 @@ nav.top ul a:hover{color:var(--accent-d)}
 
 /* hero: busta + disco */
 header.hero{position:relative;overflow:hidden;background:#fbf8f3;border-bottom:1px solid var(--rule);min-height:min(88vh,760px);display:flex;align-items:center}
-.hero .disc{position:absolute;top:50%;right:-16vmin;transform:translateY(-50%);width:min(82vmin,740px);aspect-ratio:1;z-index:1;animation:spin 14s linear infinite;animation-play-state:paused}
-header.hero:hover .disc{animation-play-state:running}
-@keyframes spin{from{transform:translateY(-50%) rotate(0)}to{transform:translateY(-50%) rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.hero .disc{animation:none}}
+.hero .disc{position:absolute;top:50%;right:-16vmin;transform:translateY(-50%);width:min(82vmin,740px);aspect-ratio:1;z-index:1}
+.hero .disc.placed{right:auto;transform:none}
+.hero .disc .spin{transform-origin:200px 200px;animation:spin 14s linear infinite;animation-play-state:paused}
+header.hero:hover .disc .spin{animation-play-state:running}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hero .disc .spin{animation:none}}
 .sleeve{position:absolute;inset:0 auto 0 0;width:calc(100% - 38vmin);background:url(img/busta.jpg) left center/cover no-repeat;z-index:2;box-shadow:18px 0 30px -18px rgba(0,0,0,.35)}
 .sleeve::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(244,236,226,.0),rgba(244,236,226,0) 80%,rgba(0,0,0,.06))}
 .hero .copy{position:relative;z-index:3;padding:96px 0 88px;max-width:min(760px,calc(100% - 44vmin))}
@@ -61,7 +63,7 @@ header.hero:hover .disc{animation-play-state:running}
 .byline{margin-top:30px;font:400 13.5px/1.7 var(--mono);color:var(--ink-3)}
 .byline strong{color:var(--ink);font-weight:500}
 .cat{position:absolute;left:24px;bottom:22px;z-index:3;font:11px var(--mono);letter-spacing:.12em;color:#9a8f80;writing-mode:vertical-rl;transform:rotate(180deg)}
-@media(max-width:760px){.sleeve{width:100%;box-shadow:none;z-index:1}.hero .disc{width:66vmin;right:-16vmin;top:auto;bottom:-20vmin;transform:none;animation:none;z-index:2}.hero .copy{max-width:100%;padding:56px 0 46vmin}.cat{display:none}}
+@media(max-width:760px){.sleeve{width:100%;box-shadow:none;z-index:1}.hero .disc{width:66vmin;right:-16vmin;top:auto;bottom:-20vmin;transform:none;z-index:2}.hero .disc .spin{animation:none}.hero .copy{max-width:100%;padding:56px 0 46vmin}.cat{display:none}}
 
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--rule)}
@@ -213,6 +215,14 @@ code{font:15px var(--mono);background:var(--paper-2);padding:1px 5px}
 .cite{font:14px/1.6 var(--mono);background:var(--paper);border-left:3px solid var(--accent);padding:18px 84px 18px 20px;margin-top:16px;position:relative;word-break:break-word}
 .cite button{position:absolute;top:10px;right:10px;font:12px var(--mono);background:none;border:1px solid var(--rule);padding:4px 8px;cursor:pointer;color:var(--ink-2)}
 .cite button:hover{border-color:var(--ink)}
+
+.author{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:56px;align-items:center}
+.author-photo{margin:0}.author-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;filter:saturate(.9)}
+.author-links{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.author-links a{display:inline-block;font:500 13px/1 var(--mono);letter-spacing:.04em;color:#efe6da;text-decoration:none;border:1.5px solid #5a5248;padding:12px 16px}
+.author-links a:hover{border-color:var(--accent);color:#fff}
+.author-links span{color:var(--accent)}
+@media(max-width:820px){.author{grid-template-columns:1fr;gap:28px}.author-photo{max-width:420px}}
 footer{padding:48px 0 64px;font:13px/1.7 var(--mono);color:var(--ink-3)}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 footer a{color:var(--ink-2)}
@@ -233,6 +243,7 @@ footer a{color:var(--ink-2)}
     <li><a href="#esplora">Esplora</a></li>
     <li><a href="#dati">Dati</a></li>
     <li><a href="#citare">Citare</a></li>
+    <li><a href="#autore">Autore</a></li>
   </ul>
 </div></nav>
 
@@ -241,23 +252,18 @@ footer a{color:var(--ink-2)}
     <defs>
       <radialGradient id="vin" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#3a352f"/><stop offset=".45" stop-color="#1c1a17"/><stop offset="1" stop-color="#0c0b0a"/></radialGradient>
       <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".48" stop-color="#fff" stop-opacity=".09"/><stop offset=".52" stop-color="#fff" stop-opacity=".09"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-      <path id="arcTop" d="M 200,200 m -64,0 a 64,64 0 1,1 128,0"/>
-      <path id="arcBot" d="M 200,200 m -72,0 a 72,72 0 0,0 144,0"/>
     </defs>
+    <g class="spin">
     <circle cx="200" cy="200" r="198" fill="url(#vin)"/>
     <g fill="none" stroke="#000" stroke-opacity=".45" id="grooves"></g>
     <circle cx="200" cy="200" r="198" fill="url(#shine)"/>
     <circle cx="200" cy="200" r="86" fill="#f2542b"/>
     <circle cx="200" cy="200" r="86" fill="none" stroke="#000" stroke-opacity=".15" stroke-width="2"/>
     <circle cx="200" cy="200" r="80" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width=".6"/>
-    <text font-family="IBM Plex Mono" font-size="6.2" letter-spacing="1.6" fill="#fff" fill-opacity=".9"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">LA PRODUZIONE DISCOGRAFICA IN ITALIA COME PRATICA SOCIALE</textPath></text>
-    <text font-family="IBM Plex Mono" font-size="5.6" letter-spacing="1.4" fill="#fff" fill-opacity=".85"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">MAPPATURA · ETNOGRAFIA · MODELLI SISTEMICI DI CREATIVITÀ</textPath></text>
-    <text x="200" y="166" text-anchor="middle" font-family="Oswald" font-weight="500" font-size="13" fill="#fff" letter-spacing="1">PRATICA</text><text x="200" y="182" text-anchor="middle" font-family="Oswald" font-weight="500" font-size="13" fill="#fff" letter-spacing="1">SOCIALE</text>
-    <text x="200" y="230" text-anchor="middle" font-family="Oswald" font-weight="500" font-size="15" fill="#fff" letter-spacing="1">1965–1999</text>
-    <text x="200" y="244" text-anchor="middle" font-family="IBM Plex Mono" font-size="5.6" fill="#fff" fill-opacity=".85" letter-spacing="1">FRANCESCO BRUSCO</text>
-    <text x="146" y="203" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" fill="#fff" fill-opacity=".85" letter-spacing="1">LATO A</text>
-    <text x="254" y="203" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" fill="#fff" fill-opacity=".85" letter-spacing="1">33⅓</text>
+    <defs><clipPath id="lbl"><circle cx="200" cy="200" r="84"/></clipPath></defs><g clip-path="url(#lbl)"><circle cx="200" cy="200" r="86" fill="#e54d27"/><path d="M314.4 241.9L315.3 243.7L315.3 246.7L313.9 245.1L311.6 243.5L310.3 243.1L309.4 243.6L308.7 243.1L312.8 240.8L313.3 240.8L314.4 241.9ZM100.0 230.0L101.0 230.5L102.6 230.2L103.2 230.5L103.3 231.4L101.0 235.8L99.2 237.0L98.4 236.6L98.4 228.0L100.5 227.6L100.0 230.0ZM168.6 214.5L170.4 219.9L168.7 223.2L169.4 226.8L167.9 238.9L167.1 239.3L164.7 238.2L163.5 238.5L162.5 237.9L162.2 240.7L161.6 241.8L160.7 242.5L158.2 242.3L155.8 238.4L155.6 234.4L156.1 233.3L156.1 231.0L156.3 230.6L157.0 230.9L157.1 229.3L156.6 228.5L155.6 228.2L156.3 222.9L155.1 219.9L153.3 217.8L153.7 214.0L155.2 215.0L157.4 214.9L160.0 213.5L164.3 209.2L164.9 209.9L166.7 210.7L168.4 212.6L167.8 213.8L168.6 214.5ZM167.0 187.1L166.7 189.2L167.5 190.7L167.7 196.7L166.2 199.6L165.9 203.1L163.9 207.3L159.9 204.4L160.7 202.8L158.9 202.0L159.2 199.6L157.9 199.6L158.7 197.2L157.5 196.3L157.3 195.5L158.5 194.5L157.3 193.5L158.9 190.7L160.0 189.9L162.4 189.2L163.4 188.1L165.0 188.7L165.2 188.4L165.8 184.1L166.8 184.6L167.0 187.1ZM231.5 252.4L227.9 258.6L226.4 263.2L226.6 265.0L227.8 266.3L227.2 266.8L228.5 269.0L228.5 269.6L226.6 272.1L226.6 274.2L223.0 273.9L220.1 272.6L218.7 270.1L217.6 269.1L216.3 268.3L213.8 268.3L212.7 267.8L208.1 264.8L206.0 262.9L203.4 261.6L200.4 261.3L199.2 260.2L198.3 258.1L199.4 254.8L201.4 252.9L203.2 255.0L204.8 254.3L204.8 253.7L205.9 252.8L207.3 252.8L211.4 255.5L212.6 255.8L215.3 254.9L217.9 255.3L220.2 254.9L223.2 253.1L226.6 253.4L230.7 251.4L232.1 251.7L231.5 252.4ZM218.1 283.6L217.5 283.8L216.7 283.1L217.6 282.9L218.1 283.6ZM214.2 217.0L213.4 217.0L213.4 216.2L214.4 216.5L214.2 217.0ZM194.2 273.2L193.0 272.9L193.1 272.0L193.9 272.3L194.2 273.2ZM242.9 184.4L247.5 184.8L248.5 185.5L246.3 185.4L245.0 185.8L243.3 185.3L242.9 184.4ZM248.6 182.5L243.2 182.6L240.0 181.3L241.5 181.1L242.9 181.3L243.4 181.8L248.6 182.5ZM244.3 180.5L241.2 180.3L240.5 179.8L240.7 178.8L244.8 179.3L245.4 179.9L244.3 180.5ZM176.7 186.4L176.9 188.4L176.0 187.7L173.9 188.0L173.8 187.0L176.3 186.9L176.7 186.4ZM156.4 240.3L155.8 241.7L155.1 240.7L155.2 239.6L156.4 240.3ZM154.4 212.2L154.0 212.9L153.5 212.8L154.7 211.1L155.0 211.4L154.4 212.2ZM112.1 229.3L107.6 227.6L107.5 226.2L109.6 226.0L111.4 226.6L112.3 228.2L112.1 229.3ZM220.8 286.1L220.4 286.6L219.4 286.5L218.5 285.8L218.5 284.3L219.6 284.6L220.8 286.1ZM227.8 169.2L228.0 169.7L226.7 168.8L226.1 167.9L227.8 169.2ZM223.4 156.2L222.1 156.5L221.3 155.5L220.2 155.4L219.6 154.7L220.9 152.7L223.4 156.2ZM223.6 159.3L223.9 159.9L222.0 159.1L222.1 158.0L222.8 158.1L223.6 159.3ZM227.4 165.3L227.1 165.7L224.5 163.2L222.7 160.2L227.9 165.1L227.4 165.3ZM227.4 171.2L227.5 171.6L226.8 171.4L224.0 167.7L227.4 171.2ZM229.3 170.5L230.0 171.5L228.7 170.7L228.2 169.9L229.3 170.5ZM220.0 160.7L219.9 161.3L219.3 160.6L218.1 157.3L218.4 155.6L217.8 153.8L218.3 153.5L219.8 156.3L220.0 160.7ZM253.0 187.6L254.4 188.6L250.2 187.3L253.0 187.6ZM284.8 250.1L284.9 251.7L285.7 252.0L286.6 253.5L286.3 254.5L284.7 253.8L283.8 254.0L283.1 252.2L282.0 253.0L282.6 250.7L283.8 250.8L284.3 248.8L284.8 250.1ZM287.7 258.3L288.8 259.7L287.9 259.3L287.0 260.3L284.8 257.6L285.6 256.5L286.3 257.6L287.7 258.3ZM285.6 246.9L284.2 247.2L284.6 244.7L285.6 243.5L285.6 246.9ZM286.3 250.8L285.8 251.0L284.9 248.7L285.7 249.1L286.3 250.8ZM279.1 235.1L279.3 235.9L277.1 234.7L274.6 230.4L276.6 229.6L277.5 230.3L276.7 231.8L277.3 232.5L277.8 234.6L279.1 235.1ZM310.6 281.3L310.5 281.9L309.4 281.5L309.1 280.9L309.0 279.4L309.5 278.5L311.1 280.5L310.6 281.3ZM315.3 96.1L315.3 301.1L98.4 301.1L98.4 272.8L103.9 272.7L106.7 271.2L117.0 271.2L122.7 274.8L127.3 272.6L130.9 271.7L132.8 270.6L133.6 269.1L135.3 268.5L136.3 269.7L140.0 270.9L143.3 270.2L142.9 268.4L145.3 268.9L147.2 269.8L149.1 271.5L150.4 271.8L152.7 271.0L157.4 270.7L160.0 269.8L163.4 267.0L169.2 264.9L170.8 265.4L170.2 266.8L170.7 267.8L171.4 267.2L171.2 266.1L173.4 266.2L174.6 266.8L174.5 269.3L176.0 271.7L175.6 272.9L176.9 273.6L178.0 272.7L178.5 271.5L180.6 270.8L182.6 268.9L183.6 268.7L184.4 271.6L182.7 273.4L180.9 277.0L178.1 279.4L177.5 281.5L178.7 285.6L179.8 286.9L183.1 289.2L183.5 293.5L184.3 294.8L180.9 301.1L315.3 301.1L315.3 223.5L314.5 223.3L314.1 223.9L315.3 226.3L315.3 227.6L314.2 227.2L313.5 225.8L313.3 224.0L308.9 221.4L308.5 220.1L309.2 218.6L308.0 218.8L306.1 220.0L306.3 221.8L305.5 225.4L305.7 226.5L308.3 229.9L309.2 232.3L312.5 236.2L313.5 238.8L311.7 239.8L311.3 239.4L311.7 237.6L310.0 236.6L309.2 236.9L308.3 237.6L308.8 238.9L309.7 240.8L310.7 240.7L307.9 242.7L305.5 243.2L310.3 245.0L311.5 246.0L312.7 246.1L313.9 248.0L315.3 248.4L315.3 255.0L314.5 255.6L312.1 256.1L310.4 257.3L311.6 258.4L312.1 260.9L314.2 261.5L315.2 263.5L311.7 265.0L311.1 264.6L311.1 263.5L310.2 262.9L307.7 261.4L307.1 262.0L307.5 264.2L310.7 271.8L310.5 274.8L311.7 277.6L309.9 276.5L307.7 272.8L307.0 272.7L305.9 272.9L304.6 275.9L304.6 277.6L304.0 277.2L303.4 276.7L303.4 274.0L300.3 269.4L299.0 269.9L298.3 273.5L296.7 271.7L295.0 268.6L295.0 266.9L296.2 265.4L296.1 264.2L294.9 262.1L292.4 260.2L291.9 258.7L290.3 257.6L290.4 256.7L292.1 255.1L293.1 252.7L295.8 253.0L297.6 250.9L299.0 251.0L309.2 256.1L308.9 254.8L311.3 254.5L312.0 253.6L311.6 253.0L308.3 252.2L303.9 249.3L302.8 250.4L299.1 249.7L293.9 250.9L292.4 248.6L292.1 250.2L290.8 250.6L290.1 250.0L288.8 246.2L287.5 244.5L286.5 244.0L286.4 243.1L286.5 242.3L287.7 242.1L290.1 242.8L290.5 242.4L290.1 240.9L286.5 241.2L283.2 237.7L281.5 236.6L280.3 233.5L278.3 231.2L277.9 228.9L276.7 226.4L272.8 224.1L271.1 221.3L272.4 221.7L272.6 221.3L271.3 217.6L272.6 213.8L272.8 209.4L272.4 206.8L273.8 203.7L273.8 201.6L269.7 199.3L269.0 197.7L266.6 195.0L263.8 193.2L264.0 192.3L262.6 192.4L255.3 187.2L252.7 186.7L249.3 184.8L247.0 184.1L248.9 184.0L254.2 186.5L247.9 181.3L245.5 178.8L240.1 176.6L237.4 177.1L235.8 176.9L235.4 175.0L230.7 171.4L227.4 167.7L226.7 166.4L228.4 166.0L230.4 166.2L225.2 161.5L224.3 160.0L224.4 156.3L223.9 154.7L220.6 151.6L218.1 151.1L217.3 153.6L214.5 158.2L213.3 158.2L210.9 154.3L209.7 149.0L212.5 146.9L210.9 144.9L210.1 144.9L209.2 145.8L206.4 144.9L204.6 146.8L198.9 149.3L198.2 149.2L199.3 148.1L198.9 148.1L196.6 149.5L196.0 152.4L197.8 155.3L199.2 156.3L198.6 158.1L197.7 158.7L196.6 158.3L196.3 159.8L196.9 164.0L197.8 166.9L201.0 170.2L203.2 171.2L207.4 174.6L210.2 176.2L212.7 181.8L214.9 188.8L216.7 191.4L220.5 195.1L224.0 197.8L227.2 199.5L229.7 199.8L235.6 199.4L237.7 200.1L238.0 201.2L237.6 202.0L235.1 204.0L234.9 205.5L236.1 206.6L241.8 209.5L247.6 211.9L251.6 215.1L256.7 217.7L260.6 221.8L262.0 223.9L262.3 225.6L260.8 229.6L258.0 227.9L255.7 223.1L250.7 222.2L249.3 221.4L248.5 219.9L246.9 219.7L245.8 220.5L243.1 225.1L241.6 229.0L241.5 230.6L242.3 232.2L244.7 233.1L247.8 235.9L247.9 239.3L248.4 241.3L247.6 242.4L246.0 242.1L244.0 242.9L242.5 244.1L241.9 245.3L241.7 249.7L239.0 252.0L236.6 256.4L233.1 256.4L232.2 255.0L232.2 253.0L232.8 251.8L234.1 251.2L235.0 248.6L234.7 246.8L235.7 245.4L238.1 244.7L238.2 242.1L237.1 240.9L236.2 236.3L232.7 227.2L231.6 226.3L228.5 226.1L224.9 223.6L224.6 222.6L225.2 221.7L224.8 220.4L223.7 218.1L222.9 217.5L218.4 218.5L219.7 216.7L218.1 215.5L215.3 215.5L215.3 214.7L213.3 211.0L212.0 209.5L210.1 209.5L206.8 208.7L205.2 209.3L202.6 207.0L200.3 206.1L194.4 199.4L191.6 197.4L189.8 194.5L186.2 192.5L184.6 193.0L184.2 192.6L185.0 192.1L184.8 191.0L182.4 188.1L181.0 187.1L180.0 185.2L177.9 184.8L178.0 181.4L177.2 179.1L175.9 177.0L174.5 170.8L173.0 169.8L169.6 168.7L165.0 165.6L159.4 164.1L157.2 165.2L151.4 171.9L143.5 174.4L137.8 179.0L137.1 180.6L136.2 181.5L131.4 183.3L130.5 182.9L128.2 182.9L126.7 181.8L123.9 181.1L123.0 179.4L120.4 179.1L120.2 178.0L116.5 179.0L111.4 177.5L109.6 175.9L108.1 176.3L106.7 177.8L101.2 181.6L99.0 185.5L99.4 190.2L101.7 194.5L100.2 194.9L100.0 196.3L100.9 197.4L101.1 199.4L98.4 201.9L98.4 96.1Z" fill="#f8865f" fill-rule="evenodd"/><path d="M139.4 135.5L139.1 136.1L137.2 135.9L133.7 136.5L131.6 138.7L131.8 137.3L133.8 135.1L136.4 134.1L139.4 135.5ZM252.7 130.7L251.6 131.3L249.5 131.4L249.4 130.8L253.6 129.5L258.0 126.6L258.9 127.2L258.6 127.9L252.7 130.7ZM169.6 119.9L166.7 120.1L164.6 118.9L163.1 116.4L169.6 119.9ZM270.8 194.8L271.6 194.5L272.7 197.5L270.0 196.3L268.8 194.6L270.8 194.8ZM163.3 117.8L160.7 118.0L161.7 117.4L161.9 116.7L163.3 117.8Z" fill="#e54d27"/></g>
+    <circle cx="200" cy="200" r="84" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width=".6"/>
     <circle cx="200" cy="200" r="6" fill="#fbf8f3"/>
+    </g>
   </svg>
   <div class="sleeve" aria-hidden="true"></div>
   <div class="wrap" style="width:100%">
@@ -280,8 +286,7 @@ footer a{color:var(--ink-2)}
 
 <!-- ============ LA RETE (cap. 2.1) ============ -->
 <section id="rete"><div class="wrap">
-  <span class="kicker">Capitolo 2 · La rete sociale della discografia italiana</span>
-  <h2>Non “chi conosce chi”, ma come, dove e intorno a cosa si coopera</h2>
+  <h2>La rete sociale della discografia italiana</h2>
   <div class="split">
     <div>
       <p class="lede">I venti album più venduti di ogni anno, dal 1965 al 1999, e i loro paratesti sono le fonti primarie per ricostruire la rete sociale della produzione in studio. Ogni credito di copertina diventa un collegamento.</p>
@@ -315,13 +320,9 @@ footer a{color:var(--ink-2)}
   <p class="note">Tabella 2.1. Numero di nodi per categoria e incidenza percentuale sul totale della rete.</p>
 
   <h3 class="sub-h">Comunità e confini</h3>
-  <p>L’algoritmo di modularità individua cinque sottogruppi principali, ciascuno con il suo nucleo in una casa discografica e in uno studio di riferimento. Non sono compartimenti stagni: si permeano a vicenda grazie ai soggetti che agiscono all’intersezione. Il confine più netto separa i campi di RCA e CGD, le due principali etichette del periodo, attraversato da un ponte che porta il nome di Renato Zero.</p>
-  <div class="fig-row">
-    <figure><a class="frame" href="img/fig-2-2.jpg"><img src="img/fig-2-2.jpg" alt="Sottogruppi evidenziati dall'algoritmo di modularità" loading="lazy" width="1600" height="1315"></a>
-    <figcaption><b>Figura 2.2.</b> I principali sottogruppi evidenziati dall’algoritmo di modularità.</figcaption></figure>
-    <figure><a class="frame" href="img/fig-2-3.jpg"><img src="img/fig-2-3.jpg" alt="Strutture modulari di RCA e CGD" loading="lazy" width="1600" height="848"></a>
-    <figcaption><b>Figura 2.3.</b> Strutture modulari riferibili a RCA e CGD; nel riquadro, gli album di Renato Zero nel primo periodo con l’allora emergente Sony.</figcaption></figure>
-  </div>
+  <p>L’algoritmo di modularità individua cinque sottogruppi principali, ciascuno con il suo nucleo in una casa discografica e in uno studio di riferimento. Non sono compartimenti stagni: si permeano a vicenda grazie ai soggetti che agiscono all’intersezione. Il confine più netto separa i campi di RCA e CGD, le due principali etichette del periodo.</p>
+  <figure class="narrow" style="max-width:860px"><a class="frame" href="img/fig-2-2.jpg"><img src="img/fig-2-2.jpg" alt="Sottogruppi evidenziati dall'algoritmo di modularità" loading="lazy" width="1600" height="1315"></a>
+  <figcaption><b>Figura 2.2.</b> I principali sottogruppi evidenziati dall’algoritmo di modularità.</figcaption></figure>
   <blockquote>C’erano tutti questi giri quindi si erano formate delle situazioni proprio ritmiche, ognuno aveva la sua ritmica […] questo qui è un suono della Numero Uno, questa è la Ricordi, questo è un suono della RCA.<cite>Ellade Bandini, intervista, 23 maggio 2023</cite></blockquote>
 
   <h3 class="sub-h">Lo sviluppo nel tempo</h3>
@@ -336,7 +337,7 @@ footer a{color:var(--ink-2)}
       <tr><td>Densità</td><td class="n">0,009</td><td class="n">0,007</td><td class="n">0,006</td><td class="n">0,006</td><td class="n">0,005</td><td class="n">0,003</td><td class="n">0,003</td><td class="n">0,001</td></tr>
       <tr><td>Diametro</td><td class="n">18</td><td class="n">14</td><td class="n">11</td><td class="n">8</td><td class="n">12</td><td class="n">10</td><td class="n">10</td><td class="n">12</td></tr>
       <tr><td>Avg. path length</td><td class="n">6,691</td><td class="n">5,991</td><td class="n">5,448</td><td class="n">4,767</td><td class="n">5,142</td><td class="n">5,178</td><td class="n">5,103</td><td class="n">5,294</td></tr>
-      <tr class="hl"><td>Grado medio</td><td class="n">2,759</td><td class="n">3,085</td><td class="n">3,292</td><td class="n">3,83</td><td class="n">3,39</td><td class="n">3,271</td><td class="n">3,156</td><td class="n">4,649</td></tr>
+      <tr><td>Grado medio</td><td class="n">2,759</td><td class="n">3,085</td><td class="n">3,292</td><td class="n">3,83</td><td class="n">3,39</td><td class="n">3,271</td><td class="n">3,156</td><td class="n">4,649</td></tr>
       <tr><td>Componenti</td><td class="n">7</td><td class="n">8</td><td class="n">5</td><td class="n">3</td><td class="n">3</td><td class="n">1</td><td class="n">3</td><td class="n">8</td></tr>
       <tr><td>Modularità</td><td class="n">0,786</td><td class="n">0,791</td><td class="n">0,735</td><td class="n">0,652</td><td class="n">0,729</td><td class="n">0,741</td><td class="n">0,752</td><td class="n">0,671</td></tr>
     </tbody>
@@ -346,7 +347,6 @@ footer a{color:var(--ink-2)}
 
 <!-- ============ PROTAGONISTI (cap. 2.2) ============ -->
 <section id="protagonisti" class="alt"><div class="wrap">
-  <span class="kicker">Capitolo 2.2 · Diadi, triadi, centralità ed ego-net</span>
   <h2>Protagonisti</h2>
   <p class="lede">La centralità spiega come alcuni soggetti agiscano da intermediari per informazioni, esigenze e influenze, in una continua dialettica tra centro e periferia. Ecco i venti nodi principali per grado, con i relativi indici di centralità.</p>
   <div class="tbl-wrap"><table class="tbl" id="tbl-centr" aria-label="Nodi principali per grado">
@@ -396,7 +396,6 @@ footer a{color:var(--ink-2)}
 <!-- ============ GENERE (cap. 2.3) ============ -->
 <section id="genere"><div class="wrap split">
   <div>
-    <span class="kicker">Capitolo 2.3</span>
     <h2>Una storia al maschile?</h2>
     <p>Con il 7,8% di presenze femminili, la discografia italiana del periodo conferma un forte squilibrio di genere, senza segni di evoluzione. Le professioniste si concentrano nel canto, il ruolo “frontale” per eccellenza, e la loro presenza crolla nei mestieri tecnico-produttivi: 2,3% tra i produttori, zero nel mastering.</p>
     <blockquote>Era palese che il mio parere valesse meno di quello dei colleghi. Malgrado la mia esperienza.<cite>Marti Jane Robertson, intervista, 20 novembre 2023</cite></blockquote>
@@ -409,8 +408,7 @@ footer a{color:var(--ink-2)}
 
 <!-- ============ STUDI (cap. 3.1-3.2) ============ -->
 <section id="studi" class="alt"><div class="wrap">
-  <span class="kicker">Capitolo 3 · «Three views of a city»</span>
-  <h2>Gli studi di registrazione</h2>
+  <h2>Gli studi di registrazione in Italia</h2>
   <div class="split">
     <div>
       <p class="lede">Lo studio di registrazione è il <i>focus</i> della rete: uno spazio fisico che aggrega persone, tecnologie, convenzioni e gusti. Il loro numero cresce lungo tutto il periodo, con i tassi più alti nei primi tre quinquenni.</p>
@@ -434,7 +432,6 @@ footer a{color:var(--ink-2)}
 
 <!-- ============ MAPPA con timeline ============ -->
 <section id="mappa" class="dark"><div class="wrap">
-  <span class="kicker">Capitolo 3.2 · Topografie geostoriche</span>
   <h2>La mappa degli studi, anno per anno</h2>
   <p class="lede">Fai scorrere la linea del tempo, o premi play: gli studi compaiono nell’anno del loro primo album nel corpus, crescono con il numero di dischi e si spostano quando cambiano sede.</p>
   <div class="map-shell">
@@ -463,7 +460,6 @@ footer a{color:var(--ink-2)}
 
 <!-- ============ TRE CITTÀ (cap. 3.3) ============ -->
 <section id="citta"><div class="wrap">
-  <span class="kicker">Capitolo 3.3 · Spazi e luoghi di tre reti urbane</span>
   <h2>Milano, Roma, Bologna</h2>
   <div class="split">
     <div>
@@ -559,6 +555,21 @@ footer a{color:var(--ink-2)}
   </div>
 </div></section>
 
+<!-- ============ AUTORE ============ -->
+<section id="autore" class="dark"><div class="wrap author">
+  <figure class="author-photo"><img src="img/francesco-brusco.jpg" alt="Francesco Brusco legge durante un incontro pubblico" loading="lazy" width="1000" height="877"></figure>
+  <div>
+    <span class="kicker">L’autore</span>
+    <h2>Francesco Brusco</h2>
+    <p>Docente di Musiche Popolari Contemporanee presso l’Università di Salerno. Ha conseguito il dottorato in Scienze del Testo Letterario e Musicale all’Università di Pavia, svolgendo un periodo di ricerca presso l’Institute of Popular Music dell’Università di Liverpool. Giornalista per <i>Il Manifesto</i> e <i>il Giornale della Musica</i>, è autore di monografie dedicate principalmente ai Beatles e alla canzone d’autore italiana (l’ultimo libro si intitola <i>Un altro libro sui Beatles. Eredità culturali tra Penny Lane e il metaverso</i>). Come musicista ha all’attivo due album con i Là Nua.</p>
+    <ul class="author-links">
+      <li><a href="https://unisa.academia.edu/FrancescoBrusco" target="_blank" rel="noopener">Academia <span>↗</span></a></li>
+      <li><a href="https://www.researchgate.net/profile/Francesco-Brusco?ev=hdr_xprf" target="_blank" rel="noopener">ResearchGate <span>↗</span></a></li>
+      <li><a href="https://ilmanifesto.it/autori/francesco-brusco" target="_blank" rel="noopener">il manifesto <span>↗</span></a></li>
+    </ul>
+  </div>
+</div></section>
+
 <footer><div class="wrap">
   <span>© 2026 Francesco Brusco · La produzione discografica in Italia come pratica sociale (1965–1999)</span>
   <span><a href="https://github.com/francescobrusco/produzione_discografica_italiana_1965_1999">Codice e dati su GitHub</a></span>
@@ -570,6 +581,14 @@ footer a{color:var(--ink-2)}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 (function(){var g=document.getElementById('grooves');for(var r=92;r<196;r+=2.6){var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',200);c.setAttribute('cy',200);c.setAttribute('r',r.toFixed(1));c.setAttribute('stroke-width',(Math.round(r)%7===0)?1.2:.45);g.appendChild(c)}})();
+
+
+/* disco allineato all'ombra visibile in trasparenza sotto la busta (centro 1455,326; raggio 597 px nell'immagine 1350x990) */
+function placeDisc(){var hero=document.querySelector('header.hero'),sl=document.querySelector('.sleeve'),dk=document.querySelector('.hero .disc');
+  if(window.innerWidth<=760){dk.classList.remove('placed');dk.style.cssText='';return}
+  var W=sl.offsetWidth,H=sl.offsetHeight,k=Math.max(W/1350,H/990),oy=(H-990*k)/2,cx=1455*k,cy=oy+326*k,r=597*k,size=r*400/198;
+  dk.classList.add('placed');dk.style.width=size+'px';dk.style.left=(cx-size/2)+'px';dk.style.top=(cy-size/2)+'px'}
+placeDisc();window.addEventListener('resize',placeDisc);window.addEventListener('load',placeDisc);
 
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function bars(el,data,max,fmt){el.innerHTML=data.map(function(d){return '<div class="bar-row"><span class="lab">'+esc(d[0])+'</span><span class="track"><span class="fill" style="width:'+(100*d[1]/max).toFixed(1)+'%"></span></span><span class="val">'+fmt(d)+'</span></div>'}).join('')}
