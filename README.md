@@ -34,3 +34,13 @@ Brusco, Francesco. *La produzione discografica in Italia come pratica sociale. M
 ## Sito
 
 Il sito è un'unica pagina statica (`index.html`) pubblicata con GitHub Pages dal ramo `main`. Per aggiornare i dati, sostituisci i CSV in `dati/` e rigenera `dati/rete.json`.
+
+## Versione inglese
+
+La pagina inglese (`en/index.html`) è generata da `index.html` con lo script `strumenti/genera_en.py`, che contiene le traduzioni. Dopo aver modificato un testo italiano, aggiorna la frase corrispondente nello script e rigenera la pagina:
+
+```
+python strumenti/genera_en.py
+```
+
+Se una frase italiana non trova più corrispondenza, lo script si ferma e indica quale aggiornare.
