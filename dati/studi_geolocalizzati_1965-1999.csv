@@ -23,7 +23,7 @@ Id,nome,indirizzo,provincia,latitudine,longitudine,note,primo_anno,ultimo_anno,a
 1145,Studi Durium Milano,"Viale Carlo Troya, 7a, 20144 Milano MI",Milano,45.45212,9.15487,,1975,1978,3,
 1061,GRS Milano,"Via Vigilio Inama, 17, 20133 Milano MI",Milano,45.47301,9.23311,,1976,1980,7,
 1064,Idea Recording Milano,"Via Marco Fabio Quintiliano, 40, 20138 Milano MI",Milano,45.44879,9.24783,,1976,1988,24,
-1066,Il Mulino Anzano (CO),"Anzano del Parco, CO",Como,45.76984,9.19758,,1976,1986,9,"dal 1980: Via S. Giovanni Battista de la Salle, 20132 Milano (45.50306, 9.24122)"
+1066,Il Mulino Anzano (CO),"Anzano del Parco, CO",Como,45.76984,9.19758,,1976,1986,9,"dal 1978: Via S. Giovanni Battista de la Salle, 20132 Milano (45.50306, 9.24122)"
 1175,Studio Quattro Uno Roma,"Via Nomentana, 1111, 00137 Roma RM",Roma,41.95624,12.57073,,1976,1995,13,
 1014,Bach Studio Milano,"Via Don Ernesto Vercesi, 13, 20152 Milano MI",Milano,45.45919,9.09674,,1977,1990,8,"dal 1990: Via Azzo Carbonera, 3, 20137 Milano MI (45.4606, 9.2301)"
 1140,Stone Castle Carimate (CO),"Piazza Castello, 1, 22060 Carimate CO",Como,45.70297,9.11542,,1977,1984,28,
@@ -48,7 +48,7 @@ Id,nome,indirizzo,provincia,latitudine,longitudine,note,primo_anno,ultimo_anno,a
 1049,Executive Studios Napoli,"Via Tito Lucrezio Caro, 42, 80123 Napoli NA",Napoli,40.80003,14.18195,,1984,1988,2,
 1071,La Clausura Siena,"Siena, SI",Siena,43.31887,11.33125,,1984,1984,1,
 998,Acquario Roma,"Via della Farnesina, 151, 00135 Roma RM",Roma,41.94215,12.4612,,1985,1985,1,
-1090,Morning Studios Milano,"Piazza Castello, 1, 22060 Carimate CO",Como,45.70297,9.11542,,1985,1998,30,"dal 1988: Via Marco Fabio Quintiliano, 40, 20138 Milano MI (45.44879, 9.24783)"
+1090,Morning Studios Milano,"Piazza Castello, 1, 22060 Carimate CO",Como,45.70297,9.11542,,1985,1998,30,"dal 1987: Via Marco Fabio Quintiliano, 40, 20138 Milano MI (45.44879, 9.24783)"
 1121,Rico Record Napoli,"Via Santa Lucia, 110, 80132 Napoli NA",Napoli,40.83156,14.24833,,1985,1985,1,
 1162,Studio CPTV Roma,"Via Teulada, 66, 00195 Roma RM",Roma,41.92009,12.45494,,1985,1985,1,
 1065,Il Cortile Milano,"Via Pietro Borsieri, 41, 20159 Milano MI",Milano,45.48985,9.18885,,1986,1990,6,
