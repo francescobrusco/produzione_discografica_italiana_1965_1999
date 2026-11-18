@@ -6,7 +6,7 @@ Dataset e sito di esplorazione delle reti di produzione dietro i venti album ita
 
 Ricerca di dottorato di **Francesco Brusco** (Dipartimento di Musicologia e Beni Culturali, Università di Pavia).
 
-Le figure in `img/` sono le visualizzazioni Gephi dei capitoli 2 e 3 della tesi.
+Le figure in `img/` sono le visualizzazioni Gephi della tesi, numerate come nel sito.
 
 ## Dati
 
