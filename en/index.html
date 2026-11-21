@@ -20,7 +20,7 @@
 :root{
   --paper:#f2f5f9; --paper-2:#e5eaf2; --paper-3:#d8dfea; --surface:#ffffff;
   --ink:#12213d; --ink-2:#3d4c66; --ink-3:#6b7891;
-  --rule:#cfd7e3; --accent:#8c2443; --accent-d:#7a1d39; --accent-l:#e3a0b4; --vinyl:#0e2a52;
+  --rule:#cfd7e3; --accent:#a3132f; --accent-d:#8e1028; --accent-l:#f29aa8; --vinyl:#0e2a52;
   --sans:"Instrument Sans",system-ui,sans-serif; --display:"Fraunces",Georgia,serif; --serif:"EB Garamond",Garamond,Georgia,serif; --mono:var(--sans);
   --w:1160px; --r:10px;
 }
@@ -113,7 +113,7 @@ figure.narrow{max-width:720px;margin-left:auto;margin-right:auto}
 .tbl td{padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
 .tbl td.n,.tbl th.n{text-align:right;font-variant-numeric:tabular-nums;font-size:15px;white-space:nowrap}
 .tbl tbody tr:hover td{background:rgba(15,34,68,.03)}
-.tbl tr.hl td{background:rgba(140,36,67,.08)}
+.tbl tr.hl td{background:rgba(163,19,47,.08)}
 .tbl-wrap{overflow-x:auto}
 .tbl .link{border:0}
 
@@ -162,7 +162,7 @@ svg.chart .grid{stroke:var(--rule)}
 .map-side li small{color:#93a3c2;font:12.5px var(--sans)}
 .timeline{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:16px 20px;border-top:1px solid #1f3a66;color:#e3e8f1}
 .timeline button.play{all:unset;cursor:pointer;width:44px;height:44px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none}
-.timeline button.play:hover{background:#a8304f}
+.timeline button.play:hover{background:#bd2440}
 .timeline button.play:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .timeline button.play svg{width:16px;height:16px;fill:#fff}
 .tl-track{flex:1;position:relative}
@@ -478,7 +478,7 @@ footer a{color:var(--ink-2)}
       <label><input type="checkbox" id="m-cum" checked> also show studios no longer active</label>
     </div>
   </div>
-  <p class="note" style="color:#93a3c2;margin-top:14px">119 geolocated studios. Solid colour: active in the year or in the previous four. Locations follow the five-year mapping; the dashed line marks a relocation. Studios abroad are not shown. <a href="https://www.google.com/maps/d/viewer?mid=10I3crsMoiu8eftIXAM9So4QqacJVkMg" target="_blank" rel="noopener" style="color:#e3a0b4">Open the map in Google My Maps</a></p>
+  <p class="note" style="color:#93a3c2;margin-top:14px">119 geolocated studios. Solid colour: active in the year or in the previous four. Locations follow the five-year mapping; the dashed line marks a relocation. Studios abroad are not shown. <a href="https://www.google.com/maps/d/viewer?mid=10I3crsMoiu8eftIXAM9So4QqacJVkMg" target="_blank" rel="noopener" style="color:#f29aa8">Open the map in Google My Maps</a></p>
 </div></section>
 
 <!-- ============ TRE CITTÀ ============ -->
@@ -687,7 +687,7 @@ bars(document.getElementById('bars-gender'),[['backing vocals',44.52,'118/265'],
 (function(){var d=[['1965–69',9,''],['1970–74',20,'+122%'],['1975–79',36,'+80%'],['1980–84',48,'+33%'],['1985–89',65,'+35%'],['1990–94',70,'+8%'],['1995–99',82,'+17%']];
 var W=560,H=300,ml=30,mb=40,mt=24,ih=H-mt-mb,bw=(W-ml)/d.length,max=90,s='<svg class="chart" viewBox="0 0 '+W+' '+H+'">';
 for(var t=0;t<=90;t+=30){var y=mt+ih-ih*t/max;s+='<line class="grid" x1="'+ml+'" x2="'+W+'" y1="'+y+'" y2="'+y+'"/><text x="'+(ml-6)+'" y="'+(y+4)+'" text-anchor="end">'+t+'</text>'}
-d.forEach(function(r,i){var h=ih*r[1]/max,x=ml+i*bw+6;s+='<rect x="'+x+'" y="'+(mt+ih-h)+'" width="'+(bw-12)+'" height="'+h+'" fill="#8c2443"/><text x="'+(x+(bw-12)/2)+'" y="'+(mt+ih-h-14)+'" text-anchor="middle" style="fill:#12213d;font-weight:600">'+r[1]+'</text><text x="'+(x+(bw-12)/2)+'" y="'+(mt+ih-h-3)+'" text-anchor="middle" style="font-size:9px">'+r[2]+'</text><text x="'+(x+(bw-12)/2)+'" y="'+(H-18)+'" text-anchor="middle">'+r[0]+'</text>'});
+d.forEach(function(r,i){var h=ih*r[1]/max,x=ml+i*bw+6;s+='<rect x="'+x+'" y="'+(mt+ih-h)+'" width="'+(bw-12)+'" height="'+h+'" fill="#a3132f"/><text x="'+(x+(bw-12)/2)+'" y="'+(mt+ih-h-14)+'" text-anchor="middle" style="fill:#12213d;font-weight:600">'+r[1]+'</text><text x="'+(x+(bw-12)/2)+'" y="'+(mt+ih-h-3)+'" text-anchor="middle" style="font-size:9px">'+r[2]+'</text><text x="'+(x+(bw-12)/2)+'" y="'+(H-18)+'" text-anchor="middle">'+r[0]+'</text>'});
 document.getElementById('chart-studi').innerHTML=s+'</svg>'})();
 
 /* Tabella 9 line chart */
@@ -750,7 +750,7 @@ function initMap(){
   L.tileLayer(esri+'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{attribution:'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors',maxZoom:16}).addTo(map);
   L.tileLayer(esri+'World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16}).addTo(map);
   ST.studi.forEach(function(s){
-    var m=L.circleMarker(s.g[0].slice(1,3),{radius:4,weight:1.5,color:'#12213d',fillColor:'#8c2443',fillOpacity:.9,opacity:.9});
+    var m=L.circleMarker(s.g[0].slice(1,3),{radius:4,weight:1.5,color:'#12213d',fillColor:'#a3132f',fillOpacity:.9,opacity:.9});
     m.bindPopup(function(){return popup(s)},{maxWidth:280});
     mk[s.id]={m:m,s:s,pos:s.g[0].slice(1,3)};
   });
@@ -780,7 +780,7 @@ function setYear(y,instant){
       for(var i=1;i<s.g.length;i++)if(s.g[i][0]===y)moves.push([s,s.g[i-1][3],s.g[i][3]])}
     else if(trails[id]){map.removeLayer(trails[id]);delete trails[id]}
     var c=cumul(s,y);o.m.setRadius(3+Math.sqrt(c)*2.2);
-    o.m.setStyle(act?{fillColor:'#8c2443',fillOpacity:.88,color:'#12213d',opacity:.9,weight:1.5}:{fillColor:'#b3bdcf',fillOpacity:.5,color:'#6b7891',opacity:.6,weight:1});
+    o.m.setStyle(act?{fillColor:'#a3132f',fillOpacity:.88,color:'#12213d',opacity:.9,weight:1.5}:{fillColor:'#b3bdcf',fillOpacity:.5,color:'#6b7891',opacity:.6,weight:1});
     if(!act&&!showAll){if(map.hasLayer(o.m))map.removeLayer(o.m);return}
     if(!map.hasLayer(o.m)){o.pos=target.slice();o.m.setLatLng(target).addTo(map)}
     else if(o.pos[0]!==target[0]||o.pos[1]!==target[1]){move(id,target,instant)}
