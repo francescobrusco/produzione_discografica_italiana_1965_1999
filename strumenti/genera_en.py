@@ -35,6 +35,7 @@ T = [
  'content="The network of studios, musicians, producers, engineers and labels behind 700 Italian albums: graphs, an animated map of recording studios, open data."'),
 ('<a class="brand" href="#">La produzione discografica in Italia come pratica sociale</a>',
  '<a class="brand" href="#">Record production in Italy as social practice</a>'),
+('<li class="home"><a href="https://francescobrusco.github.io/">Francesco Brusco</a></li>', '<li class="home"><a href="https://francescobrusco.github.io/en/">Francesco Brusco</a></li>'),
 ('<li><a href="#rete">La rete</a></li>', '<li><a href="#rete">Network</a></li>'),
 ('<li><a href="#protagonisti">Protagonisti</a></li>', '<li><a href="#protagonisti">Key figures</a></li>'),
 ('<li><a href="#genere">Genere</a></li>', '<li><a href="#genere">Gender</a></li>'),
