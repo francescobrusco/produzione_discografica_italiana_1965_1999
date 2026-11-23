@@ -310,6 +310,22 @@ T += [
  '<blockquote>Here in Bologna, for instance, we had relations with our neighbours […] mainly with Maison Blanche and with Maggi. […] When we were full here people went to record there, or the other way round he sent people to us: this collaboration did an enormous amount to widen the circle of musicians, records and everything else.<cite>Maurizio Biancani, interview, 21 April 2023 (translated from Italian)</cite></blockquote>\n  <h3 class="sub-h">Spaces and places</h3>\n  <p>The widespread presence of recording studios in urban areas, together with their capacity to attract, organise and layer professional networks, makes them key junctions for understanding the very relationship between music and space. Anglophone scholarship has long established that popular music must be placed in a framework in which social questions are fundamentally geographical. Adam Krims (<i>Music and Urban Geography</i>, 2007) invites us to move beyond the opposition between “space” as the coercive force of capital and “place” invested with liberating value: “the global is, in fact, the same as the local; space becomes place”. Recording studios straddle this threshold: on the one hand they respond to supra-local logics tied to capital flows, industrial policy and the technical rationalisation of cultural work; on the other, they are places crossed by memories, practices, affects and shared identities.</p>'),
 ]
 
+T += [
+('<figcaption><b>Figura 1.</b> Grafo della rete sociale della discografia italiana dal 1965 al 1999. Nodi dimensionati per numero di connessioni, layout Yifan Hu.</figcaption>',
+ '<figcaption><b>Figure 1.</b> Graph of the social network of the Italian record industry from 1965 to 1999. Nodes sized by number of connections, Yifan Hu layout.</figcaption>'),
+('alt="Grafo della rete sociale della discografia italiana, 1965-1999"', 'alt="Graph of the social network of the Italian record industry, 1965-1999"'),
+('aria-label="Statistiche whole-network"', 'aria-label="Whole-network statistics"'),
+('<th>Proprietà della rete (Gephi)</th><th class="n">Valore</th>', '<th>Network property (Gephi)</th><th class="n">Value</th>'),
+('<h3 class="sub-h">Chi compone la rete</h3>', '<h3 class="sub-h">Who makes up the network</h3>'),
+('<td>Ordine (nodi)</td>', '<td>Order (nodes)</td>'),
+('<td>Ordine</td>', '<td>Order</td>'),
+('<td>Densità</td>', '<td>Density</td>'),
+('<td>Diametro</td>', '<td>Diameter</td>'),
+('<td>Grado medio</td>', '<td>Average degree</td>'),
+('<td>Componenti</td>', '<td>Components</td>'),
+('<td>Modularità</td>', '<td>Modularity</td>'),
+]
+
 for it, en in T:
     sub(it, en)
 
