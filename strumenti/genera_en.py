@@ -46,7 +46,7 @@ T = [
 ('<li><a href="#esplora">Esplora</a></li>', '<li><a href="#esplora">Explore</a></li>'),
 ('<li><a href="#dati">Dati</a></li>', '<li><a href="#dati">Data</a></li>'),
 ('<li><a href="#citare">Citare</a></li>', '<li><a href="#citare">Cite</a></li>'),
-('<li><a href="#autore">Autore</a></li>', '<li><a href="#autore">Author</a></li>'),
+
 ('<div class="lang"><span aria-current="true" title="Italiano">ITA</span><a href="en/" hreflang="en" lang="en" title="English">ENG</a></div>',
  '<div class="lang"><a href="../" hreflang="it" lang="it" title="Italiano">ITA</a><span aria-current="true" title="English">ENG</span></div>'),
 ('<h1>La produzione discografica in Italia come pratica sociale <span class="yr">(1965–1999)</span></h1>',
@@ -256,10 +256,8 @@ T += [
  ', PhD thesis, Department of Musicology and Cultural Heritage, University of Pavia, academic year 2024-2025.<button type="button" id="copycite">Copy</button>'),
 ('<p style="margin-top:28px">Per correzioni, integrazioni o collaborazioni scrivi tramite <a',
  '<p style="margin-top:28px">For corrections, additions or collaborations, get in touch via <a'),
-('alt="Francesco Brusco legge durante un incontro pubblico"', 'alt="Francesco Brusco reading at a public event"'),
-('<span class="kicker">L’autore</span>', '<span class="kicker">The author</span>'),
-('<p>Docente di Musiche Popolari Contemporanee presso l’Università di Salerno. Ha conseguito il dottorato in Scienze del Testo Letterario e Musicale all’Università di Pavia, svolgendo un periodo di ricerca presso l’Institute of Popular Music dell’Università di Liverpool. Giornalista per <i>Il Manifesto</i> e <i>il Giornale della Musica</i>, è autore di monografie dedicate principalmente ai Beatles e alla canzone d’autore italiana (l’ultimo libro si intitola <i>Un altro libro sui Beatles. Eredità culturali tra Penny Lane e il metaverso</i>). Come musicista ha all’attivo due album con i Là Nua.</p>',
- '<p>Lecturer in Contemporary Popular Music at the University of Salerno. He holds a PhD in Literary and Musical Text Studies from the University of Pavia, including a research period at the Institute of Popular Music, University of Liverpool. A journalist for <i>Il Manifesto</i> and <i>il Giornale della Musica</i>, he is the author of monographs devoted mainly to the Beatles and to the Italian singer-songwriter tradition (his latest book is <i>Un altro libro sui Beatles. Eredità culturali tra Penny Lane e il metaverso</i>). As a musician he has released two albums with Là Nua.</p>'),
+
+
 ('<span>© 2026 Francesco Brusco · La produzione discografica in Italia come pratica sociale (1965–1999)</span>',
  '<span>© 2026 Francesco Brusco · Record production in Italy as social practice (1965–1999)</span>'),
 ('>Codice e dati su GitHub</a>', '>Code and data on GitHub</a>'),
