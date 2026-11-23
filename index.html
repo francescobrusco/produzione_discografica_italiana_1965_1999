@@ -36,9 +36,9 @@ h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.06;letter-spac
 h2{font-size:clamp(32px,4.4vw,54px);margin-bottom:.4em}
 h3{font-size:23px;font-weight:600;margin-bottom:.4em;letter-spacing:-.01em;font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 0}
 .kicker{font:600 15px/1.2 var(--sans);color:var(--accent-d);margin-bottom:10px;display:block}
-.lede{font:22px/1.45 var(--serif);color:var(--ink-2);max-width:60ch}
+.lede{max-width:68ch}
 p{max-width:68ch}
-.note{font:14px/1.5 var(--sans);color:var(--ink-3)}
+.note{font:14px/1.5 var(--sans);color:var(--ink-3);max-width:none}
 blockquote{margin:32px 0;padding:0 0 0 22px;border-left:3px solid var(--accent);font:italic 400 23px/1.4 var(--serif);font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 0;color:var(--ink);max-width:60ch}
 blockquote cite{display:block;margin-top:10px;font:400 14px var(--sans);font-style:normal;color:var(--ink-3)}
 .fig-row blockquote{font-size:19px;margin:24px 0;padding-left:18px}
@@ -97,7 +97,7 @@ figure{margin:36px 0 0}
 figure .frame{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);padding:12px;cursor:zoom-in;display:block;width:100%;transition:border-color .15s}
 figure .frame:hover{border-color:var(--ink-3)}
 figure img{display:block;width:100%;height:auto;border-radius:4px}
-figcaption{margin-top:10px;font:14px/1.5 var(--sans);color:var(--ink-3);max-width:80ch}
+figcaption{margin-top:10px;font:14px/1.5 var(--sans);color:var(--ink-3);max-width:none}
 figcaption b{color:var(--ink);font-weight:600}
 .fig-row{display:grid;gap:24px;grid-template-columns:repeat(var(--n,2),1fr)}
 .fig-row figure{margin-top:0}
@@ -546,7 +546,7 @@ footer a{color:var(--ink-2)}
     <div>
       <h3>Bologna</h3>
       <p>Dalla fine degli anni Settanta l’Emilia sviluppa una propria rete, grazie al calo dei costi della tecnologia, a un mercato immobiliare più favorevole rispetto a Roma e Milano e al milieu di DAMS, radio libere e Movimento del ’77. I Fonoprint nascono in un appartamento di via Schiavonia, passano a via de’ Coltelli e a metà anni Novanta si trasferiscono nel convento di via Bocca di Lupo; dal 1979 a Modena opera l’Umbi Studio di Umberto Maggi, poi Maison Blanche. La rete cresce lungo la via Emilia fino a Reggio, secondo un modello più cooperativo che competitivo.</p>
-      <blockquote>E sento dire, “ma sai che stanno aprendo uno studio a Bologna, dei ciechi?”. […] “Mah, in via Schiavonia”. […] C’era un certo Vasco Rossi che stava registrando una canzone dal titolo <i>Albachiara</i>.<cite>Celso Valli, intervista, 2 ottobre 2023</cite></blockquote>
+      <blockquote>Ero sempre fuori casa, il che era una gran senso di colpa, perché avevo una moglie giovane, un figlio piccolo, e cosa faccio? Io sono qua a equalizzare la cassa a Carimate? E sento dire, “ma sai che stanno aprendo uno studio a Bologna, dei ciechi?”. Sentivo questa parola… “Ciechi? Ma dove?”, “Mah, in via Schiavonia”. Insomma, si erano messi insieme due, tre amici non vedenti, che venivano dalla scuola, dall’istituto Cavazza, lì, dei ciechi, così, e stavano facendo uno studietto. Ma cazzo, uno studietto a Bologna? Io sapevo che non c’era un cazzo a Bologna. Aspetta, che vengo. […] C’era un certo Vasco Rossi che stava registrando una canzone dal titolo <i>Albachiara</i>.<cite>Celso Valli, intervista, 2 ottobre 2023</cite></blockquote>
       <blockquote>Mixer argentini, casse Telefunken, registratori Studer 8 tracce, microfoni Neumann […]. Iniziamo a lavorare, con doppiaggi, cassette e altro. Conosciamo Celso Valli e Mauro Malavasi, e cominciamo a farci un nome.<cite>Maurizio Biancani, intervista, 21 aprile 2023</cite></blockquote>
       <figure><a class="frame" href="img/figura-15.jpg"><img src="img/figura-15.jpg" alt="Mappatura degli studi bolognesi da Gephi" loading="lazy" width="916" height="747"></a><figcaption><b>Figura 15.</b> Gli studi emiliani, da Gephi.</figcaption></figure>
     </div>
