@@ -20,14 +20,15 @@
 :root{
   --paper:#f2f5f9; --paper-2:#e5eaf2; --paper-3:#d8dfea; --surface:#ffffff;
   --ink:#12213d; --ink-2:#3d4c66; --ink-3:#6b7891;
-  --rule:#cfd7e3; --accent:#a3132f; --accent-d:#8e1028; --accent-l:#f29aa8; --vinyl:#0e2a52;
+  --rule:#cfd7e3; --accent:#a3132f; --accent-d:#8e1028; --accent-l:#f29aa8; --link:#1f6fe0; --link-d:#1553b0; --vinyl:#0e2a52;
   --sans:"Instrument Sans",system-ui,sans-serif; --display:"Fraunces",Georgia,serif; --serif:"EB Garamond",Garamond,Georgia,serif; --mono:var(--sans);
   --w:1160px; --r:10px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{margin:0;background:var(--paper);color:var(--ink);font:19.5px/1.55 var(--serif);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
-a{color:var(--accent-d);text-underline-offset:3px;text-decoration-thickness:1px}
+a{color:var(--link);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--link-d)}
 a:hover{color:var(--ink)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
@@ -40,6 +41,7 @@ p{max-width:68ch}
 .note{font:14px/1.5 var(--sans);color:var(--ink-3)}
 blockquote{margin:32px 0;padding:0 0 0 22px;border-left:3px solid var(--accent);font:italic 400 23px/1.4 var(--serif);font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 0;color:var(--ink);max-width:60ch}
 blockquote cite{display:block;margin-top:10px;font:400 14px var(--sans);font-style:normal;color:var(--ink-3)}
+.fig-row blockquote{font-size:19px;margin:24px 0;padding-left:18px}
 
 /* nav */
 nav.top{position:sticky;top:0;z-index:1000;background:rgba(242,245,249,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
@@ -47,13 +49,13 @@ nav.top .wrap{display:flex;align-items:center;gap:24px;height:58px}
 nav.top .brand{display:none}
 nav.top ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
 nav.top ul a{font:500 14.5px/1 var(--sans);color:var(--ink-2);text-decoration:none;white-space:nowrap}
-nav.top ul a:hover{color:var(--accent-d)}
+nav.top ul a:hover{color:var(--link)}
 nav.top li.home a{font:600 16px/1 var(--display);font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 0;color:var(--ink);padding-right:18px;border-right:1px solid var(--rule)}
 nav.top .lang{display:flex;flex:none;background:var(--paper-2);border-radius:999px;padding:3px}
 nav.top .lang a,nav.top .lang span{font:600 12.5px/1 var(--sans);letter-spacing:.02em;padding:6px 10px;border-radius:999px;text-decoration:none}
 nav.top .lang span{background:var(--ink);color:#fff}
 nav.top .lang a{color:var(--ink-2)}
-nav.top .lang a:hover{color:var(--accent-d)}
+nav.top .lang a:hover{color:var(--link)}
 @media(max-width:900px){nav.top ul{gap:18px}}
 
 /* hero: busta + disco */
@@ -141,7 +143,7 @@ svg.chart .grid{stroke:var(--rule)}
 .roles li::before{content:counter(r);font:500 12px var(--sans);color:var(--ink-3);width:22px;flex:none;padding-top:3px}
 .roles li:last-child{border-bottom:0}
 .roles li button{all:unset;cursor:pointer;flex:1}
-.roles li button:hover{color:var(--accent-d);text-decoration:underline}
+.roles li button:hover{color:var(--link);text-decoration:underline}
 .roles li button:focus-visible{outline:2px solid var(--accent)}
 .roles li span{font:500 13px var(--sans);color:var(--ink-3);white-space:nowrap;padding-top:2px}
 .more{all:unset;cursor:pointer;margin-top:28px;display:inline-block;font:600 14.5px var(--sans);background:var(--ink);color:#fff;border-radius:999px;padding:12px 20px}
@@ -213,7 +215,7 @@ svg.chart .grid{stroke:var(--rule)}
 .alist .y{font:500 14px var(--sans);color:var(--ink-3);padding-top:2px}
 .alist small{display:block;color:var(--ink-3);font:14px var(--sans)}
 .link{all:unset;cursor:pointer;color:inherit;border-bottom:1px solid var(--rule)}
-.link:hover{color:var(--accent-d);border-color:var(--accent)}
+.link:hover{color:var(--link);border-color:var(--link)}
 .link:focus-visible{outline:2px solid var(--accent)}
 .credits{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px 32px}
 .credits div b{display:block;font:600 13.5px/1.2 var(--sans);color:var(--ink-3);margin-bottom:6px}
@@ -256,7 +258,7 @@ footer a{color:var(--ink-2)}
 <nav class="top"><div class="wrap">
   <a class="brand" href="#">Record production in Italy as social practice</a>
   <ul>
-    <li class="home"><a href="https://francescobrusco.github.io/">Francesco Brusco</a></li>
+    <li class="home"><a href="https://francescobrusco.github.io/en/">Francesco Brusco</a></li>
     <li><a href="#rete">Network</a></li>
     <li><a href="#protagonisti">Key figures</a></li>
     <li><a href="#genere">Gender</a></li>
@@ -295,7 +297,6 @@ footer a{color:var(--ink-2)}
     <div class="copy">
       <h1>Record production in Italy as social practice <span class="yr">(1965–1999)</span></h1>
       <p class="sub">Mapping, ethnography, systemic models of creativity</p>
-      <p class="byline"><strong>Francesco Brusco</strong><br>University of Salerno, Department of Cultural Heritage Sciences (Dispac)<br>Department of Musicology and Cultural Heritage, University of Pavia</p>
     </div>
   </div>
   <span class="cat" aria-hidden="true">LP · 1965–1999</span>
@@ -313,57 +314,60 @@ footer a{color:var(--ink-2)}
   <h2>The social network of the Italian record industry</h2>
   <div class="split">
     <div>
-      <p class="lede">The twenty best-selling albums of each year, from 1965 to 1999, and their paratexts are the primary sources for reconstructing the social network of studio production. Every sleeve credit becomes a connection.</p>
-      <p>The network is multimodal: it includes individuals (performers, musicians, producers, arrangers, engineers), collective subjects (bands, orchestras, choirs), institutional nodes (record companies), albums as projects that catalyse relationships, and recording studios, each of which acts as a <i>focus</i>: an aggregator of interactions between human and material agents.</p>
-      <p>Processed in Gephi, the matrices drawn from the corpus produce a graph of 3410 nodes and 7926 edges: dense in appearance, but with very low density, a sign of a high degree of homophily. Nodes condense by geographical, stylistic and professional affinity into relatively tight local clusters.</p>
+      <p>The twenty best-selling albums of each year, from 1965 to 1999, are the primary sources for reconstructing the social network of studio production. Sleeve notes (<i>credits</i>) provide the data for a multimodal network comprising individual subjects (performers, musicians, producers, arrangers, engineers), collective subjects (bands, orchestras, choirs) and institutional ones (record companies), as well as recording studios, each of which acts as a <i>focus</i>: an aggregator of interactions between human and material agents.</p>
+      <p>Processed in Gephi, the matrices drawn from the corpus produce a graph of 3410 nodes and 7926 edges.</p>
     </div>
     <div>
-      <div class="tbl-wrap"><table class="tbl" aria-label="Whole-network statistics">
-        <thead><tr><th>Network property (Gephi)</th><th class="n">Value</th></tr></thead>
+      <div class="tbl-wrap"><table class="tbl" aria-label="Statistiche whole-network">
+        <thead><tr><th>Proprietà della rete (Gephi)</th><th class="n">Valore</th></tr></thead>
         <tbody>
-          <tr><td>Order (nodes)</td><td class="n">3410</td></tr>
+          <tr><td>Ordine (nodi)</td><td class="n">3410</td></tr>
           <tr><td>Edges</td><td class="n">7926</td></tr>
-          <tr><td>Density</td><td class="n">0.001</td></tr>
-          <tr><td>Diameter</td><td class="n">12</td></tr>
+          <tr><td>Densità</td><td class="n">0.001</td></tr>
+          <tr><td>Diametro</td><td class="n">12</td></tr>
           <tr><td>Average path length</td><td class="n">5.294</td></tr>
-          <tr><td>Average degree</td><td class="n">4.649</td></tr>
-          <tr><td>Components</td><td class="n">8</td></tr>
-          <tr><td>Modularity</td><td class="n">0.671</td></tr>
+          <tr><td>Grado medio</td><td class="n">4.649</td></tr>
+          <tr><td>Componenti</td><td class="n">8</td></tr>
+          <tr><td>Modularità</td><td class="n">0.671</td></tr>
         </tbody>
       </table></div>
-      <p class="note">Table 1. The giant component contains 3385 nodes (99.2%) and 7908 edges (99.7%).</p>
+      <p class="note">Table 1. Whole-network statistics calculated in Gephi. Order and edges return 3410 subjects and 7926 instances of collaboration, drawn from 700 albums over 35 years: a sample that cannot account for every agent involved, but includes the most active ones. Despite appearances, density (the ratio between actual and possible connections) is very low, a sign of a high degree of homophily: nodes tend to condense by geographical, stylistic or professional affinity into relatively tight clusters. The diameter (12), the longest distance between two nodes, would seem to contradict the six degrees of separation theory, which is however borne out by the average distance between pairs of nodes (average path length): a contained value, indicating a high degree of coordination and diffusion. The average degree reflects the way each participant builds up a long history of collaborations over time. Of the eight components, the main one gathers 3385 nodes (99.2%) and 7908 edges (99.7%), leaving negligible room for the other seven.</p>
     </div>
   </div>
 
-  <figure><a class="frame" href="../img/figura-01.jpg"><img src="../img/figura-01.jpg" alt="Graph of the social network of the Italian record industry, 1965-1999" loading="lazy" width="1600" height="1200"></a>
-  <figcaption><b>Figure 1.</b> Graph of the social network of the Italian record industry, 1965–1999. Nodes sized by number of connections, Yifan Hu layout.</figcaption></figure>
+  <figure><a class="frame" href="../img/figura-01.jpg"><img src="../img/figura-01.jpg" alt="Grafo della rete sociale della discografia italiana, 1965-1999" loading="lazy" width="1600" height="1200"></a>
+  <figcaption><b>Figura 1.</b> Grafo della rete sociale della discografia italiana dal 1965 al 1999. Nodi dimensionati per numero di connessioni, layout Yifan Hu.</figcaption></figure>
 
-  <h3 class="sub-h">Who makes up the network</h3>
-  <p>The breakdown by category reveals some peculiarities. Sound engineers are by far the largest category, almost twice as many as studios and producers, while mastering engineers close the list. The 93 record companies (2.69%) point to the oligopolistic nature of the industry; among session players, backing vocalists outnumber guitarists and keyboard players.</p>
+  <h3 class="sub-h">Chi compone la rete</h3>
+  <p>The breakdown by category highlights some peculiarities. Sound engineers are by far the most numerous category, almost twice as many as studios and producers, while mastering engineers close the list. The 93 record companies (2.69%) point to the oligopolistic nature of the industry; among session players, backing vocalists outnumber guitarists and keyboardists.</p>
   <div class="bars" id="bars-cat"></div>
-  <p class="note">Table 2. Number of nodes per category and percentage of the whole network.</p>
+  <p class="note">Table 2. Breakdown by category, with number of nodes and percentage of the whole network. For the sake of concision, each term covers functions and instruments of a heterogeneous nature: <i>sound engineers</i> mainly covers mixing and recording engineers, but also editing specialists and so-called “recordists”; <i>backing vocals</i> groups singers who record vocal tracks in addition to those of the lead performer; the <i>guitars</i> category also includes less common string instruments such as mandolins, bouzouki and sitar (often entrusted to guitarists themselves), while under <i>keyboards</i> very different figures coexist, such as pianists and synthesizer programmers; when used rhythmically, the double bass is included in the same category as the bass, whereas its use in orchestras places it under <i>strings</i>, together with which harps have also been catalogued. Finally, it is not always easy to distinguish between producer and arranger, two roles that from the 1980s onwards are often absorbed into a single figure.</p>
 
   <h3 class="sub-h">Communities and boundaries</h3>
-  <p>The modularity algorithm identifies five main subgroups, each centred on a record company and a reference studio. They are not watertight compartments: they permeate each other through the people who work at their intersections. The sharpest boundary separates the fields of RCA and CGD, the two leading labels of the period.</p>
+  <p>Modularity measures how far a network can be broken down into communities: it assumes that the most interconnected nodes tend to condense into clusters, and compares the strength of the ties within each group with that of the ties linking it to the rest of the network. High values indicate clear-cut communities; that of the whole graph (0.671) points to well-defined but not isolated subgroups. The algorithm used by Gephi reveals these modular structures, which makes it particularly suited to exploring a network so extensive in geographical and temporal terms.</p>
+  <p>The five most populated subgroups emerge, highlighted in different colours in Figure 2. Identifying their main nodes, each turns out to have its core in reference record companies and recording studios: institutional nodes and physical spaces that in most cases span the entire period, acting as <i>foci</i> around which the creative practices of record production revolve. Striking is the case of PDU, Mina’s record company, whose network practically coincides with the artist’s own, while other, smaller modular structures can be traced to more geographically localised circuits. While remaining identifiable, the subgroups are not watertight compartments: they permeate each other, above all thanks to the subjects acting at the intersection between areas. The apparently sharpest boundary is the one separating the fields of RCA and CGD, the two main labels between 1965 and 1999.</p>
   <figure class="narrow" style="max-width:860px"><a class="frame" href="../img/figura-02.jpg"><img src="../img/figura-02.jpg" alt="Subgroups identified by the modularity algorithm" loading="lazy" width="1600" height="1315"></a>
   <figcaption><b>Figure 2.</b> The main subgroups identified by the modularity algorithm.</figcaption></figure>
+  <p>The mapping is borne out by the way professionals of the time perceived the styles associated with each subgroup: gravitating around its own core of musicians, producers and engineers gives each record company and each studio a recognisable, shared sonic identity.</p>
   <blockquote>There were all these circles, so actual rhythm sections had formed, each had its own rhythm section […] this one is a Numero Uno sound, this is Ricordi, this is an RCA sound.<cite>Ellade Bandini, interview, 23 May 2023 (translated from Italian)</cite></blockquote>
 
-  <h3 class="sub-h">Development over time</h3>
-  <p>Divided into five-year periods, the network expands from the 1970s and condenses in the following decade. 1980–1984 is the moment of greatest cooperation: highest average degree (3.83), lowest diameter (8), modularity and path length. 1990–1994 is the only period in which the network forms a single component, on the eve of the definitive rise of digital technology.</p>
+  <h3 class="sub-h">Diachronic analysis</h3>
+  <p>Dividing the period into five-year intervals, comparable with each other and with the overall figure, the sequence of graphs shows the network expanding from the 1970s and an opposite tendency towards condensation in the following decade. The years 1980–1984 record the highest average degree (3.83) and the lowest values for diameter (8), modularity (0.652) and average path length (4.767): this is the moment of greatest cooperation within the network, when each node is linked on average to 3.83 others and lies at most eight degrees from the furthest one.</p>
+  <p>The trend matches the economic and geopolitical situation. The global record industry responds to the energy crises of 1973 and 1979 and to the devaluation of the dollar with restructuring, mergers and conglomeration, from which the majors emerge fewer in number and increasingly integrated with the audiovisual sector. The arrival of the compact disc launches the systematic reissue of back catalogues at the expense of new productions: a short-term way out of the crisis that nonetheless lays the foundations for the 1996 crash.</p>
+  <p>In the final decade, order and edges grow at a significantly faster rate than in the previous twenty-five years. 1990–1994 is the only period in which the network forms a single component, a sign that every node is connected to all the others; in the following five years the components return to three. This is the eve of the definitive rise of digital technology, which closes an era not only for the consumption of music but also, and above all, for its production.</p>
   <figure><a class="frame" href="../img/figura-03.jpg"><img src="../img/figura-03.jpg" alt="Diachronic development of the network by five-year periods" loading="lazy" width="1600" height="900"></a>
   <figcaption><b>Figure 3.</b> Diachronic development of the network as graphs, in five-year intervals.</figcaption></figure>
   <div class="tbl-wrap"><table class="tbl" aria-label="Statistics by five-year period">
     <thead><tr><th></th><th class="n">1965–69</th><th class="n">1970–74</th><th class="n">1975–79</th><th class="n">1980–84</th><th class="n">1985–89</th><th class="n">1990–94</th><th class="n">1995–99</th><th class="n">1965–99</th></tr></thead>
     <tbody>
-      <tr><td>Order</td><td class="n">316</td><td class="n">426</td><td class="n">551</td><td class="n">659</td><td class="n">688</td><td class="n">1094</td><td class="n">1083</td><td class="n">3410</td></tr>
+      <tr><td>Ordine</td><td class="n">316</td><td class="n">426</td><td class="n">551</td><td class="n">659</td><td class="n">688</td><td class="n">1094</td><td class="n">1083</td><td class="n">3410</td></tr>
       <tr><td>Edges</td><td class="n">436</td><td class="n">657</td><td class="n">907</td><td class="n">1262</td><td class="n">1166</td><td class="n">1789</td><td class="n">1709</td><td class="n">7926</td></tr>
-      <tr><td>Density</td><td class="n">0.009</td><td class="n">0.007</td><td class="n">0.006</td><td class="n">0.006</td><td class="n">0.005</td><td class="n">0.003</td><td class="n">0.003</td><td class="n">0.001</td></tr>
-      <tr><td>Diameter</td><td class="n">18</td><td class="n">14</td><td class="n">11</td><td class="n">8</td><td class="n">12</td><td class="n">10</td><td class="n">10</td><td class="n">12</td></tr>
+      <tr><td>Densità</td><td class="n">0.009</td><td class="n">0.007</td><td class="n">0.006</td><td class="n">0.006</td><td class="n">0.005</td><td class="n">0.003</td><td class="n">0.003</td><td class="n">0.001</td></tr>
+      <tr><td>Diametro</td><td class="n">18</td><td class="n">14</td><td class="n">11</td><td class="n">8</td><td class="n">12</td><td class="n">10</td><td class="n">10</td><td class="n">12</td></tr>
       <tr><td>Avg. path length</td><td class="n">6.691</td><td class="n">5.991</td><td class="n">5.448</td><td class="n">4.767</td><td class="n">5.142</td><td class="n">5.178</td><td class="n">5.103</td><td class="n">5.294</td></tr>
-      <tr><td>Average degree</td><td class="n">2.759</td><td class="n">3.085</td><td class="n">3.292</td><td class="n">3.83</td><td class="n">3.39</td><td class="n">3.271</td><td class="n">3.156</td><td class="n">4.649</td></tr>
-      <tr><td>Components</td><td class="n">7</td><td class="n">8</td><td class="n">5</td><td class="n">3</td><td class="n">3</td><td class="n">1</td><td class="n">3</td><td class="n">8</td></tr>
-      <tr><td>Modularity</td><td class="n">0.786</td><td class="n">0.791</td><td class="n">0.735</td><td class="n">0.652</td><td class="n">0.729</td><td class="n">0.741</td><td class="n">0.752</td><td class="n">0.671</td></tr>
+      <tr><td>Grado medio</td><td class="n">2.759</td><td class="n">3.085</td><td class="n">3.292</td><td class="n">3.83</td><td class="n">3.39</td><td class="n">3.271</td><td class="n">3.156</td><td class="n">4.649</td></tr>
+      <tr><td>Componenti</td><td class="n">7</td><td class="n">8</td><td class="n">5</td><td class="n">3</td><td class="n">3</td><td class="n">1</td><td class="n">3</td><td class="n">8</td></tr>
+      <tr><td>Modularità</td><td class="n">0.786</td><td class="n">0.791</td><td class="n">0.735</td><td class="n">0.652</td><td class="n">0.729</td><td class="n">0.741</td><td class="n">0.752</td><td class="n">0.671</td></tr>
     </tbody>
   </table></div>
   <p class="note">Table 3. Whole-network statistics in five-year intervals. The 1965–1969 figures reflect the scarcity of information in the sleeve notes of the period.</p>
@@ -372,7 +376,8 @@ footer a{color:var(--ink-2)}
 <!-- ============ PROTAGONISTI ============ -->
 <section id="protagonisti" class="alt"><div class="wrap">
   <h2>Key figures</h2>
-  <p class="lede">Centrality explains how certain actors act as brokers of information, needs and influence, in a constant dialectic between centre and periphery. These are the twenty leading nodes by degree, with their centrality measures.</p>
+  <p class="lede">Centrality is among the most debated node properties in social network analysis. Here it is understood as a way of explaining how some subjects can act as intermediaries for the information, needs and influences carried by other nodes, in a constant dialectic between centre and periphery; conversely, low centrality values indicate forms of exclusion or peripherality.</p>
+  <p>Besides degree, the number of connections, three indicators are considered. <i>Eigenvector</i> measures ties with high-degree nodes, and therefore the chance for less connected subjects to benefit from interaction with more densely connected ones. <i>Closeness</i> is the total length of the paths connecting a node to all the others, normalised and inverted: the higher it is, the more effective coordination and the transmission of information. <i>Betweenness</i> counts how often a subject lies on the shortest path between two others, measuring its capacity to bridge the “structural holes” of the network. The table lists the twenty main nodes by degree.</p>
   <div class="tbl-wrap"><table class="tbl" id="tbl-centr" aria-label="Leading nodes by degree">
     <thead><tr><th>#</th><th>Name</th><th>Category</th><th class="n">Degree</th><th class="n">Eigenvector</th><th class="n">Closeness</th><th class="n">Betweenness</th></tr></thead>
     <tbody></tbody>
@@ -381,6 +386,8 @@ footer a{color:var(--ink-2)}
 
   <figure class="narrow"><a class="frame" href="../img/figura-04.jpg"><img src="../img/figura-04.jpg" alt="Position of the twenty leading nodes in the network" loading="lazy" width="1235" height="1600"></a>
   <figcaption><b>Figure 4.</b> Position in the network of the nodes listed in Table 4.</figcaption></figure>
+  <p>The picture supports the idea of an oligarchy of the majors and of their privileged bond with the spaces and resources of an equally small number of recording studios. It also highlights the paradox of RCA and its studios which, though at the top of their respective categories, sit in a fairly peripheral position with respect to the heart of the network. The Roman label’s betweenness (46174.572) is more than ten times lower than that of its direct competitor CGD (500222.472) and almost identical to that of PDU (44324.554), a record company tied almost exclusively to Mina’s catalogue: two labels sharing a more clearly defined artistic identity and a strategy with little interest in bridging structural holes.</p>
+  <p>Mina is the only performer on the list, thanks to the length of her career and a recording output that keeps her at the top of the charts throughout the period: all the musicians in the table worked with her in some way. Among them, Paolo Gianolio, Lele Melotti and Silvio Pozzoli form a potential trio of session players legitimised by their very dense connections with the highest-degree nodes: the guitarist’s eigenvector, a round 1, is the highest value of all, a statistical translation of social capital as a relational resource. In the technical area, among the very many sound engineers only Renato Cantele achieves prominent centrality, while two cutting engineers, Antonio Baglio and Marco Inzadi, dominate their category and rank among the top ten by degree.</p>
 
   <h3 class="sub-h">The most frequent names, role by role</h3>
   <p>For each category, the names that appear on the largest number of albums in the corpus.</p>
@@ -421,8 +428,11 @@ footer a{color:var(--ink-2)}
 <section id="genere"><div class="wrap split">
   <div>
     <h2>A man’s story?</h2>
-    <p>With women making up 7.8% of the network, the Italian record industry of the period shows a marked gender imbalance, with no sign of change. Women professionals are concentrated in singing, the “front-facing” role par excellence, and their presence collapses in technical and production jobs: 2.3% of producers, none in mastering.</p>
-    <blockquote>It was obvious that my opinion counted for less than my colleagues’. Despite my experience.<cite>Marti Jane Robertson, interview, 20 November 2023 (translated from Italian)</cite></blockquote>
+    <p>With 7.8% female presence, the Italian record industry of the period confirms the gender gap long attributed to the sector, and indeed offers a picture showing no evolution: according to data presented by Equaly in November 2023, women producers in Italy today account for 2.6%, a figure practically identical to the one recorded for 1965–1999.</p>
+    <p>The first two categories concern singing, confirming a gendered division of musical labour that assigns women “front-facing” roles and relegates them to the margins of the technical and production sector: perceived as bound to the body that produces it, vocal identity is the least interchangeable role in gender terms. Strings and winds follow, with much lower percentages, both linked to the field of classical music. Numbers collapse precisely in the professions most specifically connected with popular music, from 2.30% of producers to 0% in mastering; three of the four women in the rhythm section are American session players called in for episodes marginal to the national network.</p>
+    <p>The imbalance is also reflected in the sample of interviews. The testimonies collected reveal not only exclusion from the central roles of the production chain, but also implicit expectations and pay gaps.</p>
+    <blockquote>It was obvious that my opinion counted for less than my colleagues’. Despite my experience, despite having shown my knowledge many times working with them, if there was a man his opinion always counted a bit more. This happened mostly with the older generations; not today, today I’d say it happens much less.<cite>Marti Jane Robertson, interview, 20 November 2023 (translated from Italian)</cite></blockquote>
+    <blockquote>When you’re hired as a backing vocalist by a male artist, you always have to be well dressed, well groomed, and you have to be, let’s say, yes, always a bit, how can I put it, understated but on point, you know what I mean? […] As for pay, I remember the men’s fees were higher and we got less, our fee was lower.<cite>Emanuela Cortesi, interview, 29 July 2025 (translated from Italian)</cite></blockquote>
   </div>
   <div>
     <div class="bars" id="bars-gender"></div>
@@ -435,8 +445,10 @@ footer a{color:var(--ink-2)}
   <h2>Recording studios in Italy</h2>
   <div class="split">
     <div>
-      <p class="lede">The recording studio is the <i>focus</i> of the network: a physical space that brings together people, technologies, conventions and tastes. Their number grows throughout the period, with the highest rates in the first three five-year periods.</p>
-      <p>In 1965–1969 only 31% of records name the studio, and there are nine of them: RCA in Rome, the rest in Milan. In the 1970s the system remains bipolar, but small hubs open in Genoa and Venice, along with the first residential studios outside the cities, such as Stone Castle in Carimate and Battisti’s Mulino. In 1980–1984 Carimate takes the lead from RCA for the first time, while a third hub, Bologna and Modena, emerges along the Via Emilia. The 1990s bring fragmentation and the handover from analogue to digital.</p>
+      <p class="lede">The recording studio is the <i>focus</i> of the network: a physical space that brings together people, technologies, conventions and tastes. The corpus records 210 of them, 67 (31.9%) abroad, where Italian productions turn ever more often from the 1970s onwards for artistic, technical, economic and relational reasons. Their number grows throughout the period, with the highest rates in the first three five-year spans, levels off in the 1980s and slows in the final decade.</p>
+      <p>In 1965–1969, owing to oligopolistic conditions and the reticence of sleeve notes (only 31% of records name the studio), there are just nine studios: RCA’s, the only ones in Rome, account for 20% of the sample; the other eight are all in Milan. In 1970–1974 RCA keeps its lead (14%), but new studios open in Rome eager to tap into its business, such as Sonic Recording, Studio 38 and Ortophonic, founded by Morricone, Trovajoli, Piccioni and Bacalov. The system remains bipolar, with Milan rising to twelve studios led by Fonorama in via Barletta, and the first productions abroad appear.</p>
+      <p>In the second half of the 1970s the landscape opens up to a small hub in Genoa and to studios in the Venice area, while the Milan network sees the first residential studios outside the city, such as Stone Castle in Carimate and Lucio Battisti’s Mulino. In 1980–1984 Carimate takes the lead from RCA for the first time, partly thanks to a flat-rate deal with the Roman label; in the south a small Neapolitan hub flourishes again, while along the Bologna–Modena axis the third hub of Italian record production makes its debut.</p>
+      <p>Between 1985 and 1989 the decline of the RCA complex is matched by the rise of Fonoprint in Bologna, in a picture of clear fragmentation with no central <i>focus</i>. In the 1990s, in Milan, Morning and Logic Studios inherit the equipment and clients of Stone Castle and CGD, the Emilian hub extends to Reggio Emilia, and in Rome Forum takes over the running of Ortophonic; the handover from analogue to digital and falling costs further multiply the number of spaces.</p>
     </div>
     <div>
       <div id="chart-studi"></div>
@@ -444,8 +456,9 @@ footer a{color:var(--ink-2)}
     </div>
   </div>
 
+  <blockquote>Peppino Di Capri was the one who innovated this way of making music and recording in Naples with the Splash studios. […] The earlier studios only made music for the neomelodic singers of the time.<cite>Lino Vairetti, interview, 22 July 2025 (translated from Italian)</cite></blockquote>
   <h3 class="sub-h">The most frequent studios</h3>
-  <p>The Italian studios where the largest number of albums in the corpus were made. The top fourteen, with at least ten albums each, are highlighted: three hubs dominate, with RCA leading over the long term and Fonoprint second despite its late arrival.</p>
+  <p>The Italian studios where the largest number of albums in the corpus were made; the fourteen with at least ten albums are highlighted. Over the long run the RCA studios remain the network’s prevailing <i>focus</i>, despite their sharp decline in the last decade and their fairly peripheral position in the national graph; two other Roman studios, Quattro Uno and Forum (formerly Ortophonic), pass the threshold. The Emilian network has three spaces, with Fonoprint’s second place all the more remarkable given its late entry, while the six Milan studios testify to the fragmentation and competition of their music world. The PDU studio in Lugano is included among the Italian ones because of its almost exclusive tie to Mina’s network, which is almost entirely Italian.</p>
   <div class="tbl-wrap"><table class="tbl" id="tbl-studi" aria-label="Recording studios by number of albums">
     <thead><tr><th>#</th><th>Studio</th><th>Location</th><th class="n">Albums</th><th class="n">Active in corpus</th></tr></thead>
     <tbody></tbody>
@@ -480,7 +493,7 @@ footer a{color:var(--ink-2)}
       <label><input type="checkbox" id="m-cum" checked> also show studios no longer active</label>
     </div>
   </div>
-  <p class="note" style="color:#93a3c2;margin-top:14px">119 geolocated studios. Solid colour: active in the year or in the previous four. Locations follow the five-year mapping; the dashed line marks a relocation. Studios abroad are not shown. <a href="https://www.google.com/maps/d/viewer?mid=10I3crsMoiu8eftIXAM9So4QqacJVkMg" target="_blank" rel="noopener" style="color:#f29aa8">Open the map in Google My Maps</a></p>
+  <p class="note" style="color:#93a3c2;margin-top:14px">119 geolocated studios. Solid colour: active in the year or in the previous four. Locations follow the five-year mapping; the dashed line marks a relocation. Studios abroad are not shown. <a href="https://www.google.com/maps/d/viewer?mid=10I3crsMoiu8eftIXAM9So4QqacJVkMg" target="_blank" rel="noopener" style="color:#8ec5ff">Open the map in Google My Maps</a></p>
 </div></section>
 
 <!-- ============ TRE CITTÀ ============ -->
@@ -489,7 +502,7 @@ footer a{color:var(--ink-2)}
   <div class="split">
     <div>
       <p class="lede">The three city networks are not separate: many nodes appear in all three music worlds. Milan and Bologna share more connections, while Rome remains off-centre.</p>
-      <p>The three networks have the same diameter (8), lower than the national one, confirming their local roots. Throughout the period Bologna forms a single component: the most central nodes act as bridges and hold the whole network together.</p>
+      <p>Despite their different orders, the three networks share the same diameter (8), lower than the national one (12), confirming their essentially local roots; their densities, similar to one another, confirm the high degree of homophily already observed on a national scale, a sign that professional and stylistic criteria add to geographical ones. The components, by contrast, stand out: throughout the period the Bologna network has only one, because the nodes with the highest degree and centrality act as bridges between the various clusters.</p>
     </div>
     <figure style="margin:0"><a class="frame" href="../img/figura-11.jpg"><img src="../img/figura-11.jpg" alt="Graph of the three recording hubs Milan Rome Bologna" loading="lazy" width="1131" height="1600"></a>
     <figcaption><b>Figure 11.</b> The national network of the three main hubs, with recording studios as the sources of connections. Blue Milan, orange Rome, red Bologna.</figcaption></figure>
@@ -498,14 +511,14 @@ footer a{color:var(--ink-2)}
     <div class="tbl-wrap"><table class="tbl" aria-label="Properties of the three local networks">
       <thead><tr><th></th><th class="n">Milan</th><th class="n">Rome</th><th class="n">Bologna</th><th class="n">Italy</th></tr></thead>
       <tbody>
-        <tr><td>Order</td><td class="n">1503</td><td class="n">918</td><td class="n">832</td><td class="n">3410</td></tr>
+        <tr><td>Ordine</td><td class="n">1503</td><td class="n">918</td><td class="n">832</td><td class="n">3410</td></tr>
         <tr><td>Edges</td><td class="n">2836</td><td class="n">1489</td><td class="n">1288</td><td class="n">7926</td></tr>
-        <tr><td>Density</td><td class="n">0.003</td><td class="n">0.004</td><td class="n">0.004</td><td class="n">0.001</td></tr>
-        <tr><td>Diameter</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">12</td></tr>
+        <tr><td>Densità</td><td class="n">0.003</td><td class="n">0.004</td><td class="n">0.004</td><td class="n">0.001</td></tr>
+        <tr><td>Diametro</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">12</td></tr>
         <tr><td>Avg. path length</td><td class="n">3.807</td><td class="n">3.747</td><td class="n">3.353</td><td class="n">5.294</td></tr>
-        <tr><td>Average degree</td><td class="n">3.774</td><td class="n">3.244</td><td class="n">3.096</td><td class="n">4.649</td></tr>
-        <tr class="hl"><td>Components</td><td class="n">4</td><td class="n">3</td><td class="n">1</td><td class="n">8</td></tr>
-        <tr><td>Modularity</td><td class="n">0.591</td><td class="n">0.63</td><td class="n">0.538</td><td class="n">0.671</td></tr>
+        <tr><td>Grado medio</td><td class="n">3.774</td><td class="n">3.244</td><td class="n">3.096</td><td class="n">4.649</td></tr>
+        <tr class="hl"><td>Componenti</td><td class="n">4</td><td class="n">3</td><td class="n">1</td><td class="n">8</td></tr>
+        <tr><td>Modularità</td><td class="n">0.591</td><td class="n">0.63</td><td class="n">0.538</td><td class="n">0.671</td></tr>
       </tbody>
     </table><p class="note">Table 8. Properties of the three local music worlds compared with the national network.</p></div>
     <div>
@@ -519,20 +532,28 @@ footer a{color:var(--ink-2)}
   <div class="fig-row" style="--n:3;margin-top:56px">
     <div>
       <h3>Milan</h3>
-      <p>Italy’s music city par excellence sees recording rooms flourish in every corner: Fonorama and Ricordi to the south, EMI’s Basilica in Piazza Sant’Eufemia, then the Via Quintiliano hub near Linate airport (CGD, Idea Recording, Morning, Logic) and the residential studios in Brianza.</p>
+      <p>After the economic boom, recording rooms flourish in every corner of the city: in the south Fonorama and Ricordi, EMI’s Basilica in the church of San Paolo Converso, Phonogram in piazza Cavour, Regson on the Navigli. In 1974 Ladislao Sugar’s CGD opens in via Quintiliano, near Linate, Milan’s answer to RCA; with the crisis of the 1980s the spaces pass to the La Bionda brothers’ Logic Studios and Red Canzian’s Morning Studios, while residential studios spring up in Brianza.</p>
+      <blockquote>We worked in a studio in via dei Cinquecento, which was actually a parish cinema. On Saturdays and Sundays there were films for the kids, from Monday to Friday we worked on the songs.<cite>Alberto Radius, interview, 8 January 2022 (translated from Italian)</cite></blockquote>
+      <p class="note">This is the Ricordi studio in via dei Cinquecento: under Walter Patergnani, in 1967 it became the first in Italy to install an eight-track recorder.</p>
       <figure><a class="frame" href="../img/figura-13.jpg"><img src="../img/figura-13.jpg" alt="Map of Milan studios from Gephi" loading="lazy" width="850" height="737"></a><figcaption><b>Figure 13.</b> Milan studios, from Gephi.</figcaption></figure>
     </div>
     <div>
       <h3>Rome</h3>
-      <p>The capital is dominated by RCA’s large complex, opened at the end of 1961 at km 12 of the Via Tiburtina. Around it, studios spring up drawn by its business and by that of RAI and Cinecittà: Ortophonic, Sonic, Studio 38, Quattro Uno, Forum Music Village.</p>
+      <p>The capital is dominated by RCA’s large centre, opened at the end of 1961 at km 12 of via Tiburtina: a true campus, with four rooms (studio A, five thousand cubic metres, for large orchestras), offices and pressing facilities, following the centralised model of the American parent company. With RAI and Cinecittà it forms a triumvirate around which Claudio Mattone’s Quattro Uno and the Ortophonic studios in piazza Euclide, later Forum Music Village, revolve; little room is left for independent studios.</p>
+      <blockquote>There was everything, the canteen, the bar, the football pitch, and it was great because everyone was there, they went there just to spend time. […] You went even if you didn’t have to record, because you knew you’d meet everyone, people talked about music… […] I assure you there was a real feeling of a big community.<cite>Arturo Stalteri, interview, 9 October 2023 (translated from Italian)</cite></blockquote>
       <figure><a class="frame" href="../img/figura-14.jpg"><img src="../img/figura-14.jpg" alt="Map of Rome studios from Gephi" loading="lazy" width="827" height="746"></a><figcaption><b>Figure 14.</b> Rome studios, from Gephi.</figcaption></figure>
     </div>
     <div>
       <h3>Bologna</h3>
-      <p>From the late 1970s Emilia develops its own network, thanks to falling technology costs, a favourable property market and the milieu of the DAMS, free radio and the 1977 movement. Fonoprint is its centre, with Modena and Reggio Emilia along the Via Emilia.</p>
+      <p>From the late 1970s Emilia develops its own network, thanks to falling technology costs, a property market more favourable than Rome’s and Milan’s, and the milieu of DAMS, free radio stations and the 1977 Movement. Fonoprint is born in a flat in via Schiavonia, moves to via de’ Coltelli and in the mid-1990s to the convent in via Bocca di Lupo; from 1979 Umberto Maggi’s Umbi Studio, later Maison Blanche, operates in Modena. The network grows along the via Emilia as far as Reggio, following a model more cooperative than competitive.</p>
+      <blockquote>And I hear people say, “did you know they’re opening a studio in Bologna, some blind guys?” […] “Oh, in via Schiavonia.” […] There was a certain Vasco Rossi recording a song called <i>Albachiara</i>.<cite>Celso Valli, interview, 2 October 2023 (translated from Italian)</cite></blockquote>
+      <blockquote>Argentinian mixing desks, Telefunken speakers, Studer 8-track recorders, Neumann microphones […]. We started working, with dubbing, cassettes and so on. We met Celso Valli and Mauro Malavasi, and began to make a name for ourselves.<cite>Maurizio Biancani, interview, 21 April 2023 (translated from Italian)</cite></blockquote>
       <figure><a class="frame" href="../img/figura-15.jpg"><img src="../img/figura-15.jpg" alt="Map of Bologna studios from Gephi" loading="lazy" width="916" height="747"></a><figcaption><b>Figure 15.</b> Emilian studios, from Gephi.</figcaption></figure>
     </div>
   </div>
+  <blockquote>Here in Bologna, for instance, we had relations with our neighbours […] mainly with Maison Blanche and with Maggi. […] When we were full here people went to record there, or the other way round he sent people to us: this collaboration did an enormous amount to widen the circle of musicians, records and everything else.<cite>Maurizio Biancani, interview, 21 April 2023 (translated from Italian)</cite></blockquote>
+  <h3 class="sub-h">Spaces and places</h3>
+  <p>The widespread presence of recording studios in urban areas, together with their capacity to attract, organise and layer professional networks, makes them key junctions for understanding the very relationship between music and space. Anglophone scholarship has long established that popular music must be placed in a framework in which social questions are fundamentally geographical. Adam Krims (<i>Music and Urban Geography</i>, 2007) invites us to move beyond the opposition between “space” as the coercive force of capital and “place” invested with liberating value: “the global is, in fact, the same as the local; space becomes place”. Recording studios straddle this threshold: on the one hand they respond to supra-local logics tied to capital flows, industrial policy and the technical rationalisation of cultural work; on the other, they are places crossed by memories, practices, affects and shared identities.</p>
 </div></section>
 
 <!-- ============ INTERVISTE ============ -->

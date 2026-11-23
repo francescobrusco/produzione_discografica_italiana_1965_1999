@@ -20,14 +20,15 @@
 :root{
   --paper:#f2f5f9; --paper-2:#e5eaf2; --paper-3:#d8dfea; --surface:#ffffff;
   --ink:#12213d; --ink-2:#3d4c66; --ink-3:#6b7891;
-  --rule:#cfd7e3; --accent:#a3132f; --accent-d:#8e1028; --accent-l:#f29aa8; --vinyl:#0e2a52;
+  --rule:#cfd7e3; --accent:#a3132f; --accent-d:#8e1028; --accent-l:#f29aa8; --link:#1f6fe0; --link-d:#1553b0; --vinyl:#0e2a52;
   --sans:"Instrument Sans",system-ui,sans-serif; --display:"Fraunces",Georgia,serif; --serif:"EB Garamond",Garamond,Georgia,serif; --mono:var(--sans);
   --w:1160px; --r:10px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{margin:0;background:var(--paper);color:var(--ink);font:19.5px/1.55 var(--serif);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
-a{color:var(--accent-d);text-underline-offset:3px;text-decoration-thickness:1px}
+a{color:var(--link);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--link-d)}
 a:hover{color:var(--ink)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
@@ -40,6 +41,7 @@ p{max-width:68ch}
 .note{font:14px/1.5 var(--sans);color:var(--ink-3)}
 blockquote{margin:32px 0;padding:0 0 0 22px;border-left:3px solid var(--accent);font:italic 400 23px/1.4 var(--serif);font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 0;color:var(--ink);max-width:60ch}
 blockquote cite{display:block;margin-top:10px;font:400 14px var(--sans);font-style:normal;color:var(--ink-3)}
+.fig-row blockquote{font-size:19px;margin:24px 0;padding-left:18px}
 
 /* nav */
 nav.top{position:sticky;top:0;z-index:1000;background:rgba(242,245,249,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
@@ -47,13 +49,13 @@ nav.top .wrap{display:flex;align-items:center;gap:24px;height:58px}
 nav.top .brand{display:none}
 nav.top ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
 nav.top ul a{font:500 14.5px/1 var(--sans);color:var(--ink-2);text-decoration:none;white-space:nowrap}
-nav.top ul a:hover{color:var(--accent-d)}
+nav.top ul a:hover{color:var(--link)}
 nav.top li.home a{font:600 16px/1 var(--display);font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 0;color:var(--ink);padding-right:18px;border-right:1px solid var(--rule)}
 nav.top .lang{display:flex;flex:none;background:var(--paper-2);border-radius:999px;padding:3px}
 nav.top .lang a,nav.top .lang span{font:600 12.5px/1 var(--sans);letter-spacing:.02em;padding:6px 10px;border-radius:999px;text-decoration:none}
 nav.top .lang span{background:var(--ink);color:#fff}
 nav.top .lang a{color:var(--ink-2)}
-nav.top .lang a:hover{color:var(--accent-d)}
+nav.top .lang a:hover{color:var(--link)}
 @media(max-width:900px){nav.top ul{gap:18px}}
 
 /* hero: busta + disco */
@@ -141,7 +143,7 @@ svg.chart .grid{stroke:var(--rule)}
 .roles li::before{content:counter(r);font:500 12px var(--sans);color:var(--ink-3);width:22px;flex:none;padding-top:3px}
 .roles li:last-child{border-bottom:0}
 .roles li button{all:unset;cursor:pointer;flex:1}
-.roles li button:hover{color:var(--accent-d);text-decoration:underline}
+.roles li button:hover{color:var(--link);text-decoration:underline}
 .roles li button:focus-visible{outline:2px solid var(--accent)}
 .roles li span{font:500 13px var(--sans);color:var(--ink-3);white-space:nowrap;padding-top:2px}
 .more{all:unset;cursor:pointer;margin-top:28px;display:inline-block;font:600 14.5px var(--sans);background:var(--ink);color:#fff;border-radius:999px;padding:12px 20px}
@@ -213,7 +215,7 @@ svg.chart .grid{stroke:var(--rule)}
 .alist .y{font:500 14px var(--sans);color:var(--ink-3);padding-top:2px}
 .alist small{display:block;color:var(--ink-3);font:14px var(--sans)}
 .link{all:unset;cursor:pointer;color:inherit;border-bottom:1px solid var(--rule)}
-.link:hover{color:var(--accent-d);border-color:var(--accent)}
+.link:hover{color:var(--link);border-color:var(--link)}
 .link:focus-visible{outline:2px solid var(--accent)}
 .credits{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px 32px}
 .credits div b{display:block;font:600 13.5px/1.2 var(--sans);color:var(--ink-3);margin-bottom:6px}
@@ -295,7 +297,6 @@ footer a{color:var(--ink-2)}
     <div class="copy">
       <h1>La produzione discografica in Italia come pratica sociale <span class="yr">(1965–1999)</span></h1>
       <p class="sub">Mappatura, etnografia, modelli sistemici di creatività</p>
-      <p class="byline"><strong>Francesco Brusco</strong><br>Università di Salerno, Dipartimento di Scienze del Patrimonio Culturale (Dispac)<br>Dipartimento di Musicologia e Beni Culturali, Università di Pavia</p>
     </div>
   </div>
   <span class="cat" aria-hidden="true">LP · 1965–1999</span>
@@ -313,9 +314,8 @@ footer a{color:var(--ink-2)}
   <h2>La rete sociale della discografia italiana</h2>
   <div class="split">
     <div>
-      <p class="lede">I venti album più venduti di ogni anno, dal 1965 al 1999, e i loro paratesti sono le fonti primarie per ricostruire la rete sociale della produzione in studio. Ogni credito di copertina diventa un collegamento.</p>
-      <p>La rete è multimodale: comprende soggetti individuali (interpreti, musicisti, produttori, arrangiatori, tecnici), soggetti collettivi (gruppi, orchestre, cori), nodi istituzionali (le case discografiche), gli album come progetti che catalizzano le relazioni e gli studi di registrazione, ciascuno dei quali agisce come un <i>focus</i>: un aggregatore di interazioni tra agenti umani e materiali.</p>
-      <p>Elaborate in Gephi, le matrici ricavate dal corpus producono un grafo di 3410 nodi e 7926 collegamenti: denso all’apparenza, ma con una densità bassissima, segno di un alto grado di omofilia. I nodi si condensano per affinità geografica, stilistica e professionale in cluster locali relativamente stretti.</p>
+      <p>I venti album più venduti di ogni anno, dal 1965 al 1999, sono le fonti primarie per ricostruire la rete sociale della produzione in studio. Dalle note di copertina (<i>credits</i>) si ottengono i dati di una rete multimodale comprendente soggetti individuali (interpreti, musicisti, produttori, arrangiatori, tecnici), collettivi (gruppi, orchestre, cori) e istituzionali (le case discografiche), oltre agli studi di registrazione, ciascuno dei quali agisce come un <i>focus</i>: un aggregatore di interazioni tra agenti umani e materiali.</p>
+      <p>Elaborate in Gephi, le matrici ricavate dal corpus producono un grafo di 3410 nodi e 7926 collegamenti.</p>
     </div>
     <div>
       <div class="tbl-wrap"><table class="tbl" aria-label="Statistiche whole-network">
@@ -331,7 +331,7 @@ footer a{color:var(--ink-2)}
           <tr><td>Modularità</td><td class="n">0,671</td></tr>
         </tbody>
       </table></div>
-      <p class="note">Tabella 1. La componente principale raccoglie 3385 nodi (99,2%) e 7908 archi (99,7%).</p>
+      <p class="note">Tabella 1. Statistiche whole-network calcolate in Gephi. Ordine ed edges restituiscono 3410 soggetti e 7926 istanze di collaborazione, ricavate da 700 album in 35 anni: un campionamento che non può dar conto di tutti gli agenti coinvolti, ma che include i più attivi. A dispetto dell’apparenza, la densità (il rapporto tra collegamenti effettivi e possibili) è decisamente esigua, segno di un alto grado di omofilia: i nodi tendono a condensarsi per affinità geografica, stilistica o professionale in cluster relativamente stretti. Il diametro (12), cioè la distanza più lunga tra due nodi, sembrerebbe contraddire la teoria dei sei gradi di separazione, che trova invece riscontro nella distanza media tra coppie di nodi (average path length): un valore contenuto, indice di un alto grado di coordinazione e diffusione. Il grado medio riflette il modo in cui ciascun partecipante accumula nel tempo una lunga storia di collaborazioni. Delle otto componenti, la principale raccoglie 3385 nodi (99,2%) e 7908 archi (99,7%), lasciando uno spazio trascurabile alle altre sette.</p>
     </div>
   </div>
 
@@ -341,16 +341,20 @@ footer a{color:var(--ink-2)}
   <h3 class="sub-h">Chi compone la rete</h3>
   <p>La suddivisione per categorie mette in luce alcune peculiarità. I tecnici del suono sono di gran lunga la categoria più presente, quasi il doppio di studi e produttori, mentre gli addetti al mastering chiudono la lista. Le 93 case discografiche (2,69%) indicano la natura oligopolistica dell’industria; tra i turnisti, i coristi superano chitarristi e tastieristi.</p>
   <div class="bars" id="bars-cat"></div>
-  <p class="note">Tabella 2. Numero di nodi per categoria e incidenza percentuale sul totale della rete.</p>
+  <p class="note">Tabella 2. Suddivisione per categorie, con numero di nodi e incidenza percentuale sul totale della rete. Per esigenza di sintesi, ogni termine racchiude funzioni e strumenti di natura eterogenea: sotto la voce <i>mixer</i> troviamo principalmente gli ingegneri del suono, ma non mancano quelli specializzati nell’editing e i cosiddetti “recordisti”; <i>cori</i> accorpa cantanti che incidono tracce vocali ulteriori rispetto a quelle dell’interprete principale; la categoria <i>chitarre</i> include anche strumenti a corda meno comuni quali mandolini, bouzouki, sitar (spesso affidati proprio ai chitarristi), mentre sotto l’etichetta <i>tastiere</i> coabitano soggetti estremamente diversi come i pianisti e i programmatori dei sintetizzatori; laddove utilizzato in chiave ritmica, il contrabbasso viene incluso nella stessa categoria del basso, mentre il suo impiego in orchestra lo posizionerà sotto la voce <i>archi</i>, assieme ai quali sono state catalogate anche le arpe. Non sempre agevole, infine, discernere tra produttore e arrangiatore, due ruoli che dagli anni Ottanta in poi sono spesso assorbiti da un’unica figura.</p>
 
   <h3 class="sub-h">Comunità e confini</h3>
-  <p>L’algoritmo di modularità individua cinque sottogruppi principali, ciascuno con il suo nucleo in una casa discografica e in uno studio di riferimento. Non sono compartimenti stagni: si permeano a vicenda grazie ai soggetti che agiscono all’intersezione. Il confine più netto separa i campi di RCA e CGD, le due principali etichette del periodo.</p>
+  <p>La modularità misura quanto una rete si lasci scomporre in comunità: presuppone che i nodi più connessi tra loro tendano a condensarsi in cluster e confronta la forza dei legami interni a ciascun raggruppamento con quella dei legami che lo collegano al resto della rete. Valori elevati indicano comunità nette; quello del grafo complessivo (0,671) segnala sottogruppi ben definiti, ma non isolati. L’algoritmo utilizzato da Gephi consente di rivelare queste strutture modulari, il che lo rende particolarmente adatto all’esplorazione di un network così esteso dal punto di vista geografico e temporale.</p>
+  <p>Ne emergono i cinque sottogruppi più popolati, evidenziati in Figura 2 da colori diversi. Identificandone i nodi principali, si nota come ognuno trovi il proprio nucleo in case discografiche e studi di registrazione di riferimento: nodi istituzionali e spazi fisici che nella maggior parte dei casi attraversano l’intero arco cronologico, proponendosi come <i>foci</i> attorno ai quali orbitano le pratiche creative della produzione discografica. Colpisce il caso della PDU, casa discografica di Mina, la cui rete è praticamente coincidente con quella dell’artista, mentre altre strutture modulari di ampiezza minore sono riconducibili a circuiti più localizzati in senso geografico. Pur restando identificabili, i sottogruppi non sono compartimenti stagni: si permeano a vicenda, soprattutto grazie ai soggetti che agiscono all’intersezione tra le varie aree. La linea di confine all’apparenza più netta è quella che separa i campi della RCA e della CGD, le due principali etichette tra 1965 e 1999.</p>
   <figure class="narrow" style="max-width:860px"><a class="frame" href="img/figura-02.jpg"><img src="img/figura-02.jpg" alt="Sottogruppi evidenziati dall'algoritmo di modularità" loading="lazy" width="1600" height="1315"></a>
   <figcaption><b>Figura 2.</b> I principali sottogruppi evidenziati dall’algoritmo di modularità.</figcaption></figure>
+  <p>La mappatura trova riscontro nella percezione che i professionisti del tempo hanno degli stili legati a ogni sottogruppo: gravitare attorno a un proprio nucleo di musicisti, produttori e tecnici genera per ogni casa discografica e per ogni studio un’identità sonora riconoscibile e condivisa.</p>
   <blockquote>C’erano tutti questi giri quindi si erano formate delle situazioni proprio ritmiche, ognuno aveva la sua ritmica […] questo qui è un suono della Numero Uno, questa è la Ricordi, questo è un suono della RCA.<cite>Ellade Bandini, intervista, 23 maggio 2023</cite></blockquote>
 
-  <h3 class="sub-h">Lo sviluppo nel tempo</h3>
-  <p>Divisa in quinquenni, la rete si espande dagli anni Settanta e si condensa nel decennio successivo. Il 1980–1984 è il momento di massima cooperazione: grado medio più alto (3,83), diametro (8), modularità e path length minimi. Il 1990–1994 è l’unico periodo in cui la rete forma una sola componente, alla vigilia della definitiva affermazione del digitale.</p>
+  <h3 class="sub-h">Analisi diacronica</h3>
+  <p>Suddividendo l’arco cronologico in intervalli di cinque anni, comparabili tra loro e con il dato complessivo, la successione dei grafi mostra l’espansione della rete a partire dagli anni Settanta e una contrapposta tendenza alla condensazione nel decennio successivo. Il quinquennio 1980–1984 registra il grado medio più alto (3,83) e i valori minimi di diametro (8), modularità (0,652) e average path length (4,767): è il momento di massima cooperazione all’interno del network, in cui ogni nodo è mediamente legato ad altri 3,83 e dista al massimo otto gradi da quello più lontano.</p>
+  <p>L’andamento è coerente con la congiuntura economica e geopolitica. Alle crisi energetiche del 1973 e del 1979 e alla svalutazione del dollaro l’industria discografica mondiale reagisce con ristrutturazioni, fusioni e conglomerazioni, dalle quali le major escono numericamente ridotte e progressivamente integrate con i comparti audiovisivi. L’avvento del compact disc avvia la riedizione sistematica dei cataloghi, a scapito delle nuove produzioni: una via d’uscita dalla crisi nel breve periodo, che pone però le basi per il crac del 1996.</p>
+  <p>Nel decennio conclusivo ordine ed edges crescono a un ritmo significativamente maggiore rispetto ai venticinque anni precedenti. Il 1990–1994 è l’unico periodo in cui la rete forma una sola componente, segno che ogni nodo è connesso a tutti gli altri; nel quinquennio successivo le componenti tornano a essere tre. È la vigilia della definitiva affermazione del digitale, che chiude un’epoca non soltanto per il consumo della musica ma anche e soprattutto per la sua produzione.</p>
   <figure><a class="frame" href="img/figura-03.jpg"><img src="img/figura-03.jpg" alt="Sviluppo diacronico della rete per quinquenni" loading="lazy" width="1600" height="900"></a>
   <figcaption><b>Figura 3.</b> Sviluppo diacronico della rete in forma di grafi, per intervalli di cinque anni.</figcaption></figure>
   <div class="tbl-wrap"><table class="tbl" aria-label="Statistiche per quinquenni">
@@ -372,7 +376,8 @@ footer a{color:var(--ink-2)}
 <!-- ============ PROTAGONISTI ============ -->
 <section id="protagonisti" class="alt"><div class="wrap">
   <h2>Protagonisti</h2>
-  <p class="lede">La centralità spiega come alcuni soggetti agiscano da intermediari per informazioni, esigenze e influenze, in una continua dialettica tra centro e periferia. Ecco i venti nodi principali per grado, con i relativi indici di centralità.</p>
+  <p class="lede">La centralità è tra le proprietà dei nodi più discusse nella social network analysis. Qui la si intende come il mezzo per spiegare come alcuni soggetti possano agire da intermediari per le informazioni, le esigenze e le influenze veicolate dagli altri nodi, in una continua dialettica tra centro e periferia; di converso, bassi valori di centralità indicano forme di esclusione o di perifericità.</p>
+  <p>Oltre al grado, cioè il numero di connessioni, si considerano tre indicatori. L’<i>eigenvector</i> misura i legami con i nodi di grado elevato, e quindi la possibilità per soggetti meno connessi di giovarsi dell’interazione con altri più densamente collegati. La <i>closeness</i> è la lunghezza complessiva dei percorsi che uniscono un nodo a tutti gli altri, normalizzata e invertita: più è alta, più efficaci sono la coordinazione e la trasmissione delle informazioni. La <i>betweenness</i> calcola la frequenza con cui un soggetto si trova sul percorso più breve tra altri due, misurandone la capacità di fare da ponte tra i “buchi strutturali” della rete. La tabella riporta i venti nodi principali per grado.</p>
   <div class="tbl-wrap"><table class="tbl" id="tbl-centr" aria-label="Nodi principali per grado">
     <thead><tr><th>#</th><th>Nome</th><th>Categoria</th><th class="n">Grado</th><th class="n">Eigenvector</th><th class="n">Closeness</th><th class="n">Betweenness</th></tr></thead>
     <tbody></tbody>
@@ -381,6 +386,8 @@ footer a{color:var(--ink-2)}
 
   <figure class="narrow"><a class="frame" href="img/figura-04.jpg"><img src="img/figura-04.jpg" alt="Posizionamento nella rete dei venti nodi principali" loading="lazy" width="1235" height="1600"></a>
   <figcaption><b>Figura 4.</b> Posizionamento nella rete dei nodi della Tabella 4.</figcaption></figure>
+  <p>Il quadro avvalora l’idea di un’oligarchia delle major e del loro legame privilegiato con gli spazi e le risorse di un numero altrettanto ristretto di studi di registrazione. Fa però risaltare il paradosso della RCA e delle sue sale d’incisione che, pur in cima alle rispettive categorie, si pongono in posizione tutto sommato periferica rispetto al cuore del network. La betweenness dell’etichetta romana (46174,572) è oltre dieci volte inferiore a quella della diretta concorrente CGD (500222,472) e pressoché identica a quella della PDU (44324,554), casa discografica legata quasi unicamente al catalogo di Mina: due etichette accomunate da un’identità artistica più chiaramente definita e da una strategia poco interessata a fare da ponte tra i buchi strutturali.</p>
+  <p>Mina è l’unica performer della lista, per la longevità della carriera e una prolificità discografica che la pone ai vertici delle classifiche lungo tutto il periodo: tutti i musicisti presenti in tabella hanno in qualche modo collaborato con lei. Tra questi, Paolo Gianolio, Lele Melotti e Silvio Pozzoli formano un potenziale trio di turnisti legittimati dalle loro fittissime connessioni con i nodi di grado più alto: l’eigenvector del chitarrista, un netto 1, è il valore più alto in assoluto, traduzione statistica del capitale sociale inteso come risorsa relazionale. Nell’area tecnica, tra i numerosissimi fonici soltanto Renato Cantele ottiene una centralità prominente, mentre due cutting engineer, Antonio Baglio e Marco Inzadi, dominano la propria categoria portandosi tra i primi dieci per grado.</p>
 
   <h3 class="sub-h">I più presenti, ruolo per ruolo</h3>
   <p>Per ciascuna categoria, i nomi che compaiono nel maggior numero di album del corpus.</p>
@@ -421,8 +428,11 @@ footer a{color:var(--ink-2)}
 <section id="genere"><div class="wrap split">
   <div>
     <h2>Una storia al maschile?</h2>
-    <p>Con il 7,8% di presenze femminili, la discografia italiana del periodo conferma un forte squilibrio di genere, senza segni di evoluzione. Le professioniste si concentrano nel canto, il ruolo “frontale” per eccellenza, e la loro presenza crolla nei mestieri tecnico-produttivi: 2,3% tra i produttori, zero nel mastering.</p>
-    <blockquote>Era palese che il mio parere valesse meno di quello dei colleghi. Malgrado la mia esperienza.<cite>Marti Jane Robertson, intervista, 20 novembre 2023</cite></blockquote>
+    <p>Con il 7,8% di presenze femminili, la discografia italiana del periodo conferma il <i>gender gap</i> da tempo imputato al settore, restituendo anzi un quadro privo di evoluzione: secondo i dati presentati da Equaly nel novembre 2023, le produttrici in Italia si attestano oggi sul 2,6%, valore praticamente identico a quello registrato per il 1965–1999.</p>
+    <p>Le prime due categorie riguardano il canto, a conferma di una divisione sessuata del lavoro musicale che assegna alle donne i ruoli “frontali” e le relega ai margini del settore tecnico-produttivo: percepita come legata al corpo che la produce, l’identità vocale è il ruolo meno intercambiabile sul piano del genere. Seguono, con percentuali molto più basse, archi e fiati, legati al campo della musica classica. I numeri crollano proprio tra le professioni più specificamente connesse alla popular music, dal 2,30% delle produttrici allo 0% del mastering; tre delle quattro donne nella sezione ritmica sono turniste americane chiamate per episodi marginali rispetto alla rete nazionale.</p>
+    <p>Lo squilibrio si riflette anche nel campione delle interviste. Le testimonianze raccolte mettono in luce non solo l’esclusione dai ruoli centrali della filiera, ma anche aspettative implicite e disparità economiche.</p>
+    <blockquote>Era palese che il mio parere valesse meno di quello dei colleghi. Malgrado la mia esperienza, malgrado aver dimostrato più volte insieme a loro le mie conoscenze, comunque se c’era un maschio il suo parere valeva sempre un po’ di più. Questo succedeva più che altro con le vecchie generazioni, oggi no, oggi direi succede molto meno.<cite>Marti Jane Robertson, intervista, 20 novembre 2023</cite></blockquote>
+    <blockquote>Quando tu sei chiamata per essere una corista-vocalist da un artista maschio, tu devi sempre essere vestita bene, curata, e devi essere, diciamo, è vero, sì, devi essere sempre un po’, come posso dire, sottotono però sul pezzo, mi spiego? […] Per quanto riguarda i compensi, io ricordo che i compensi erano maggiori quelli dei maschi e invece noi prendevamo di meno, il nostro compenso era minore.<cite>Emanuela Cortesi, intervista, 29 luglio 2025</cite></blockquote>
   </div>
   <div>
     <div class="bars" id="bars-gender"></div>
@@ -435,8 +445,10 @@ footer a{color:var(--ink-2)}
   <h2>Gli studi di registrazione in Italia</h2>
   <div class="split">
     <div>
-      <p class="lede">Lo studio di registrazione è il <i>focus</i> della rete: uno spazio fisico che aggrega persone, tecnologie, convenzioni e gusti. Il loro numero cresce lungo tutto il periodo, con i tassi più alti nei primi tre quinquenni.</p>
-      <p>Nel 1965–1969 solo il 31% dei dischi indica lo studio, e se ne contano nove: la RCA a Roma, il resto a Milano. Negli anni Settanta il sistema resta bipolare, ma si aprono piccoli poli a Genova e Venezia e i primi studi residenziali extraurbani, come lo Stone Castle di Carimate e il Mulino di Battisti. Nel 1980–1984 Carimate sottrae per la prima volta il primato alla RCA, mentre lungo la via Emilia nasce il terzo polo, quello di Bologna e Modena. Gli anni Novanta portano la frammentazione e il passaggio di testimone tra analogico e digitale.</p>
+      <p class="lede">Lo studio di registrazione è il <i>focus</i> della rete: uno spazio fisico che aggrega persone, tecnologie, convenzioni e gusti. Il corpus ne censisce 210, 67 dei quali (31,9%) all’estero, dove le produzioni italiane si rivolgono con sempre maggior frequenza dagli anni Settanta per ragioni artistiche, tecniche, economiche e relazionali. Il loro numero cresce lungo tutto il periodo, con i tassi più alti nei primi tre quinquenni, si stabilizza negli anni Ottanta e rallenta nel decennio finale.</p>
+      <p>Nel 1965–1969, complici le condizioni oligopolistiche e la reticenza delle note di copertina (solo il 31% dei dischi indica lo studio), gli studi sono appena nove: quelli della RCA, unici a Roma, coprono il 20% del campione, gli altri otto sono tutti milanesi. Nel 1970–1974 la RCA mantiene il primato (14%), ma a Roma aprono nuovi studi desiderosi di inserirsi nel suo indotto, come Sonic Recording, Studio 38 e gli Ortophonic di Morricone, Trovajoli, Piccioni e Bacalov. Il sistema resta bipolare, con Milano che sale a dodici sale guidate dai Fonorama di via Barletta, e si registrano le prime produzioni all’estero.</p>
+      <p>Nella seconda metà degli anni Settanta il panorama si apre a un piccolo polo genovese e agli studi dell’area veneziana, mentre la rete milanese vede nascere i primi studi residenziali extraurbani, come lo Stone Castle di Carimate e il Mulino di Lucio Battisti. Nel 1980–1984 Carimate sottrae per la prima volta il primato alla RCA, anche grazie a un accordo forfettario con l’etichetta romana; a sud rifiorisce un ristretto polo napoletano, mentre lungo la direttrice Bologna-Modena esordisce il terzo polo della discografia italiana.</p>
+      <p>Tra 1985 e 1989 al declino del complesso RCA fa da contraltare l’ascesa dei bolognesi Fonoprint, in un quadro di netta frammentazione, senza un chiaro <i>focus</i> centrale. Negli anni Novanta a Milano Morning e Logic Studios ereditano materiali e committenze di Stone Castle e CGD, il polo emiliano si estende fino a Reggio Emilia e a Roma i Forum raccolgono la gestione degli Ortophonic; il passaggio di testimone tra analogico e digitale e l’abbattimento dei costi moltiplicano ulteriormente gli spazi.</p>
     </div>
     <div>
       <div id="chart-studi"></div>
@@ -444,8 +456,9 @@ footer a{color:var(--ink-2)}
     </div>
   </div>
 
+  <blockquote>Peppino Di Capri fu quello che ha innovato questo modo di fare musica e registrazione a Napoli con gli studi Splash. […] Gli studi precedenti facevano musica soltanto per i neomelodici dell’epoca.<cite>Lino Vairetti, intervista, 22 luglio 2025</cite></blockquote>
   <h3 class="sub-h">Gli studi più ricorrenti</h3>
-  <p>Gli studi italiani in cui è stato realizzato il maggior numero di album del corpus. I primi quattordici, con almeno dieci album, sono evidenziati: tre poli dominano, con la RCA in testa nel lungo periodo e il Fonoprint secondo nonostante l’ingresso tardivo.</p>
+  <p>Gli studi italiani in cui è stato realizzato il maggior numero di album del corpus; evidenziati i quattordici con almeno dieci album. Sul lungo periodo gli studi RCA si confermano <i>focus</i> prevalente della rete, a dispetto del netto calo dell’ultimo decennio e della posizione piuttosto periferica nel grafo nazionale; altri due studi romani, il Quattro Uno e il Forum (ex Ortophonic), superano la soglia. Tre sono gli spazi della rete emiliana, con il secondo posto dei Fonoprint reso ancor più notevole dal tardivo ingresso nel censimento, mentre i sei studi milanesi testimoniano la frammentazione e la concorrenza del loro mondo musicale. Lo studio PDU di Lugano è incluso tra quelli nazionali per il suo legame praticamente univoco con la rete di Mina, quasi interamente italiana.</p>
   <div class="tbl-wrap"><table class="tbl" id="tbl-studi" aria-label="Studi di registrazione per numero di album">
     <thead><tr><th>#</th><th>Studio</th><th>Località</th><th class="n">Album</th><th class="n">Attività nel corpus</th></tr></thead>
     <tbody></tbody>
@@ -480,7 +493,7 @@ footer a{color:var(--ink-2)}
       <label><input type="checkbox" id="m-cum" checked> mostra anche gli studi non più attivi</label>
     </div>
   </div>
-  <p class="note" style="color:#93a3c2;margin-top:14px">119 studi geolocalizzati. Colore pieno: attivo nell’anno o nei quattro precedenti. Le sedi seguono la mappatura per quinquenni; la linea tratteggiata indica un trasferimento. Gli studi esteri non sono in mappa. <a href="https://www.google.com/maps/d/viewer?mid=10I3crsMoiu8eftIXAM9So4QqacJVkMg" target="_blank" rel="noopener" style="color:#f29aa8">Apri la mappa su Google My Maps</a></p>
+  <p class="note" style="color:#93a3c2;margin-top:14px">119 studi geolocalizzati. Colore pieno: attivo nell’anno o nei quattro precedenti. Le sedi seguono la mappatura per quinquenni; la linea tratteggiata indica un trasferimento. Gli studi esteri non sono in mappa. <a href="https://www.google.com/maps/d/viewer?mid=10I3crsMoiu8eftIXAM9So4QqacJVkMg" target="_blank" rel="noopener" style="color:#8ec5ff">Apri la mappa su Google My Maps</a></p>
 </div></section>
 
 <!-- ============ TRE CITTÀ ============ -->
@@ -489,7 +502,7 @@ footer a{color:var(--ink-2)}
   <div class="split">
     <div>
       <p class="lede">Le tre reti cittadine non sono separate: buona parte dei nodi è presente in tutti e tre i mondi musicali. Milano e Bologna incrociano di più i loro collegamenti, Roma resta in posizione eccentrica.</p>
-      <p>I tre network hanno lo stesso diametro (8), più basso di quello nazionale, a conferma delle loro radici locali. Bologna, per tutto il periodo, è una sola componente: i nodi più centrali fanno da ponte e tengono insieme l’intera rete.</p>
+      <p>Pur con ordini diversi, i tre network hanno lo stesso diametro (8), inferiore a quello nazionale (12), a conferma delle loro radici sostanzialmente locali; le densità, omogenee tra loro, confermano l’alto grado di omofilia già osservato su scala nazionale, segno che criteri professionali e stilistici si aggiungono a quello geografico. Spiccano invece le componenti: per tutto il periodo la rete di Bologna ne ha una sola, perché i nodi con grado e centralità più alti fanno da ponte tra i vari cluster.</p>
     </div>
     <figure style="margin:0"><a class="frame" href="img/figura-11.jpg"><img src="img/figura-11.jpg" alt="Grafo dei tre poli discografici Milano Roma Bologna" loading="lazy" width="1131" height="1600"></a>
     <figcaption><b>Figura 11.</b> La rete nazionale dei tre poli principali, con gli studi di registrazione come sorgenti delle connessioni. Blu Milano, arancio Roma, rosso Bologna.</figcaption></figure>
@@ -519,20 +532,28 @@ footer a{color:var(--ink-2)}
   <div class="fig-row" style="--n:3;margin-top:56px">
     <div>
       <h3>Milano</h3>
-      <p>La città della musica per eccellenza vede le sale d’incisione fiorire in ogni angolo: Fonorama e Ricordi a sud, la Basilica della EMI in piazza Sant’Eufemia, poi il polo di via Quintiliano vicino a Linate (CGD, Idea Recording, Morning, Logic) e gli studi residenziali in Brianza.</p>
+      <p>Dopo il boom economico le sale d’incisione fioriscono in ogni angolo della città: a sud Fonorama e Ricordi, la Basilica della EMI nella chiesa di San Paolo Converso, la Phonogram in piazza Cavour, i Regson sui Navigli. Nel 1974 la CGD di Ladislao Sugar inaugura in via Quintiliano, vicino a Linate, la risposta milanese alla RCA; con la crisi degli anni Ottanta gli spazi passano ai Logic Studios dei La Bionda e ai Morning Studios di Red Canzian, mentre in Brianza sorgono gli studi residenziali.</p>
+      <blockquote>Lavoravamo in uno studio in via dei Cinquecento, che era in realtà un cinema dei preti. Sabato e domenica c’erano i film per i ragazzi, dal lunedì al venerdì si lavorava ai brani.<cite>Alberto Radius, intervista, 8 gennaio 2022</cite></blockquote>
+      <p class="note">È lo studio Ricordi di via dei Cinquecento: sotto la guida di Walter Patergnani, nel 1967 è il primo in Italia a dotarsi di un registratore a otto piste.</p>
       <figure><a class="frame" href="img/figura-13.jpg"><img src="img/figura-13.jpg" alt="Mappatura degli studi milanesi da Gephi" loading="lazy" width="850" height="737"></a><figcaption><b>Figura 13.</b> Gli studi milanesi, da Gephi.</figcaption></figure>
     </div>
     <div>
       <h3>Roma</h3>
-      <p>La Capitale è dominata dal grande centro della RCA, aperto alla fine del 1961 al km 12 della Tiburtina. Attorno nascono studi attratti dal suo indotto e da quello di RAI e Cinecittà: Ortophonic, Sonic, Studio 38, il Quattro Uno, il Forum Music Village.</p>
+      <p>La Capitale è dominata dal grande centro della RCA, aperto alla fine del 1961 al km 12 della Tiburtina: un vero campus, con quattro sale (lo studio A, cinquemila metri cubi, per le grandi orchestre), uffici e laboratori per la stampa, secondo il modello centralizzato della casa madre americana. Con RAI e Cinecittà forma un triumvirato cui fanno riferimento il Quattro Uno di Claudio Mattone e gli Ortophonic di piazza Euclide, poi Forum Music Village; agli studi indipendenti resta ben poco spazio.</p>
+      <blockquote>C’era tutto, la mensa, il bar, il campo da calcio, ed era bello perché stavano tutti lì, andavano proprio lì a passare il tempo. […] Ci si andava anche se non dovevi registrare, perché sapevi che avresti incontrato tutti, si parlava di musica… […] ti assicuro che si respirava un’aria veramente di grande comunità.<cite>Arturo Stalteri, intervista, 9 ottobre 2023</cite></blockquote>
       <figure><a class="frame" href="img/figura-14.jpg"><img src="img/figura-14.jpg" alt="Mappatura degli studi romani da Gephi" loading="lazy" width="827" height="746"></a><figcaption><b>Figura 14.</b> Gli studi romani, da Gephi.</figcaption></figure>
     </div>
     <div>
       <h3>Bologna</h3>
-      <p>Dalla fine degli anni Settanta l’Emilia sviluppa una propria rete, grazie al calo dei costi della tecnologia, a un mercato immobiliare favorevole e al milieu di DAMS, radio libere e Movimento del ’77. Fonoprint ne è il centro, con Modena e Reggio Emilia lungo la via Emilia.</p>
+      <p>Dalla fine degli anni Settanta l’Emilia sviluppa una propria rete, grazie al calo dei costi della tecnologia, a un mercato immobiliare più favorevole rispetto a Roma e Milano e al milieu di DAMS, radio libere e Movimento del ’77. I Fonoprint nascono in un appartamento di via Schiavonia, passano a via de’ Coltelli e a metà anni Novanta si trasferiscono nel convento di via Bocca di Lupo; dal 1979 a Modena opera l’Umbi Studio di Umberto Maggi, poi Maison Blanche. La rete cresce lungo la via Emilia fino a Reggio, secondo un modello più cooperativo che competitivo.</p>
+      <blockquote>E sento dire, “ma sai che stanno aprendo uno studio a Bologna, dei ciechi?”. […] “Mah, in via Schiavonia”. […] C’era un certo Vasco Rossi che stava registrando una canzone dal titolo <i>Albachiara</i>.<cite>Celso Valli, intervista, 2 ottobre 2023</cite></blockquote>
+      <blockquote>Mixer argentini, casse Telefunken, registratori Studer 8 tracce, microfoni Neumann […]. Iniziamo a lavorare, con doppiaggi, cassette e altro. Conosciamo Celso Valli e Mauro Malavasi, e cominciamo a farci un nome.<cite>Maurizio Biancani, intervista, 21 aprile 2023</cite></blockquote>
       <figure><a class="frame" href="img/figura-15.jpg"><img src="img/figura-15.jpg" alt="Mappatura degli studi bolognesi da Gephi" loading="lazy" width="916" height="747"></a><figcaption><b>Figura 15.</b> Gli studi emiliani, da Gephi.</figcaption></figure>
     </div>
   </div>
+  <blockquote>Qui a Bologna per esempio noi avevamo dei rapporti con i nostri vicini […] principalmente con la Maison Blanche e con Maggi. […] Quando qua era pieno si andava a registrare là, o al contrario lui ci mandava della gente: questo rapporto di collaborazione è servito enormemente ad aumentare il giro dei musicisti, dei dischi e di tutto il resto.<cite>Maurizio Biancani, intervista, 21 aprile 2023</cite></blockquote>
+  <h3 class="sub-h">Spazi e luoghi</h3>
+  <p>La presenza capillare degli studi di registrazione nelle aree urbane, unita alla loro capacità di attrarre, organizzare e stratificare reti professionali, li rende snodi fondamentali per la comprensione stessa del rapporto tra musica e spazio. La letteratura anglosassone ha da tempo sancito che la popular music va contestualizzata in una cornice in cui le questioni sociali sono fondamentalmente geografiche. Adam Krims (<i>Music and Urban Geography</i>, 2007) invita a superare la contrapposizione tra uno “spazio” inteso come forza coercitiva del capitale e un “luogo” investito di valore liberatorio: «the global is, in fact, the same as the local; space becomes place». Gli studi di registrazione si pongono a cavallo di questa soglia: da un lato rispondono a logiche sovralocali, legate ai flussi di capitale, alle politiche industriali e alla razionalizzazione tecnica del lavoro culturale; dall’altro sono luoghi attraversati da memorie, pratiche, affettività e identità condivise.</p>
 </div></section>
 
 <!-- ============ INTERVISTE ============ -->
